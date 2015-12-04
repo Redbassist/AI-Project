@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <tchar.h>
-
-
+#include <math.h>
+#include "Pvector.h"
 
 // TODO: reference additional headers your program requires here
