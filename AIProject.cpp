@@ -32,7 +32,16 @@ int main()
 
 	srand(time(NULL)); //setting seed for random
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "AI Lab 1");
+	sf::ContextSettings settings;
+	settings.depthBits = 24;
+	settings.stencilBits = 8;
+	settings.antialiasingLevel = 1000;
+	settings.majorVersion = 3;
+	settings.minorVersion = 0;
+
+	//sf::RenderWindow window(sf::VideoMode(800, 600), "AI Lab 1");
+
+	sf::RenderWindow window(sf::VideoMode(800, 600), "AI Lab 1", sf::Style::Default, settings);
 	 
 	Player player = Player(); 
 

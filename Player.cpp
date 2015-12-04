@@ -13,12 +13,15 @@ Player::Player() {
 }
 
 void Player::loadResources() {
-	if (!texture.loadFromFile("ship.png"))
+	if (!texture.loadFromFile("Spaceship3.png"))
 	{
 		std::cout << "cant find image";
 	}
+
+	texture.setSmooth(true);
 	sprite.setTexture(texture);
-	sprite.setOrigin(32, 32);
+	sprite.setOrigin(200, 400);
+	sprite.setScale(0.1f, 0.1f);
 	sprite.setPosition(position.x, position.y);
 }
 
