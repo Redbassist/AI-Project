@@ -3,7 +3,7 @@
 
 Player::Player() {
 	direction = Pvector((float)cos(rotation), -sin(rotation));
-	speed = 3   ;
+	speed = 3;
 	float randX = rand() % 700 + 50;
 	float randY = rand() % 500 + 50;
 
@@ -13,7 +13,7 @@ Player::Player() {
 }
 
 void Player::loadResources() {
-	if (!texture.loadFromFile("Spaceship3.png"))
+	if (!texture.loadFromFile("Sprites/Spaceship3.png"))
 	{
 		std::cout << "cant find image";
 	}
