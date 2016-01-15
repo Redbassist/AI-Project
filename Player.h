@@ -1,5 +1,6 @@
 #pragma once  
-#include <SFML/Graphics.hpp>
+#include "stdafx.h"
+#include "Globals.h"
 #include <math.h>
 
 class Player {
@@ -18,9 +19,9 @@ public:
 
 	void loadResources();
 
-	void Draw(sf::RenderWindow &window);
+	void Draw();
 
-	void Update(sf::RenderWindow &window);
+	void Update();
 	Pvector getPosition();
 
 	//these are the code from the gods that fix the rotation loop around 2 pi

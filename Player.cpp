@@ -25,14 +25,14 @@ void Player::loadResources() {
 	sprite.setPosition(position.x, position.y);
 }
 
-void Player::Draw(sf::RenderWindow &window) {
-	window.draw(sprite);
+void Player::Draw() {
+	window->draw(sprite);
 }
 
-void Player::Update(sf::RenderWindow &window) {
+void Player::Update() {
 	prevRotation = rotation;
 	position = Pvector(sprite.getPosition());
-	Pvector mousePos = Pvector(sf::Mouse::getPosition(window));
+	Pvector mousePos = Pvector(sf::Mouse::getPosition(*window));
 	Pvector wantedVector = mousePos.subTwoVector(mousePos, position);
 
 	float angleBetweenTwo = atan2(mousePos.y - position.y, mousePos.x - position.x);
@@ -40,15 +40,15 @@ void Player::Update(sf::RenderWindow &window) {
 	rotation = CurveAngle(rotation, angleBetweenTwo, 0.06f);
 
 	//checking if the player has moved off the side of the screen and moving it ----------------------------------
-	if (position.x > 800)
+	if (position.x > 1312)
 		position.x = -32;
 	else if (position.x < -32)
-		position.x = 800;
+		position.x = 1312;
 
-	if (position.y > 600)
+	if (position.y > 752)
 		position.y = -32;
 	else if (position.y < -32)
-		position.y = 600;
+		position.y = 752;
 	//------------------------------------------------------------------------------------------------------------
 	//error check, rotation was crashing every so often, this is a loose fix
 	if (isnan(rotation))

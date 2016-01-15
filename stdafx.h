@@ -7,10 +7,15 @@
 
 #include "targetver.h"
 
+#include <stdlib.h> 
 #include <stdio.h>
 #include <iostream>
 #include <tchar.h>
-#include <math.h>
+#include <math.h> 
+#include <time.h>
 #include "Pvector.h"
+
+using namespace sf;
+using namespace std;
 
 // TODO: reference additional headers your program requires here

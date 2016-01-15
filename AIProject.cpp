@@ -13,17 +13,18 @@
 #endif
 
 #include "stdafx.h"
+#include "Globals.h"
 #include <iostream>
 
 using namespace std;
 
 #include <SFML/Graphics.hpp>
-#include <stdlib.h>
-#include <time.h> 
 #include "Player.h" 
+#include "AsteroidManager.h"
 
 int main()
 {
+	srand(time(NULL));
 	sf::Font MyFont;
 	if (!MyFont.loadFromFile("arial.ttf"))
 	{
@@ -38,30 +39,31 @@ int main()
 	settings.antialiasingLevel = 1000;
 	settings.majorVersion = 3;
 	settings.minorVersion = 0;
-
-	//sf::RenderWindow window(sf::VideoMode(800, 600), "AI Lab 1");
-
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
-	window.setFramerateLimit(60);
 	 
-	Player player = Player(); 
+	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
+	window->setFramerateLimit(60);
+	 
+	Player* player = new Player();  
 
 	//update loop
-	while (window.isOpen())
+	while (window->isOpen())
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (window->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				window.close();
+				window->close();
 		}
 
-		window.clear();
-		//draw stuff here 
-		player.Draw(window); 
-		window.display(); 
+		player->Update();
+		AsteroidManager::GetInstance()->Update();
 
-		player.Update(window); 
+		window->clear();
+		//draw stuff here 
+		player->Draw();
+		AsteroidManager::GetInstance()->Draw();
+		window->display();
+
 	}
 
 	return 0;
