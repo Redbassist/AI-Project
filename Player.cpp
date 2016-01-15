@@ -3,7 +3,7 @@
 
 Player::Player() {
 	direction = Pvector((float)cos(rotation), -sin(rotation));
-	speed = 0.04f;
+	speed = 3   ;
 	float randX = rand() % 700 + 50;
 	float randY = rand() % 500 + 50;
 
@@ -21,7 +21,7 @@ void Player::loadResources() {
 	texture.setSmooth(true);
 	sprite.setTexture(texture);
 	sprite.setOrigin(200, 400);
-	sprite.setScale(0.1f, 0.1f);
+	sprite.setScale(0.06f, 0.06f);
 	sprite.setPosition(position.x, position.y);
 }
 
@@ -37,7 +37,7 @@ void Player::Update(sf::RenderWindow &window) {
 
 	float angleBetweenTwo = atan2(mousePos.y - position.y, mousePos.x - position.x);
 
-	rotation = CurveAngle(rotation, angleBetweenTwo, 0.0006f);
+	rotation = CurveAngle(rotation, angleBetweenTwo, 0.06f);
 
 	//checking if the player has moved off the side of the screen and moving it ----------------------------------
 	if (position.x > 800)

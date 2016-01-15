@@ -41,7 +41,8 @@ int main()
 
 	//sf::RenderWindow window(sf::VideoMode(800, 600), "AI Lab 1");
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "AI Lab 1", sf::Style::Default, settings);
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
+	window.setFramerateLimit(60);
 	 
 	Player player = Player(); 
 
