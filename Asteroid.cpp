@@ -27,6 +27,8 @@ void Asteroid::LoadAssets()
 
 	float asteroidSize = (rand() % 20 + 1) / 10;
 	sprite.setScale(asteroidSize, asteroidSize);
+	
+	radius = 50 * asteroidSize;
 
 	sprite.setPosition(sf::Vector2f(pos.x, pos.y));
 }
@@ -41,15 +43,15 @@ void Asteroid::Update()
 
 void Asteroid::WrapAround()
 {
-	if (pos.x > globalBounds.x)
-		pos.x = -50;
-	else if (pos.x < -50)
-		pos.x = globalBounds.x;
+	if (pos.x > globalBounds.x + radius)
+		pos.x = -radius;
+	else if (pos.x < -radius)
+		pos.x = globalBounds.x + radius;
 
-	if (pos.y > globalBounds.y)
-		pos.y = -50;
-	else if (pos.y < -50)
-		pos.y = globalBounds.y;
+	if (pos.y > globalBounds.y + radius)
+		pos.y = -radius;
+	else if (pos.y < -radius)
+		pos.y = globalBounds.y + radius;
 }
 
 void Asteroid::Movement()

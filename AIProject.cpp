@@ -40,7 +40,7 @@ int main()
 	settings.majorVersion = 3;
 	settings.minorVersion = 0;
 
-	globalBounds = Vector2f(11520, 6480);
+	globalBounds = Vector2f(3840, 2160);
 	 
 	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
 	window->setFramerateLimit(60);

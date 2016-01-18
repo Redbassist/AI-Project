@@ -72,9 +72,26 @@ void Player::Update() {
 }
 
 void Player::CenterCamera()
+//will not move the camera if it is on the bounds of the screen
 {
 	View view = window->getView();
-	view.setCenter(sf::Vector2f(Vector2f(position.x, position.y)));
+	Vector2f cameraPos = Vector2f(position.x, position.y);
+	Vector2f size = view.getSize();
+
+	if (cameraPos.x < size.x / 2) {
+		cameraPos.x = size.x / 2;
+	}
+	else if (cameraPos.x > globalBounds.x - size.x / 2) {
+		cameraPos.x = globalBounds.x - size.x / 2;
+	}
+	if (cameraPos.y < size.y / 2) {
+		cameraPos.y = size.y / 2;
+	}
+	else if (cameraPos.y > globalBounds.y - size.y / 2) {
+		cameraPos.y = globalBounds.y - size.y / 2;
+	}
+		
+	view.setCenter(sf::Vector2f(cameraPos));
 	window->setView(view);
 }
 

@@ -39,15 +39,15 @@ void AsteroidManager::Draw()
 void AsteroidManager::SpawnAsteroids()
 {
 	addTimer++;
-	if (addTimer > 60) {
+	if (addTimer > 1) {
 		addTimer = 0;
 
 		Pvector spawnPos;
 		bool spawnedAsteroid = false;
 		if (asteroids.size() < 50) {//number of asteroids in the world
 			while (!spawnedAsteroid) {
-				spawnPos.x = (rand() % 11520 + 50);
-				spawnPos.y = (rand() % 6480 - 50);
+				spawnPos.x = (rand() % 3840 + 50);
+				spawnPos.y = (rand() % 2160 - 50);
 
 				if (CheckSpawnLocation(spawnPos)) {
 					asteroids.push_back(new Asteroid(spawnPos));
@@ -66,7 +66,7 @@ bool AsteroidManager::CheckSpawnLocation(Pvector pos)
 	Vector2f size = window->getView().getSize();
 	float width = size.x;
 	float height = size.y;
-	Vector2f topLeft = topLeft - sf::Vector2f(size.x / 2, size.y / 2);
+	Vector2f topLeft = center - sf::Vector2f(size.x / 2, size.y / 2);
 
 	if (viewPos.x > topLeft.x && viewPos.x < topLeft.x + width &&
 		viewPos.y > topLeft.y && viewPos.y < topLeft.y + height)

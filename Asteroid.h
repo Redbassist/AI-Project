@@ -13,6 +13,7 @@ private:
 	Pvector pos;
 	Pvector direction;
 	float speed;
+	float radius;
 public:
 	Asteroid(Pvector);
 	void LoadAssets();
