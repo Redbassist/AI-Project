@@ -23,6 +23,10 @@ void Player::loadResources() {
 	sprite.setOrigin(200, 400);
 	sprite.setScale(0.06f, 0.06f);
 	sprite.setPosition(position.x, position.y);
+
+	radius = 300 * sprite.getScale().x;
+
+	health = 1000;
 }
 
 void Player::Draw() {
@@ -34,6 +38,26 @@ void Player::Update() {
 	WrapAround();
 	Shoot();
 	CenterCamera();
+}
+
+float Player::getRadius()
+{
+	return radius;
+}
+
+sf::Sprite Player::getSprite()
+{
+	return sprite;
+}
+
+Pvector Player::getDirection()
+{
+	return direction;
+}
+
+float Player::getHealth()
+{
+	return health;
 }
 
 void Player::Movement()

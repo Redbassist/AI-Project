@@ -13,7 +13,6 @@ private:
 	int maxAsteroids;
 	float addTimer;
 	float timerLength;
-	vector<Asteroid*> asteroids;
 public:
 	AsteroidManager(); 
 	static AsteroidManager* GetInstance();
@@ -21,6 +20,7 @@ public:
 	void Draw();
 	void SpawnAsteroids();
 	bool CheckSpawnLocation(Pvector);
+	vector<Asteroid*> asteroids;
 };
 
 #endif

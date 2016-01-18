@@ -21,6 +21,7 @@ using namespace std;
 #include <SFML/Graphics.hpp>
 #include "Player.h" 
 #include "AsteroidManager.h"
+#include "CollisionManager.h"
 
 int main()
 {
@@ -45,7 +46,27 @@ int main()
 	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
 	window->setFramerateLimit(60);
 	 
-	Player* player = new Player();  
+	Player* player = new Player();
+
+	CollisionManager::GetInstance()->setPlayer(*player);
+	sf::Texture background;
+
+	if (!background.loadFromFile("Sprites/background.jpg"))
+	{
+		// error...
+	}
+
+	background.setSmooth(true);
+
+	sf::Sprite backgroundSprite;
+
+	backgroundSprite.setTexture(background);
+
+	backgroundSprite.setScale(sf::Vector2f(1.5f, 1.5f));
+
+	backgroundSprite.setPosition(sf::Vector2f(1500, 0));
+
+	backgroundSprite.setOrigin(sf::Vector2f(1715, 1733));
 
 	//update loop
 	while (window->isOpen())
@@ -60,9 +81,11 @@ int main()
 		player->Update();
 		AsteroidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
+		CollisionManager::GetInstance()->CheckCollisions();
 
 		window->clear();
-		//draw stuff here 
+		//draw stuff here
+		window->draw(backgroundSprite);
 		player->Draw();
 		AsteroidManager::GetInstance()->Draw();
 		BulletManager::GetInstance()->Draw();

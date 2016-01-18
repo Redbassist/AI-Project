@@ -8,7 +8,8 @@ Asteroid::Asteroid(Pvector p)
 	direction.x = (randomX - 10) / 10;
 	direction.y = (randomY - 10) / 10;
 	direction.normalize();
-	speed = (rand() % 30 + 10) / 10;
+	speed = (rand() % 10 + 40);
+	speed = speed / 10;
 	direction.mulScalar(speed);
 	LoadAssets();
 }
@@ -25,10 +26,10 @@ void Asteroid::LoadAssets()
 	sprite.setTexture(texture);
 	sprite.setOrigin(50, 50);
 
-	float asteroidSize = (rand() % 20 + 1) / 10;
-	sprite.setScale(asteroidSize, asteroidSize);
-	
-	radius = 50 * asteroidSize;
+	float asteroidSize = (rand() % 15 + 5);
+	sprite.setScale(asteroidSize / 10, asteroidSize / 10);
+
+	radius = 50 * (asteroidSize / 10);
 
 	sprite.setPosition(sf::Vector2f(pos.x, pos.y));
 }
@@ -62,4 +63,29 @@ void Asteroid::Movement()
 void Asteroid::Draw()
 {
 	window->draw(sprite);
+}
+
+float Asteroid::getRadius()
+{
+	return radius;
+}
+
+Pvector Asteroid::getPos()
+{
+	return pos;
+}
+
+Pvector Asteroid::getDirection()
+{
+	return direction;
+}
+
+void Asteroid::setDirection(Pvector d)
+{
+	direction = d;
+}
+
+float Asteroid::getSpeed()
+{
+	return speed;
 }
