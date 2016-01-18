@@ -17,6 +17,7 @@ public:
 	Asteroid(Pvector);
 	void LoadAssets();
 	void Update();
+	void WrapAround();
 	void Movement();
 	void Draw();
 };

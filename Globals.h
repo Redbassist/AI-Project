@@ -3,3 +3,4 @@
 #include "stdafx.h" 
 
 extern sf::RenderWindow* window;
+extern Vector2f globalBounds;

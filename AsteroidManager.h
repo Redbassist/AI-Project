@@ -21,6 +21,7 @@ public:
 	void Update(); 
 	void Draw();
 	void SpawnAsteroids();
+	bool CheckSpawnLocation(Pvector);
 };
 
 #endif

@@ -32,7 +32,10 @@ void Player::Draw() {
 void Player::Update() {
 	prevRotation = rotation;
 	position = Pvector(sprite.getPosition());
-	Pvector mousePos = Pvector(sf::Mouse::getPosition(*window));
+	Vector2i mp = Mouse::getPosition(*window);
+	//used to convert to view coordinates
+	sf::Vector2f worldMousePos = window->mapPixelToCoords(mp);
+	Pvector mousePos = Pvector(worldMousePos);
 	Pvector wantedVector = mousePos.subTwoVector(mousePos, position);
 
 	float angleBetweenTwo = atan2(mousePos.y - position.y, mousePos.x - position.x);
@@ -40,15 +43,15 @@ void Player::Update() {
 	rotation = CurveAngle(rotation, angleBetweenTwo, 0.06f);
 
 	//checking if the player has moved off the side of the screen and moving it ----------------------------------
-	if (position.x > 1312)
+	if (position.x > globalBounds.x)
 		position.x = -32;
 	else if (position.x < -32)
-		position.x = 1312;
+		position.x = globalBounds.x;
 
-	if (position.y > 752)
+	if (position.y > globalBounds.y)
 		position.y = -32;
 	else if (position.y < -32)
-		position.y = 752;
+		position.y = globalBounds.y;
 	//------------------------------------------------------------------------------------------------------------
 	//error check, rotation was crashing every so often, this is a loose fix
 	if (isnan(rotation))
@@ -64,6 +67,15 @@ void Player::Update() {
 
 	sprite.setRotation(radiansToDegrees(rotation) + 90);
 	sprite.setPosition(sf::Vector2f(position.x, position.y));
+
+	CenterCamera();
+}
+
+void Player::CenterCamera()
+{
+	View view = window->getView();
+	view.setCenter(sf::Vector2f(Vector2f(position.x, position.y)));
+	window->setView(view);
 }
 
 Pvector Player::getPosition() {

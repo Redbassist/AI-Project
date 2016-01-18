@@ -8,7 +8,7 @@ Asteroid::Asteroid(Pvector p)
 	direction.x = (randomX - 10) / 10;
 	direction.y = (randomY - 10) / 10;
 	direction.normalize();
-	speed = (rand() % 30 + 1) / 10;
+	speed = (rand() % 30 + 10) / 10;
 	direction.mulScalar(speed);
 	LoadAssets();
 }
@@ -27,12 +27,29 @@ void Asteroid::LoadAssets()
 
 	float asteroidSize = (rand() % 20 + 1) / 10;
 	sprite.setScale(asteroidSize, asteroidSize);
+
+	sprite.setPosition(sf::Vector2f(pos.x, pos.y));
 }
 
 void Asteroid::Update()
 {
 	Movement();
+	WrapAround();
+
 	sprite.setPosition(sf::Vector2f(pos.x, pos.y));
+}
+
+void Asteroid::WrapAround()
+{
+	if (pos.x > globalBounds.x)
+		pos.x = -50;
+	else if (pos.x < -50)
+		pos.x = globalBounds.x;
+
+	if (pos.y > globalBounds.y)
+		pos.y = -50;
+	else if (pos.y < -50)
+		pos.y = globalBounds.y;
 }
 
 void Asteroid::Movement()
