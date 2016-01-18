@@ -4,11 +4,11 @@
 Player::Player() {
 	direction = Pvector((float)cos(rotation), -sin(rotation));
 	speed = 3;
-	float randX = rand() % 700 + 50;
-	float randY = rand() % 500 + 50;
-
+	float randX = rand() % (int)(globalBounds.x - 50) + 50;
+	float randY = rand() % (int)(globalBounds.y - 50) + 50;
 	position = Pvector(randX, randY);
-
+	fireRate = 5;
+	fireTimer = fireRate;
 	loadResources();
 }
 
@@ -30,6 +30,14 @@ void Player::Draw() {
 }
 
 void Player::Update() {
+	Movement();
+	WrapAround();
+	Shoot();
+	CenterCamera();
+}
+
+void Player::Movement()
+{
 	prevRotation = rotation;
 	position = Pvector(sprite.getPosition());
 	Vector2i mp = Mouse::getPosition(*window);
@@ -42,17 +50,6 @@ void Player::Update() {
 
 	rotation = CurveAngle(rotation, angleBetweenTwo, 0.06f);
 
-	//checking if the player has moved off the side of the screen and moving it ----------------------------------
-	if (position.x > globalBounds.x)
-		position.x = -32;
-	else if (position.x < -32)
-		position.x = globalBounds.x;
-
-	if (position.y > globalBounds.y)
-		position.y = -32;
-	else if (position.y < -32)
-		position.y = globalBounds.y;
-	//------------------------------------------------------------------------------------------------------------
 	//error check, rotation was crashing every so often, this is a loose fix
 	if (isnan(rotation))
 		rotation = prevRotation;
@@ -67,8 +64,20 @@ void Player::Update() {
 
 	sprite.setRotation(radiansToDegrees(rotation) + 90);
 	sprite.setPosition(sf::Vector2f(position.x, position.y));
+}
 
-	CenterCamera();
+void Player::WrapAround()
+{
+	//checking if the player has moved off the side of the screen and moving it
+	if (position.x > globalBounds.x)
+		position.x = -32;
+	else if (position.x < -32)
+		position.x = globalBounds.x;
+
+	if (position.y > globalBounds.y)
+		position.y = -32;
+	else if (position.y < -32)
+		position.y = globalBounds.y;
 }
 
 void Player::CenterCamera()
@@ -90,9 +99,22 @@ void Player::CenterCamera()
 	else if (cameraPos.y > globalBounds.y - size.y / 2) {
 		cameraPos.y = globalBounds.y - size.y / 2;
 	}
-		
+
 	view.setCenter(sf::Vector2f(cameraPos));
 	window->setView(view);
+}
+
+void Player::Shoot()
+//Creates a bullet that is fired from the front of the ship in the direction that the player is looking
+{ 
+	fireTimer++;
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		if (fireTimer > fireRate) {
+			fireTimer = 0;
+			Bullet* bullet = new Bullet((position + direction * 7), direction);
+			BulletManager::GetInstance()->AddBullet(bullet);
+		}
+	}
 }
 
 Pvector Player::getPosition() {

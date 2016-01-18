@@ -59,11 +59,13 @@ int main()
 
 		player->Update();
 		AsteroidManager::GetInstance()->Update();
+		BulletManager::GetInstance()->Update();
 
 		window->clear();
 		//draw stuff here 
 		player->Draw();
 		AsteroidManager::GetInstance()->Draw();
+		BulletManager::GetInstance()->Draw();
 		window->display();
 
 	}

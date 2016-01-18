@@ -1,6 +1,7 @@
 #pragma once  
 #include "stdafx.h"
 #include "Globals.h"
+#include "BulletManager.h"
 #include <math.h>
 
 class Player {
@@ -14,6 +15,8 @@ private:
 	float speed;
 	sf::Texture texture;
 	sf::Sprite sprite;
+	float fireRate;
+	float fireTimer;
 public:
 	Player();
 
@@ -23,7 +26,13 @@ public:
 
 	void Update();
 
+	void Movement();
+
+	void WrapAround();
+
 	void CenterCamera();
+
+	void Shoot();
 
 	Pvector getPosition();
 

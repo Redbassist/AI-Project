@@ -9,8 +9,7 @@
 #include "Globals.h"
 
 class AsteroidManager {
-private:  
-	Player* player;
+private:   
 	int maxAsteroids;
 	float addTimer;
 	float timerLength;
