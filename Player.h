@@ -17,6 +17,8 @@ private:
 	sf::Sprite sprite;
 	float fireRate;
 	float fireTimer;
+	float radius;
+	float health;
 public:
 	Player();
 
@@ -48,4 +50,14 @@ public:
 	float radiansToDegrees(float angle);
 
 	float dotProduct(Pvector v1, Pvector v2);
+
+	float getRadius();
+
+	sf::Sprite getSprite();
+
+	Pvector getDirection();
+
+	float getHealth();
+
+	void setHealth(float h);
 };

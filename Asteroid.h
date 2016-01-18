@@ -21,6 +21,11 @@ public:
 	void WrapAround();
 	void Movement();
 	void Draw();
+	float getRadius();
+	Pvector getPos();
+	Pvector getDirection();
+	void setDirection(Pvector d);
+	float getSpeed();
 };
 
 #endif
