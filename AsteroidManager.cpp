@@ -74,3 +74,8 @@ bool AsteroidManager::CheckSpawnLocation(Pvector pos)
 
 	return true;
 }
+
+//vector<Asteroids*> AsteroidManager::GetAsteroids()
+//{
+//	return asteroids;
+//}

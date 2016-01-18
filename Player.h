@@ -1,7 +1,6 @@
 #pragma once  
 #include "stdafx.h"
 #include "Globals.h"
-#include "BulletManager.h"
 #include <math.h>
 
 class Player {
@@ -15,8 +14,9 @@ private:
 	float speed;
 	sf::Texture texture;
 	sf::Sprite sprite;
-	float fireRate;
-	float fireTimer;
+	float radius;
+	float health;
+
 public:
 	Player();
 
@@ -26,13 +26,7 @@ public:
 
 	void Update();
 
-	void Movement();
-
-	void WrapAround();
-
 	void CenterCamera();
-
-	void Shoot();
 
 	Pvector getPosition();
 
@@ -48,4 +42,14 @@ public:
 	float radiansToDegrees(float angle);
 
 	float dotProduct(Pvector v1, Pvector v2);
+
+	float getRadius();
+	
+	sf::Sprite getSprite();
+
+	Pvector getDirection();
+
+	float getHealth();
+
+	void setHealth(float h);
 };
