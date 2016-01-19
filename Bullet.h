@@ -22,6 +22,8 @@ public:
 	bool LifeCheck();
 	void Movement();
 	void Draw();
+	Pvector getPos();
+	float getRadius();
 };
 
 #endif#pragma once

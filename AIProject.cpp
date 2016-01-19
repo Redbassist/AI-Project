@@ -15,6 +15,7 @@
 #include "stdafx.h"
 #include "Globals.h"
 #include <iostream>
+#include "Factory.h"
 
 using namespace std;
 
@@ -48,6 +49,8 @@ int main()
 	 
 	Player* player = new Player();
 
+	Factory factory = Factory(*player);
+
 	CollisionManager::GetInstance()->setPlayer(*player);
 	sf::Texture background;
 
@@ -79,6 +82,7 @@ int main()
 		}
 
 		player->Update();
+		factory.Update();
 		AsteroidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
 		CollisionManager::GetInstance()->CheckCollisions();
@@ -87,6 +91,7 @@ int main()
 		//draw stuff here
 		window->draw(backgroundSprite);
 		player->Draw();
+		factory.Draw();
 		AsteroidManager::GetInstance()->Draw();
 		BulletManager::GetInstance()->Draw();
 		window->display();

@@ -55,3 +55,13 @@ void Bullet::Draw()
 {
 	window->draw(sprite);
 }
+
+Pvector Bullet::getPos()
+{
+	return pos;
+}
+
+float Bullet::getRadius()
+{
+	return radius;
+}

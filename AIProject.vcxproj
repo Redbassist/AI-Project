@@ -156,6 +156,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pvector.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pvector.cpp" />
