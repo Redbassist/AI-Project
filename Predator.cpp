@@ -66,18 +66,46 @@ Pvector Predator::Separation(vector<Boid*> boids)
 			steer.addVector(diff);
 			count++;
 		}
-		// If current boid is a predator and the boid we're looking at is also
-		// a predator, then separate only slightly 
+	}
+	// Adds average difference of location to acceleration
+	if (count > 0)
+		steer.divScalar((float)count);
+	if (steer.magnitude() > 0)
+	{
+		// Steering = Desired - Velocity
+		steer.normalize();
+		steer.mulScalar(maxSpeed);
+		steer.subVector(velocity);
+		steer.limit(maxForce);
+	}
+	return steer;
+}
+
+Pvector Predator::AvoidAsteroids()
+{
+	// Distance of field of vision for separation between boid and asteroids
+	float desiredseparation;
+
+	Pvector steer(0, 0);
+	int count = 0;
+	vector<Asteroid*> asts = AsteroidManager::GetInstance()->asteroids;
+	int size = asts.size();
+	// For every boid in the system, check if it's too close
+	for (int i = 0; i < size; i++)
+	{
+		desiredseparation = asts[i]->getRadius() + 100;
+		// Calculate distance from current boid to boid we're looking at
+		float d = location.distance(asts[i]->getPos());
+		// If this is a fellow boid and it's too close, move away from it
 		if ((d > 0) && (d < desiredseparation))
 		{
-			Pvector pred2pred(0, 0);
-			pred2pred = pred2pred.subTwoVector(location, boids[i]->location);
-			pred2pred.normalize();
-			pred2pred.divScalar(d);
-			steer.addVector(pred2pred);
+			Pvector diff(0, 0);
+			diff = diff.subTwoVector(location, asts[i]->getPos());
+			diff.normalize();
+			diff.divScalar(d);      // Weight by distance
+			steer.addVector(diff);
 			count++;
-		}
-
+		} 
 	}
 	// Adds average difference of location to acceleration
 	if (count > 0)
@@ -199,14 +227,17 @@ void Predator::flock(vector<Boid*> v)
 	Pvector sep = Separation(v);
 	Pvector ali = Alignment(v);
 	Pvector coh = Cohesion(v);
+	Pvector astAvoid = AvoidAsteroids();
 	// Arbitrarily weight these forces
 	sep.mulScalar(1.5);
 	ali.mulScalar(1.0); // Might need to alter weights for different characteristics
 	coh.mulScalar(1.0);
+	astAvoid.mulScalar(2.0);
 	// Add the force vectors to acceleration
 	applyForce(sep);
 	applyForce(ali);
 	applyForce(coh);
+	applyForce(astAvoid);
 }
 
 // Checks if boids go out of the window and if so, wraps them around to the other side.

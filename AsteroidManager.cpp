@@ -47,7 +47,7 @@ void AsteroidManager::SpawnAsteroids()
 
 		Pvector spawnPos;
 		bool spawnedAsteroid = false;
-		if (asteroids.size() < 50) {//number of asteroids in the world
+		if (asteroids.size() < 30) {//number of asteroids in the world
 			while (!spawnedAsteroid) {
 				spawnPos.x = (rand() % 3840 + 50);
 				spawnPos.y = (rand() % 2160 - 50);

@@ -5,6 +5,7 @@
 #include "stdafx.h"  
 #include "Boid.h"
 #include "Globals.h"
+#include "AsteroidManager.h"
 #include "Player.h"
 /*
 Predators are part of the flock. This means that when the boids check
@@ -33,6 +34,7 @@ public:
 	void LoadAssets();
 	// Three Laws that boids follow
 	Pvector Separation(vector<Boid*> Boids);
+	Pvector AvoidAsteroids();
 	Pvector Alignment(vector<Boid*> Boids);
 	Pvector Cohesion(vector<Boid*> Boids);
 	//Functions involving SFML and visualisation linking 
