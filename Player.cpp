@@ -152,6 +152,7 @@ void Player::Shoot()
 Pvector Player::getPosition() {
 	return position;
 }
+
 float Player::CurveAngle(float from, float to, float step)
 {
 	if (step == 0)

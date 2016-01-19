@@ -21,6 +21,9 @@ using namespace std;
 
 #include <SFML/Graphics.hpp>
 #include "Player.h" 
+#include "Boid.h"
+#include "BoidManager.h"
+#include "Predator.h"
 #include "AsteroidManager.h"
 #include "CollisionManager.h"
 
@@ -45,11 +48,18 @@ int main()
 	globalBounds = Vector2f(3840, 2160);
 	 
 	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
+	View view = View(Vector2f(0, 0), Vector2f(1280, 720));
+	view.zoom(1);
+	window->setView(view);
 	window->setFramerateLimit(60);
 	 
 	Player* player = new Player();
-
-	Factory factory = Factory(*player);
+	 
+	int numBoids = 20;
+	for (int i = 0; i < numBoids; i++ )
+		BoidManager::GetInstance()->AddBoid(new Predator(100, 100, player));
+ 
+	Factory factory = Factory(*player); 
 
 	CollisionManager::GetInstance()->setPlayer(*player);
 	sf::Texture background;
@@ -82,17 +92,20 @@ int main()
 		}
 
 		player->Update();
-		factory.Update();
+ 
+		factory.Update(); 
 		AsteroidManager::GetInstance()->Update();
+		BoidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
 		CollisionManager::GetInstance()->CheckCollisions();
 
 		window->clear();
 		//draw stuff here
-		window->draw(backgroundSprite);
+		window->draw(backgroundSprite); 
 		player->Draw();
-		factory.Draw();
+		factory.Draw(); 
 		AsteroidManager::GetInstance()->Draw();
+		BoidManager::GetInstance()->Draw();
 		BulletManager::GetInstance()->Draw();
 		window->display();
 

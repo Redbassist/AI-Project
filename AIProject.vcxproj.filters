@@ -48,7 +48,17 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="Boid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Predator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoidManager.h">
+=======
     <ClInclude Include="Factory.h">
+>>>>>>> 7546c4c8df1bbb389f848b41a5a51679ab71234b
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,7 +93,17 @@
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="Boid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Predator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoidManager.cpp">
+=======
     <ClCompile Include="Factory.cpp">
+>>>>>>> 7546c4c8df1bbb389f848b41a5a51679ab71234b
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
