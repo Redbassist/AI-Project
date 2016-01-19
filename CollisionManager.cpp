@@ -61,8 +61,9 @@ void CollisionManager::BulletCollisions()
 				response.normalize();
 				response.mulScalar(asteroids->at(i)->getSpeed());
 				//asteroids->at(i)->setDirection(Pvector(player->getDirection().x, player->getDirection().y));
-				asteroids->at(i)->setDirection(response);
+				//asteroids->at(i)->setDirection(response);
 				bullets->at(j)->setDestroyed(true);
+				asteroids->at(i)->setHealth(asteroids->at(i)->getHealth() - 25);
 				//player->setHealth(player->getHealth() - 10);
 			}
 		}

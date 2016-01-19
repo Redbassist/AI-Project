@@ -62,6 +62,11 @@ float Player::getHealth()
 	return health;
 }
 
+void Player::setHealth(float h)
+{
+	health = h;
+}
+
 void Player::Movement()
 {
 	prevRotation = rotation;
