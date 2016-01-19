@@ -93,15 +93,16 @@ void Player::Movement()
 void Player::WrapAround()
 {
 	//checking if the player has moved off the side of the screen and moving it
-	if (position.x > globalBounds.x)
+	if (position.x > globalBounds.x + 32)
 		position.x = -32;
 	else if (position.x < -32)
-		position.x = globalBounds.x;
-
-	if (position.y > globalBounds.y)
+		position.x = globalBounds.x + 32;
+	if (position.y > globalBounds.y + 32)
 		position.y = -32;
 	else if (position.y < -32)
-		position.y = globalBounds.y;
+		position.y = globalBounds.y + 32;
+
+	sprite.setPosition(sf::Vector2f(position.x, position.y));
 }
 
 void Player::CenterCamera()
