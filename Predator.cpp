@@ -4,7 +4,8 @@
 
 using namespace std; 
 
-Predator::Predator(float x, float y) {
+Predator::Predator(float x, float y, Player* p) {
+	player = p;
 	window_height = globalBounds.y;
 	window_width = globalBounds.x;
 	maxSpeed = 7.5;
@@ -13,6 +14,8 @@ Predator::Predator(float x, float y) {
 	acceleration = Pvector(0, 0);
 	location = Pvector(x, y);
 	LoadAssets();
+
+	currentState = State::SEARCH;
 }
 
 Predator::~Predator()
@@ -31,11 +34,12 @@ void Predator::LoadAssets()
 	sprite.setTexture(texture);
 	sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
 
-	float scale = 0.06;
+	float scale = 0.04;
 	sprite.setScale(scale, scale);
 
 	radius = texture.getSize().x / 2 * scale;
 	sprite.setPosition(sf::Vector2f(location.x, location.y));
+	 
 }
 
 // Function that checks and modifies the distance
@@ -73,7 +77,6 @@ Pvector Predator::Separation(vector<Boid*> boids)
 			steer.addVector(pred2pred);
 			count++;
 		}
-		//ADD THE FLOCK OF SWARMERS HERE FOR SEPERATION
 
 	}
 	// Adds average difference of location to acceleration
@@ -95,7 +98,7 @@ Pvector Predator::Separation(vector<Boid*> boids)
 // of nearby boids.
 Pvector Predator::Alignment(vector<Boid*> Boids)
 {
-	float neighbordist = 50;
+	float neighbordist = 150;
 
 	Pvector sum(0, 0);
 	int count = 0;
@@ -130,7 +133,7 @@ Pvector Predator::Alignment(vector<Boid*> Boids)
 // steering force to move in that direction.
 Pvector Predator::Cohesion(vector<Boid*> Boids)
 {
-	float neighbordist = 50;
+	float neighbordist = 40;
 
 	Pvector sum(0, 0);
 	int count = 0;
@@ -158,7 +161,13 @@ Pvector Predator::Cohesion(vector<Boid*> Boids)
 //are given by the three laws.
 void Predator::update(vector <Boid*> v)
 {
-	run(v);
+	switch (currentState) {
+	case(State::SEARCH) :
+		run(v);
+		if (search()) { 
+		}
+		break;
+	}
 
 	//To make the slow down not as abrupt
 	acceleration.mulScalar(.4);
@@ -216,6 +225,22 @@ float Predator::angle(Pvector v)
 	// From the definition of the dot product
 	float angle = (float)(atan2(v.x, -v.y) * 180 / PI);
 	return angle;
+}
+
+bool Predator::search()
+{
+	if (player->getPosition().distance(location) < 600) {
+		return true;
+	}
+	return false;
+}
+
+bool Predator::lost()
+{
+	if (player->getPosition().distance(location) > 600) {
+		return true;
+	}
+	return false;
 }
 
 /*

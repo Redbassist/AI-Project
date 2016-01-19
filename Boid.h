@@ -4,6 +4,7 @@
 
 #include "stdafx.h"  
 #include "Globals.h"
+#include "Player.h"
  
 /*
 Brief description of Boid Class:
@@ -37,6 +38,9 @@ public:
 	float maxForce;
 	Boid() {}
 	Boid(float x, float y)
+	{
+	}
+	Boid(float x, float y, Player*)
 	{
 	}
 	Boid::~Boid()
