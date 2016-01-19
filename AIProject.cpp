@@ -20,6 +20,8 @@ using namespace std;
 
 #include <SFML/Graphics.hpp>
 #include "Player.h" 
+#include "Boid.h"
+#include "Predator.h"
 #include "AsteroidManager.h"
 #include "CollisionManager.h"
 
@@ -47,6 +49,14 @@ int main()
 	window->setFramerateLimit(60);
 	 
 	Player* player = new Player();
+
+	vector<Boid*> boids;
+	boids.push_back(new Predator(100, 100));
+	boids.push_back(new Predator(100, 100));
+	boids.push_back(new Predator(100, 100));
+	boids.push_back(new Predator(100, 100));
+	boids.push_back(new Predator(100, 100));
+	boids.push_back(new Predator(100, 100));
 
 	CollisionManager::GetInstance()->setPlayer(*player);
 	sf::Texture background;
@@ -79,6 +89,10 @@ int main()
 		}
 
 		player->Update();
+		int size = boids.size();
+		for (int i = 0; i < size; i++)
+			boids[i]->update(boids);
+
 		AsteroidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
 		CollisionManager::GetInstance()->CheckCollisions();
@@ -87,6 +101,9 @@ int main()
 		//draw stuff here
 		window->draw(backgroundSprite);
 		player->Draw();
+		size = boids.size();
+		for (int i = 0; i < size; i++)
+			boids[i]->draw();
 		AsteroidManager::GetInstance()->Draw();
 		BulletManager::GetInstance()->Draw();
 		window->display();
