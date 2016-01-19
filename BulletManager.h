@@ -13,13 +13,13 @@ private:
 	int maxAsteroids;
 	float addTimer;
 	float timerLength;
-	vector<Bullet*> bullets;
 public:
 	BulletManager();
 	static BulletManager* GetInstance();
 	void AddBullet(Bullet*);
 	void Update();
-	void Draw();  
+	void Draw();
+	vector<Bullet*> bullets;
 };
 
 #endif

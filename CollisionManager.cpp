@@ -14,14 +14,20 @@ CollisionManager* CollisionManager::GetInstance() {
 CollisionManager::CollisionManager()
 {
 	asteroids = &AsteroidManager::GetInstance()->asteroids;
+	bullets = &BulletManager::GetInstance()->bullets;
 }
 
 void CollisionManager::CheckCollisions()
 {
+	AsteroidCollisions();
+	BulletCollisions();
+}
+
+void CollisionManager::AsteroidCollisions()
+{
 	for (int i = 0; i < asteroids->size(); i++)
 	{
-		float distance = sqrt(((player->getSprite().getPosition().x - asteroids->at(i)->getPos().x) * (player->getSprite().getPosition().x - asteroids->at(i)->getPos().x)) +
-			((player->getSprite().getPosition().y - asteroids->at(i)->getPos().y) * (player->getSprite().getPosition().y - asteroids->at(i)->getPos().y)));
+		float distance = Distance(player->getPosition(), asteroids->at(i)->getPos());
 		float collisionDistance = player->getRadius() + asteroids->at(i)->getRadius();
 
 		if (distance < collisionDistance)
@@ -38,7 +44,18 @@ void CollisionManager::CheckCollisions()
 	}
 }
 
+void CollisionManager::BulletCollisions()
+{
+
+}
+
 void CollisionManager::setPlayer(Player &p)
 {
 	player = &p;
 }
+
+float CollisionManager::Distance(Pvector pos1, Pvector pos2)
+{
+	return sqrt(pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2));
+}
+
