@@ -4,8 +4,10 @@
 Player::Player() {
 	direction = Pvector((float)cos(rotation), -sin(rotation));
 	speed = 3;
-	float randX = rand() % (int)(globalBounds.x - 50) + 50;
-	float randY = rand() % (int)(globalBounds.y - 50) + 50;
+	/*float randX = rand() % (int)(globalBounds.x - 50) + 50;
+	float randY = rand() % (int)(globalBounds.y - 50) + 50;*/
+	float randX = 200;
+	float randY = 200;
 	position = Pvector(randX, randY);
 	fireRate = 5;
 	fireTimer = fireRate;

@@ -15,6 +15,7 @@
 #include "stdafx.h"
 #include "Globals.h"
 #include <iostream>
+#include "Factory.h"
 
 using namespace std;
 
@@ -48,16 +49,17 @@ int main()
 	 
 	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
 	View view = View(Vector2f(0, 0), Vector2f(1280, 720));
-	view.zoom(4);
+	view.zoom(1);
 	window->setView(view);
 	window->setFramerateLimit(60);
 	 
 	Player* player = new Player();
-
-	vector<Boid*> boids;
+	 
 	int numBoids = 20;
 	for (int i = 0; i < numBoids; i++ )
 		BoidManager::GetInstance()->AddBoid(new Predator(100, 100, player));
+ 
+	Factory factory = Factory(*player); 
 
 	CollisionManager::GetInstance()->setPlayer(*player);
 	sf::Texture background;
@@ -90,20 +92,18 @@ int main()
 		}
 
 		player->Update();
-		int size = boids.size();
-		for (int i = 0; i < size; i++)
-			boids[i]->update(boids);
-
+ 
+		factory.Update(); 
 		AsteroidManager::GetInstance()->Update();
 		BoidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
 		CollisionManager::GetInstance()->CheckCollisions();
 
-
 		window->clear();
 		//draw stuff here
-		window->draw(backgroundSprite);
-		player->Draw(); 
+		window->draw(backgroundSprite); 
+		player->Draw();
+		factory.Draw(); 
 		AsteroidManager::GetInstance()->Draw();
 		BoidManager::GetInstance()->Draw();
 		BulletManager::GetInstance()->Draw();

@@ -15,6 +15,7 @@ private:
 	float speed;
 	float radius;
 	int ttl;
+	bool destroyed;
 public:
 	Bullet(Pvector, Pvector);
 	void LoadAssets();
@@ -22,6 +23,9 @@ public:
 	bool LifeCheck();
 	void Movement();
 	void Draw();
+	Pvector getPos();
+	float getRadius();
+	void setDestroyed(bool);
 };
 
 #endif#pragma once

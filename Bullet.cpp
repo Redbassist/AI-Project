@@ -7,6 +7,7 @@ Bullet::Bullet(Pvector p, Pvector dir) :
 	direction = dir;
 	dir.normalize();
 	direction.mulScalar(speed);
+	destroyed = false;
 
 	LoadAssets();
 }
@@ -43,6 +44,11 @@ bool Bullet::LifeCheck()
 	if (pos.x > globalBounds.x + radius || pos.x < -radius || pos.y > globalBounds.y + radius || pos.y < -radius)
 		destroy = true;
 
+	if (destroyed == true)
+	{
+		destroy = true;
+	}
+
 	return destroy;
 }
 
@@ -54,4 +60,19 @@ void Bullet::Movement()
 void Bullet::Draw()
 {
 	window->draw(sprite);
+}
+
+Pvector Bullet::getPos()
+{
+	return pos;
+}
+
+float Bullet::getRadius()
+{
+	return radius;
+}
+
+void Bullet::setDestroyed(bool d)
+{
+	destroyed = d;
 }
