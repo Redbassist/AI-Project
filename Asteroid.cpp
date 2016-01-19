@@ -12,6 +12,14 @@ Asteroid::Asteroid(Pvector p)
 	speed = speed / 10;
 	direction.mulScalar(speed);
 	LoadAssets();
+	health = 100;
+	rot = (rand() % 10 + 1);
+	rot = rot / 10;
+	int temp = (rand() % 2) + 1;
+	if (temp == 1)
+	{
+		rot = -rot;
+	}
 }
 
 void Asteroid::LoadAssets()
@@ -42,6 +50,18 @@ void Asteroid::Update()
 	sprite.setPosition(sf::Vector2f(pos.x, pos.y));
 }
 
+bool Asteroid::LifeCheck()
+{
+	bool destroy = false;
+
+	if (health <= 0)
+	{
+		destroy = true;
+	}
+
+	return destroy;
+}
+
 void Asteroid::WrapAround()
 {
 	if (pos.x > globalBounds.x + radius)
@@ -57,6 +77,7 @@ void Asteroid::WrapAround()
 
 void Asteroid::Movement()
 {
+	sprite.setRotation(sprite.getRotation() + rot);
 	pos.addVector(direction);
 }
 
@@ -88,4 +109,14 @@ void Asteroid::setDirection(Pvector d)
 float Asteroid::getSpeed()
 {
 	return speed;
+}
+
+float Asteroid::getHealth()
+{
+	return health;
+}
+
+void Asteroid::setHealth(float h)
+{
+	health = h;
 }

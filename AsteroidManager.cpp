@@ -18,10 +18,13 @@ AsteroidManager::AsteroidManager()
 
 void AsteroidManager::Update()
 {
-	int size = asteroids.size();
-
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < asteroids.size(); i++) {
 		asteroids[i]->Update();
+		//checking if the bullet is to be removed
+		if (asteroids[i]->LifeCheck()) {
+			asteroids.erase(asteroids.begin() + i);
+			i--;
+		}
 	}
 	SpawnAsteroids();
 }

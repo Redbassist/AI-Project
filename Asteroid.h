@@ -14,6 +14,8 @@ private:
 	Pvector direction;
 	float speed;
 	float radius;
+	float health;
+	float rot;
 public:
 	Asteroid(Pvector);
 	void LoadAssets();
@@ -26,6 +28,9 @@ public:
 	Pvector getDirection();
 	void setDirection(Pvector d);
 	float getSpeed();
+	bool LifeCheck();
+	float getHealth();
+	void setHealth(float h);
 };
 
 #endif
