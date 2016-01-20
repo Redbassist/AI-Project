@@ -74,7 +74,7 @@ void CollisionManager::BulletPredCollisions()
 			float distance = Distance(bullets->at(j)->getPos(), boids->at(i)->getPos());
 			float collisionDistance = bullets->at(j)->getRadius() + boids->at(i)->getRadius();
 
-			if (distance < collisionDistance)
+			if (distance < collisionDistance && bullets->at(j)->playerBullet)
 			{
 				bullets->at(j)->setDestroyed(true);
 				boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);

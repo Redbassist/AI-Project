@@ -7,6 +7,9 @@
 #include "Globals.h"
 #include "AsteroidManager.h"
 #include "Player.h"
+#include "Bullet.h"
+#include "BulletManager.h"
+
 /*
 Predators are part of the flock. This means that when the boids check
 through the vector of other boids, the predators are included. Check if
@@ -17,6 +20,7 @@ that maximizes separation.
 enum State {
 	SEARCH,
 	ATTACK,
+	AVOIDASTEROID,
 	RETREAT
 };
  
@@ -24,6 +28,8 @@ class Predator : public Boid
 {
 private:
 	Player* player;
+	float fireRate;
+	float fireTimer;
 public:
 	State currentState;
 	int window_height;
@@ -44,8 +50,11 @@ public:
 	void update(vector <Boid*> v);
 	void flock(vector <Boid*> v);
 	void chase(vector <Boid*> v);
+	void avoid(vector <Boid*> v);
+	void Shoot();
 	void borders();
 	float angle(Pvector v);
+	bool checkAsteroids();
 	bool search();
 	bool lost();
 	//void swarm(vector <Boid*> v);

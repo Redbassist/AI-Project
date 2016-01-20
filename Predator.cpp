@@ -18,6 +18,7 @@ Predator::Predator(float x, float y, Player* p) {
 	currentState = State::SEARCH;
 
 	health = 1000;
+	fireRate = 120;
 }
 
 Predator::~Predator()
@@ -221,6 +222,7 @@ void Predator::LimitAcceleration()
 //are given by the three laws.
 void Predator::update(vector <Boid*> v)
 {
+	//"FINITE STATE MACHINE"
 	switch (currentState) {
 
 	case(State::SEARCH) :
@@ -228,12 +230,25 @@ void Predator::update(vector <Boid*> v)
 		if (search()) {
 			currentState = State::ATTACK;
 		}
+		else if (checkAsteroids()) {
+			currentState = State::AVOIDASTEROID;
+		}
+		break;
+
+	case(State::AVOIDASTEROID) :
+		avoid(v);
+		if (!checkAsteroids()) {
+			currentState = State::SEARCH;
+		}
 		break;
 
 	case(State::ATTACK) :
 		chase(v);
 		if (lost()) {
 			currentState = State::ATTACK;
+		}
+		else if (checkAsteroids()) {
+			currentState = State::AVOIDASTEROID;
 		}
 		break;
 	}
@@ -268,17 +283,14 @@ void Predator::flock(vector<Boid*> v)
 	Pvector sep = Separation(v);
 	Pvector ali = Alignment(v);
 	Pvector coh = Cohesion(v);
-	Pvector astAvoid = AvoidAsteroids();
 	// Arbitrarily weight these forces
 	sep.mulScalar(1.5);
-	ali.mulScalar(1.0); // Might need to alter weights for different characteristics
+	ali.mulScalar(1.0);
 	coh.mulScalar(1.0);
-	astAvoid.mulScalar(2.0);
 	// Add the force vectors to acceleration
 	applyForce(sep);
 	applyForce(ali);
-	applyForce(coh); 
-	applyForce(astAvoid);
+	applyForce(coh);
 }
 
 void Predator::chase(vector <Boid*> v)
@@ -287,18 +299,42 @@ void Predator::chase(vector <Boid*> v)
 	Pvector ali = Alignment(v);
 	Pvector coh = Cohesion(v);
 	Pvector chs = ChasePlayer();
-	Pvector astAvoid = AvoidAsteroids();
-	sep.mulScalar(1.5);
-	ali.mulScalar(1.0); // Might need to alter weights for different characteristics
-	coh.mulScalar(1.0);
-	chs.mulScalar(1.0);
-	astAvoid.mulScalar(3.0);
+	sep.mulScalar(1.0);
+	ali.mulScalar(1.5);
+	coh.mulScalar(0.2);
+	chs.mulScalar(1.5);
 	applyForce(chs);
 	applyForce(sep);
 	applyForce(ali);
 	applyForce(coh);
-	applyForce(astAvoid);
 	LimitAcceleration();
+	borders();
+
+	fireTimer++;
+	float distancePlayer = location.distance(player->getPosition());
+	if (distancePlayer < 250) {
+		Shoot();
+	}
+}
+
+void Predator::avoid(vector<Boid*> v)
+{
+	Pvector sep = Separation(v);
+	Pvector astAvoid = AvoidAsteroids();
+	sep.mulScalar(1.0);
+	astAvoid.mulScalar(2.0);
+	applyForce(sep);
+	applyForce(astAvoid);
+	borders();
+}
+
+void Predator::Shoot()
+{
+	if (fireTimer > fireRate) {
+		fireTimer = 0;
+		Bullet* bullet = new Bullet((location), velocity, false);
+		BulletManager::GetInstance()->AddBullet(bullet);
+	}
 }
 
 // Checks if boids go out of the window and if so, wraps them around to the other side.
@@ -317,6 +353,30 @@ float Predator::angle(Pvector v)
 	// From the definition of the dot product
 	float angle = (float)(atan2(v.x, -v.y) * 180 / PI);
 	return angle;
+}
+
+bool Predator::checkAsteroids()
+{
+	// Distance of field of vision for separation between boid and asteroids
+	float desiredseparation;
+
+	Pvector steer(0, 0);
+	int count = 0;
+	vector<Asteroid*> asts = AsteroidManager::GetInstance()->asteroids;
+	int size = asts.size();
+	// For every boid in the system, check if it's too close
+	for (int i = 0; i < size; i++)
+	{
+		desiredseparation = asts[i]->getRadius() + 100;
+		// Calculate distance from current boid to asteroid we're looking at
+		float d = location.distance(asts[i]->getPos());
+		// If this is a fellow boid and it's too close, move away from it
+		if ((d > 0) && (d < desiredseparation))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 bool Predator::search()
