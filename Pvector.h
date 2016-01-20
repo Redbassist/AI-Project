@@ -60,6 +60,13 @@ public:
 		return temp;
 	}
 	
+	Pvector operator-(Pvector p)
+	{
+		Pvector temp;
+		temp = Pvector(x - p.x, y - p.y);
+		return temp;
+	}
+
 	Pvector operator+(Pvector p)
 	{
 		Pvector temp;

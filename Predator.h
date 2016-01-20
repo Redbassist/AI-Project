@@ -37,10 +37,13 @@ public:
 	Pvector AvoidAsteroids();
 	Pvector Alignment(vector<Boid*> Boids);
 	Pvector Cohesion(vector<Boid*> Boids);
+	Pvector ChasePlayer();
+	void LimitAcceleration();
 	//Functions involving SFML and visualisation linking 
 	void run(vector <Boid*> v);
 	void update(vector <Boid*> v);
 	void flock(vector <Boid*> v);
+	void chase(vector <Boid*> v);
 	void borders();
 	float angle(Pvector v);
 	bool search();

@@ -1,8 +1,8 @@
 #include "Predator.h" 
- 
+
 #define PI 3.141592635
 
-using namespace std; 
+using namespace std;
 
 Predator::Predator(float x, float y, Player* p) {
 	player = p;
@@ -39,7 +39,7 @@ void Predator::LoadAssets()
 
 	radius = texture.getSize().x / 2 * scale;
 	sprite.setPosition(sf::Vector2f(location.x, location.y));
-	 
+
 }
 
 // Function that checks and modifies the distance
@@ -105,7 +105,7 @@ Pvector Predator::AvoidAsteroids()
 			diff.divScalar(d);      // Weight by distance
 			steer.addVector(diff);
 			count++;
-		} 
+		}
 	}
 	// Adds average difference of location to acceleration
 	if (count > 0)
@@ -185,14 +185,53 @@ Pvector Predator::Cohesion(vector<Boid*> Boids)
 	}
 }
 
+Pvector Predator::ChasePlayer()
+{
+	Pvector chaseVect;
+	chaseVect = player->getPosition() - location;
+
+	chaseVect.normalize();	   		// Turn sum into a unit vector, and
+	chaseVect.mulScalar(maxSpeed);    // Multiply by maxSpeed
+								// Steer = Desired - Velocity
+	Pvector steer;
+	steer = steer.subTwoVector(chaseVect, velocity); //sum = desired(average)  
+	steer.limit(maxForce);
+	return steer;
+}
+
+void Predator::LimitAcceleration()
+{
+	float stayDistance = 200;
+	float slowDistance = 200;
+	float distancePlayer = location.distance(player->getPosition());
+
+	if (distancePlayer > stayDistance && distancePlayer < stayDistance + slowDistance) {
+		acceleration.mulScalar((distancePlayer - stayDistance) / slowDistance);
+		velocity.mulScalar((distancePlayer - stayDistance) / slowDistance);
+	}
+	else if (distancePlayer < stayDistance) {
+		velocity.mulScalar(0);
+	}
+
+}
+
 //Update modifies velocity, location, and resets acceleration with values that
 //are given by the three laws.
 void Predator::update(vector <Boid*> v)
 {
 	switch (currentState) {
+
 	case(State::SEARCH) :
 		run(v);
-		if (search()) { 
+		if (search()) {
+			currentState = State::ATTACK;
+		}
+		break;
+
+	case(State::ATTACK) :
+		chase(v);
+		if (lost()) {
+			currentState = State::ATTACK;
 		}
 		break;
 	}
@@ -216,7 +255,7 @@ void Predator::update(vector <Boid*> v)
 //out of range, fixes that for SFML, and renders it on the window.
 void Predator::run(vector <Boid*> v)
 {
-	flock(v); 
+	flock(v);
 	borders();
 }
 
@@ -236,8 +275,28 @@ void Predator::flock(vector<Boid*> v)
 	// Add the force vectors to acceleration
 	applyForce(sep);
 	applyForce(ali);
+	applyForce(coh); 
+	applyForce(astAvoid);
+}
+
+void Predator::chase(vector <Boid*> v)
+{
+	Pvector sep = Separation(v);
+	Pvector ali = Alignment(v);
+	Pvector coh = Cohesion(v);
+	Pvector chs = ChasePlayer();
+	Pvector astAvoid = AvoidAsteroids();
+	sep.mulScalar(1.5);
+	ali.mulScalar(1.0); // Might need to alter weights for different characteristics
+	coh.mulScalar(1.0);
+	chs.mulScalar(1.0);
+	astAvoid.mulScalar(3.0);
+	applyForce(chs);
+	applyForce(sep);
+	applyForce(ali);
 	applyForce(coh);
 	applyForce(astAvoid);
+	LimitAcceleration();
 }
 
 // Checks if boids go out of the window and if so, wraps them around to the other side.
@@ -283,7 +342,7 @@ void Predator::swarm(vector <Boid*> v)
 	R.normalise()
 
 	Me.force += vrotate2D(me.Orientation, R*U)
-	
+
 	Pvector	R;
 	int A = 100;
 	int B = 5000;
