@@ -67,6 +67,16 @@ void Player::setHealth(float h)
 	health = h;
 }
 
+void Player::ActivateSpeed()
+{
+	speedTimer = 600;
+}
+
+void Player::ActivatePower()
+{
+	powerTimer = 600;
+}
+
 void Player::Movement()
 {
 	prevRotation = rotation;
@@ -87,7 +97,17 @@ void Player::Movement()
 
 	direction = Pvector(cos(rotation), sin(rotation));
 	//normalize(direction);
-	direction.mulScalar(speed);
+
+	if (speedTimer > 0)
+	{
+		direction.mulScalar(speed * 2);
+	}
+	else
+	{
+		direction.mulScalar(speed);
+	}
+
+	speedTimer--;
 
 	//if space is held down, will fly forwards
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -147,6 +167,7 @@ void Player::Shoot()
 			BulletManager::GetInstance()->AddBullet(bullet);
 		}
 	}
+	powerTimer--;
 }
 
 Pvector Player::getPosition() {

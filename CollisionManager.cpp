@@ -16,6 +16,7 @@ CollisionManager::CollisionManager()
 	asteroids = &AsteroidManager::GetInstance()->asteroids;
 	bullets = &BulletManager::GetInstance()->bullets;
 	boids = &BoidManager::GetInstance()->boids;
+	powerups = &PowerUpManager::GetInstance()->powerups;
 }
 
 void CollisionManager::CheckCollisions()
@@ -24,6 +25,7 @@ void CollisionManager::CheckCollisions()
 	BulletCollisions();
 	BulletPredCollisions();
 	AsteroidPredCollisions();
+	PlayerPowerUpCollisions();
 }
 
 void CollisionManager::AsteroidCollisions()
@@ -59,7 +61,14 @@ void CollisionManager::BulletCollisions()
 			if (distance < collisionDistance)
 			{
 				bullets->at(j)->setDestroyed(true);
-				asteroids->at(i)->setHealth(asteroids->at(i)->getHealth() - 25);
+				if (player->powerTimer > 0)
+				{
+					asteroids->at(i)->setHealth(asteroids->at(i)->getHealth() - 50);
+				}
+				else
+				{
+					asteroids->at(i)->setHealth(asteroids->at(i)->getHealth() - 25);
+				}
 			}
 		}
 	}
@@ -76,8 +85,15 @@ void CollisionManager::BulletPredCollisions()
 
 			if (distance < collisionDistance)
 			{
-				bullets->at(j)->setDestroyed(true);
-				boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
+				if (player->powerTimer > 0)
+				{
+					boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
+				}
+				else
+				{
+					bullets->at(j)->setDestroyed(true);
+					boids->at(i)->setHealth(boids->at(i)->getHealth() -500);
+				}
 			}
 		}
 	}
@@ -95,6 +111,29 @@ void CollisionManager::AsteroidPredCollisions()
 			if (distance < collisionDistance)
 			{
 				boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
+			}
+		}
+	}
+}
+
+void CollisionManager::PlayerPowerUpCollisions()
+{
+	for (int i = 0; i < powerups->size(); i++)
+	{
+		float distance = Distance(player->getPosition(), powerups->at(i)->getPos());
+		float collisionDistance = player->getRadius() + powerups->at(i)->getRadius();
+
+		if (distance < collisionDistance)
+		{
+			if (powerups->at(i)->type == 1)
+			{
+				player->ActivateSpeed();
+				powerups->at(i)->destroy = true;
+			}
+			else
+			{
+				player->ActivatePower();
+				powerups->at(i)->destroy = true;
 			}
 		}
 	}

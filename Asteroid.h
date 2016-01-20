@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 #include "stdafx.h"
 #include "Globals.h"
+#include "PowerUpManager.h"
+#include "PowerUp.h"
 
 class Asteroid {
 private:

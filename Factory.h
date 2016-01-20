@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "BoidManager.h"
 #include "Predator.h"
+#include "MissileManager.h"
 
 class Factory{
 private:
@@ -26,6 +27,9 @@ private:
 	Pvector destination;
 	bool scared;
 	int spawnTimer;
+	int shootTimer;
+	int maxMissiles;
+	int missileTimer;
 public:
 
 	Factory(Player& p);

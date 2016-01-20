@@ -19,6 +19,8 @@ private:
 	float fireTimer;
 	float radius;
 	float health;
+	int speedTimer;
+
 public:
 	Player();
 
@@ -60,4 +62,10 @@ public:
 	float getHealth();
 
 	void setHealth(float h);
+
+	void ActivateSpeed();
+
+	void ActivatePower();
+
+	int powerTimer;
 };

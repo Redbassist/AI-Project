@@ -13,6 +13,8 @@ Factory::Factory(Player& p){
 	travelling = false;
 	player = &p;
 	spawnTimer = 60;
+	maxMissiles = 0;
+	missileTimer = 600;
 }
 
 void Factory::loadResources() {
@@ -179,7 +181,26 @@ void Factory::WrapAround()
 
 void Factory::Shoot()
 {
+	if (scared == true)
+	{
+		if (shootTimer < 0 && maxMissiles < 5)
+		{
+			MissileManager::GetInstance()->AddMissile(new Missile(position, *player));
+			shootTimer = 120;
+			maxMissiles++;
+		}
+		shootTimer--;
+	}
+	if (maxMissiles > 0)
+	{
+		missileTimer--;
+	}
 
+	if (missileTimer <= 0 && maxMissiles > 0)
+	{
+		missileTimer = 600;
+		maxMissiles--;
+	}
 }
 
 void Factory::Spawn()

@@ -27,6 +27,8 @@ using namespace std;
 #include "AsteroidManager.h"
 #include "CollisionManager.h"
 #include "FactoryManager.h"
+#include "MissileManager.h"
+#include "PowerUpManager.h"
 
 int main()
 {
@@ -97,17 +99,21 @@ int main()
 		AsteroidManager::GetInstance()->Update();
 		BoidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
+		MissileManager::GetInstance()->Update();
 		FactoryManager::GetInstance()->Update();
 		CollisionManager::GetInstance()->CheckCollisions();
+		PowerUpManager::GetInstance()->Update();
 
 		window->clear();
 		//draw stuff here
 		window->draw(backgroundSprite); 
 		player->Draw();
 		AsteroidManager::GetInstance()->Draw();
+		PowerUpManager::GetInstance()->Draw();
 		BoidManager::GetInstance()->Draw();
 		FactoryManager::GetInstance()->Draw();
 		BulletManager::GetInstance()->Draw();
+		MissileManager::GetInstance()->Draw();
 		window->display();
 
 	}
