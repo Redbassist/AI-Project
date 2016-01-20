@@ -23,6 +23,7 @@ void CollisionManager::CheckCollisions()
 	AsteroidCollisions();
 	BulletCollisions();
 	BulletPredCollisions();
+	AsteroidPredCollisions();
 }
 
 void CollisionManager::AsteroidCollisions()
@@ -76,6 +77,23 @@ void CollisionManager::BulletPredCollisions()
 			if (distance < collisionDistance)
 			{
 				bullets->at(j)->setDestroyed(true);
+				boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
+			}
+		}
+	}
+}
+
+void CollisionManager::AsteroidPredCollisions()
+{
+	for (int i = 0; i < boids->size(); i++)
+	{
+		for (int j = 0; j < asteroids->size(); j++)
+		{
+			float distance = Distance(asteroids->at(j)->getPos(), boids->at(i)->getPos());
+			float collisionDistance = asteroids->at(j)->getRadius() + boids->at(i)->getRadius();
+
+			if (distance < collisionDistance)
+			{
 				boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
 			}
 		}
