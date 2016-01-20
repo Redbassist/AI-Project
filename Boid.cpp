@@ -152,3 +152,39 @@ void Boid::swarm(vector <Boid*> v)
 	borders();
 }
 
+float Boid::getHealth()
+{
+	return health;
+}
+
+void Boid::setHealth(float h)
+{
+	health = h;
+}
+
+float Boid::getRadius()
+{
+	return radius;
+}
+
+Pvector Boid::getPos()
+{
+	Pvector temp;
+	temp.x = sprite.getPosition().x;
+	temp.y = sprite.getPosition().y;
+
+	return temp;
+}
+
+bool Boid::LifeCheck()
+{
+	bool destroy = false;
+
+	if (health <= 0)
+	{
+		destroy = true;
+	}
+
+	return destroy;
+}
+

@@ -3,15 +3,16 @@
 
 Factory::Factory(Player& p){
 	speed = 1;
-	//float randX = rand() % (int)(globalBounds.x - 50) + 50;
-	//float randY = rand() % (int)(globalBounds.y - 50) + 50;
-	float randX = 200;
-	float randY = 200;
+	float randX = rand() % (int)(globalBounds.x - 50) + 50;
+	float randY = rand() % (int)(globalBounds.y - 50) + 50;
+	//float randX = 200;
+	//float randY = 200;
 	position = Pvector(randX, randY);
 	loadResources();
 	scared = false;
 	travelling = false;
 	player = &p;
+	spawnTimer = 60;
 }
 
 void Factory::loadResources() {
@@ -52,6 +53,7 @@ void Factory::Update() {
 	Movement();
 	WrapAround();
 	Shoot();
+	Spawn();
 }
 
 float Factory::getRadius()
@@ -116,8 +118,8 @@ void Factory::State()
 		vel.y = position.y - player->getPosition().y;
 		vel.normalize();
 		//vel.mulScalar(speed);
-		destination.x = vel.x * 400;
-		destination.y = vel.y * 400;
+		destination.x = position.x + (vel.x * 400);
+		destination.y = position.y + (vel.y * 400);
 		//position.x = position.x + vel.x;
 		//position.y = position.y + vel.y;
 
@@ -178,6 +180,17 @@ void Factory::WrapAround()
 void Factory::Shoot()
 {
 
+}
+
+void Factory::Spawn()
+{
+	int boidCount = BoidManager::GetInstance()->boids.size();
+	if (spawnTimer < 0 && boidCount < 80)
+	{
+		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player));
+		spawnTimer = 60;
+	}
+	spawnTimer--;
 }
 
 Pvector Factory::getPosition() {

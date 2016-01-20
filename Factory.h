@@ -3,6 +3,8 @@
 #include "Globals.h"
 #include <math.h>
 #include "Player.h"
+#include "BoidManager.h"
+#include "Predator.h"
 
 class Factory{
 private:
@@ -23,6 +25,7 @@ private:
 	bool travelling;
 	Pvector destination;
 	bool scared;
+	int spawnTimer;
 public:
 
 	Factory(Player& p);
@@ -67,4 +70,6 @@ public:
 	float Distance(Pvector, Pvector);
 
 	void State();
+
+	void Spawn();
 };

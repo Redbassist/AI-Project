@@ -16,6 +16,8 @@ Predator::Predator(float x, float y, Player* p) {
 	LoadAssets();
 
 	currentState = State::SEARCH;
+
+	health = 1000;
 }
 
 Predator::~Predator()
@@ -332,6 +334,7 @@ bool Predator::lost()
 	}
 	return false;
 }
+
 
 /*
 void Predator::swarm(vector <Boid*> v)

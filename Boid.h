@@ -36,6 +36,7 @@ public:
 	Pvector acceleration;
 	float maxSpeed;
 	float maxForce;
+	float health;
 	Boid() {}
 	Boid(float x, float y)
 	{
@@ -62,6 +63,11 @@ public:
 	void borders();
 	float angle(Pvector v);
 	void swarm(vector <Boid*> v);
+	float getHealth();
+	void setHealth(float h);
+	float getRadius();
+	Pvector getPos();
+	bool LifeCheck();
 };
 
 #endif#pragma once

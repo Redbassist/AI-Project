@@ -25,7 +25,10 @@ void BoidManager::Update()
 {
 	for (int i = 0; i < boids.size(); i++) {
 		boids[i]->update(boids);
-		//checking if the boid is to be removed
+		if (boids[i]->LifeCheck()) {
+			boids.erase(boids.begin() + i);
+			i--;
+		}
 	}
 }
 
