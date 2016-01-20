@@ -3,11 +3,9 @@
 
 Player::Player() {
 	direction = Pvector((float)cos(rotation), -sin(rotation));
-	speed = 3;
-	/*float randX = rand() % (int)(globalBounds.x - 50) + 50;
-	float randY = rand() % (int)(globalBounds.y - 50) + 50;*/
-	float randX = 200;
-	float randY = 200;
+	speed = 7;
+	float randX = rand() % (int)(globalBounds.x - 50) + 50;
+	float randY = rand() % (int)(globalBounds.y - 50) + 50; 
 	position = Pvector(randX, randY);
 	fireRate = 5;
 	fireTimer = fireRate;
@@ -163,7 +161,7 @@ void Player::Shoot()
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (fireTimer > fireRate) {
 			fireTimer = 0;
-			Bullet* bullet = new Bullet((position + direction * 7), direction);
+			Bullet* bullet = new Bullet((position + direction * 7), direction, true);
 			BulletManager::GetInstance()->AddBullet(bullet);
 		}
 	}

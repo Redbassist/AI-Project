@@ -27,7 +27,8 @@ that maximizes separation.
 class Boid
 {
 private:
-public: 
+public:
+	int currentFlock;
 	Texture texture;
 	Sprite sprite;
 	Pvector location;
@@ -41,7 +42,7 @@ public:
 	Boid(float x, float y)
 	{
 	}
-	Boid(float x, float y, Player*)
+	Boid(float x, float y, Player*, int)
 	{
 	}
 	Boid::~Boid()

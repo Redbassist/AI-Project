@@ -24,6 +24,7 @@ using namespace std;
 #include "Boid.h"
 #include "BoidManager.h"
 #include "Predator.h"
+#include "Swarmer.h"
 #include "AsteroidManager.h"
 #include "CollisionManager.h"
 #include "FactoryManager.h"
@@ -56,12 +57,12 @@ int main()
 	window->setView(view);
 	window->setFramerateLimit(60);
 	 
-	Player* player = new Player();
-	 
+	Player* player = new Player(); 
+
 	int numFactories = 4;
 	for (int i = 0; i < numFactories; i++)
 	{
-		FactoryManager::GetInstance()->AddFactory(new Factory(*player));
+		FactoryManager::GetInstance()->AddFactory(new Factory(*player, i));
 	}
 
 	CollisionManager::GetInstance()->setPlayer(*player);

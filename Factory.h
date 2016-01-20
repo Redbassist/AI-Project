@@ -9,6 +9,7 @@
 
 class Factory{
 private:
+	int id;
 	float prevRotation;
 	float rotation;
 	float targetRotation;
@@ -32,7 +33,7 @@ private:
 	int missileTimer;
 public:
 
-	Factory(Player& p);
+	Factory(Player& p, int);
 
 	void loadResources();
 

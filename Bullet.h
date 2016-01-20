@@ -17,7 +17,8 @@ private:
 	int ttl;
 	bool destroyed;
 public:
-	Bullet(Pvector, Pvector);
+	bool playerBullet;
+	Bullet(Pvector, Pvector, bool);
 	void LoadAssets();
 	void Update();
 	bool LifeCheck();

@@ -63,6 +63,7 @@
     <ClInclude Include="FactoryManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Missile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -73,6 +74,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PowerUpManager.h">
+=======
+    <ClInclude Include="Swarmer.h">
+>>>>>>> b6945d5d02bee97f0dd99ec8a1ad6b1c23efc68f
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -122,6 +126,7 @@
     <ClCompile Include="FactoryManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Missile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -132,6 +137,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PowerUpManager.cpp">
+=======
+    <ClCompile Include="Swarmer.cpp">
+>>>>>>> b6945d5d02bee97f0dd99ec8a1ad6b1c23efc68f
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

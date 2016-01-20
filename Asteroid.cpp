@@ -59,10 +59,14 @@ bool Asteroid::LifeCheck()
 		destroy = true;
 		int temp = rand() % 10 + 1;
 
-		//if (temp == 10)
-		//{
+		if (temp == 10)
+		{
 			PowerUpManager::GetInstance()->SpawnPowerUp(new PowerUp(pos));
-		//}
+		}
+		if (temp == 10)
+		{
+			PowerUpManager::GetInstance()->SpawnPowerUp(new PowerUp(pos));
+		}
 	}
 
 	return destroy;

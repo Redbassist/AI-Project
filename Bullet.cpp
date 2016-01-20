@@ -1,14 +1,15 @@
 #include "Bullet.h"
 
-Bullet::Bullet(Pvector p, Pvector dir) :
+Bullet::Bullet(Pvector p, Pvector dir, bool owner) :
 	pos(p)
 {
-	speed = 4;
-	direction = dir;
+	playerBullet = owner;
+	speed = 10;
 	dir.normalize();
+	direction = dir;
 	direction.mulScalar(speed);
 	destroyed = false;
-
+	ttl = 180;
 	LoadAssets();
 }
 
@@ -35,6 +36,8 @@ void Bullet::Update()
 	Movement(); 
 
 	sprite.setPosition(sf::Vector2f(pos.x, pos.y));
+
+	ttl--;
 }
 
 bool Bullet::LifeCheck()
@@ -42,6 +45,8 @@ bool Bullet::LifeCheck()
 	bool destroy = false;
 
 	if (pos.x > globalBounds.x + radius || pos.x < -radius || pos.y > globalBounds.y + radius || pos.y < -radius)
+		destroy = true;
+	if (ttl <= 0)
 		destroy = true;
 
 	if (destroyed == true)
