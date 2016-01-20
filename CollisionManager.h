@@ -25,7 +25,7 @@ public:
 	void CheckCollisions();
 	void AsteroidCollisions();
 	void BulletCollisions();
-	void BulletPredCollisions();
+	void BoidCollisions();
 	void AsteroidPredCollisions();
 	void setPlayer(Player &p);
 	float Distance(Pvector, Pvector);

@@ -184,8 +184,9 @@ void Factory::Shoot()
 
 void Factory::Spawn()
 {
+	int numberOfBoids = 0;
 	int boidCount = BoidManager::GetInstance()->boids.size();
-	if (spawnTimer < 0 && boidCount < 80)
+	if (spawnTimer < 0 && boidCount < numberOfBoids)
 	{
 		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player));
 		spawnTimer = 60;

@@ -15,6 +15,15 @@
 #include <time.h>
 #include "Pvector.h"
 
+
+enum State {
+	SEARCH,
+	ATTACK,
+	AVOIDASTEROID,
+	RETREAT
+};
+
+
 using namespace sf;
 using namespace std;
 

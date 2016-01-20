@@ -1,10 +1,10 @@
-#include "Predator.h" 
+#include "Swarmer.h" 
 
 #define PI 3.141592635
 
 using namespace std;
 
-Predator::Predator(float x, float y, Player* p) {
+Swarmer::Swarmer(float x, float y, Player* p) {
 	player = p;
 	window_height = globalBounds.y;
 	window_width = globalBounds.x;
@@ -17,16 +17,15 @@ Predator::Predator(float x, float y, Player* p) {
 
 	currentState = State::SEARCH;
 
-	health = 1000;
-	fireRate = 120;
+	health = 1000; 
 }
 
-Predator::~Predator()
+Swarmer::~Swarmer()
 {
 	cout << "Boid is being deleted by destructor!" << endl;
 }
 
-void Predator::LoadAssets()
+void Swarmer::LoadAssets()
 {
 	if (!texture.loadFromFile("Sprites/predator.png"))
 	{
@@ -47,7 +46,7 @@ void Predator::LoadAssets()
 
 // Function that checks and modifies the distance
 // of a boid if it breaks the law of separation.
-Pvector Predator::Separation(vector<Boid*> boids)
+Pvector Swarmer::Separation(vector<Boid*> boids)
 {
 	// Distance of field of vision for separation between boids
 	float desiredseparation = 20;
@@ -84,7 +83,7 @@ Pvector Predator::Separation(vector<Boid*> boids)
 	return steer;
 }
 
-Pvector Predator::AvoidAsteroids()
+Pvector Swarmer::AvoidAsteroids()
 {
 	// Distance of field of vision for separation between boid and asteroids
 	float desiredseparation;
@@ -127,7 +126,7 @@ Pvector Predator::AvoidAsteroids()
 // Alignment calculates the average velocity in the field of view and 
 // manipulates the velocity of the Boid passed as parameter to adjust to that
 // of nearby boids.
-Pvector Predator::Alignment(vector<Boid*> Boids)
+Pvector Swarmer::Alignment(vector<Boid*> Boids)
 {
 	float neighbordist = 150;
 
@@ -162,7 +161,7 @@ Pvector Predator::Alignment(vector<Boid*> Boids)
 
 // Cohesion finds the average location of nearby boids and manipulates the 
 // steering force to move in that direction.
-Pvector Predator::Cohesion(vector<Boid*> Boids)
+Pvector Swarmer::Cohesion(vector<Boid*> Boids)
 {
 	float neighbordist = 40;
 
@@ -188,45 +187,26 @@ Pvector Predator::Cohesion(vector<Boid*> Boids)
 	}
 }
 
-Pvector Predator::ChasePlayer()
+Pvector Swarmer::ChasePlayer()
 {
 	Pvector chaseVect;
 	chaseVect = player->getPosition() - location;
 
 	chaseVect.normalize();	   		// Turn sum into a unit vector, and
 	chaseVect.mulScalar(maxSpeed);    // Multiply by maxSpeed
-								// Steer = Desired - Velocity
+									  // Steer = Desired - Velocity
 	Pvector steer;
 	steer = steer.subTwoVector(chaseVect, velocity); //sum = desired(average)  
 	steer.limit(maxForce);
 	return steer;
-}
-
-void Predator::LimitAcceleration()
-{
-	float stayDistance = 200;
-	float slowDistance = 200;
-	float distancePlayer = location.distance(player->getPosition());
-
-	if (distancePlayer > stayDistance && distancePlayer < stayDistance + slowDistance) {
-		acceleration.mulScalar((distancePlayer - stayDistance) / slowDistance);
-		velocity.mulScalar((distancePlayer - stayDistance) / slowDistance);
-	}
-	else if (distancePlayer < stayDistance) {
-		velocity.mulScalar(0);
-	}
-
-}
+} 
 
 //Update modifies velocity, location, and resets acceleration with values that
 //are given by the three laws.
-void Predator::update(vector <Boid*> v)
-{
-	fireTimer++;
-
+void Swarmer::update(vector <Boid*> v)
+{ 
 	//"FINITE STATE MACHINE"
 	switch (currentState) {
-
 	case(State::SEARCH) :
 		run(v);
 		if (search()) {
@@ -272,53 +252,24 @@ void Predator::update(vector <Boid*> v)
 //Run runs flock on the flock of boids for each boid.
 //Which applies the three rules, modifies accordingly, updates data, checks is data is
 //out of range, fixes that for SFML, and renders it on the window.
-void Predator::run(vector <Boid*> v)
+void Swarmer::run(vector <Boid*> v)
 {
-	flock(v);
+	swarm(v);
 	borders();
-}
+} 
 
-//Applies all three laws for the flock of boids and modifies to keep them from
-//breaking the laws.
-void Predator::flock(vector<Boid*> v)
+void Swarmer::chase(vector <Boid*> v)
 {
-	Pvector sep = Separation(v);
-	Pvector ali = Alignment(v);
-	Pvector coh = Cohesion(v);
-	// Arbitrarily weight these forces
-	sep.mulScalar(1.5);
-	ali.mulScalar(1.0);
-	coh.mulScalar(1.0);
-	// Add the force vectors to acceleration
-	applyForce(sep);
-	applyForce(ali);
-	applyForce(coh);
-}
-
-void Predator::chase(vector <Boid*> v)
-{
-	Pvector sep = Separation(v);
-	Pvector ali = Alignment(v);
-	Pvector coh = Cohesion(v);
+	Pvector sep = Separation(v); 
 	Pvector chs = ChasePlayer();
-	sep.mulScalar(1.0);
-	ali.mulScalar(1.5);
-	coh.mulScalar(0.2);
+	sep.mulScalar(1.0); 
 	chs.mulScalar(1.5);
 	applyForce(chs);
-	applyForce(sep);
-	applyForce(ali);
-	applyForce(coh);
-	LimitAcceleration();
-	borders();
-
-	float distancePlayer = location.distance(player->getPosition());
-	if (distancePlayer < 250) {
-		Shoot();
-	}
+	applyForce(sep); 
+	borders(); 
 }
 
-void Predator::avoid(vector<Boid*> v)
+void Swarmer::avoid(vector<Boid*> v)
 {
 	Pvector sep = Separation(v);
 	Pvector astAvoid = AvoidAsteroids();
@@ -327,19 +278,10 @@ void Predator::avoid(vector<Boid*> v)
 	applyForce(sep);
 	applyForce(astAvoid);
 	borders();
-}
-
-void Predator::Shoot()
-{
-	if (fireTimer > fireRate) {
-		fireTimer = 0;
-		Bullet* bullet = new Bullet((location), velocity, false);
-		BulletManager::GetInstance()->AddBullet(bullet);
-	}
-}
+} 
 
 // Checks if boids go out of the window and if so, wraps them around to the other side.
-void Predator::borders()
+void Swarmer::borders()
 {
 	if (location.x < 0) location.x += window_width;
 	if (location.y < 0) location.y += window_height;
@@ -349,14 +291,14 @@ void Predator::borders()
 
 // Calculates the angle for the velocity of a boid which allows the visual 
 // image to rotate in the direction that it is going in.
-float Predator::angle(Pvector v)
+float Swarmer::angle(Pvector v)
 {
 	// From the definition of the dot product
 	float angle = (float)(atan2(v.x, -v.y) * 180 / PI);
 	return angle;
 }
 
-bool Predator::checkAsteroids()
+bool Swarmer::checkAsteroids()
 {
 	// Distance of field of vision for separation between boid and asteroids
 	float desiredseparation;
@@ -380,36 +322,34 @@ bool Predator::checkAsteroids()
 	return false;
 }
 
-bool Predator::search()
+bool Swarmer::search()
 {
-	if (player->getPosition().distance(location) < 600) {
+	if (player->getPosition().distance(location) < 400) {
 		return true;
 	}
 	return false;
 }
 
-bool Predator::lost()
+bool Swarmer::lost()
 {
-	if (player->getPosition().distance(location) > 600) {
+	if (player->getPosition().distance(location) > 400) {
 		return true;
 	}
 	return false;
 }
 
-
-/*
-void Predator::swarm(vector <Boid*> v)
+void Swarmer::swarm(vector <Boid*> v)
 {
-			Vector R = me.position - you.position
-	Real D = R.magnitude()
-	Real U = -A / pow(D, N) + B / pow(D, M)
-	R.normalise()
+	/*Vector R = me.position - you.position
+		Real D = R.magnitude()
+		Real U = -A / pow(D, N) + B / pow(D, M)
+		R.normalise()
 
-	Me.force += vrotate2D(me.Orientation, R*U)
+		Me.force += vrotate2D(me.Orientation, R*U)*/
 
 	Pvector	R;
 	int A = 100;
-	int B = 5000;
+	int B = 3000;
 	int N = 1;
 	int M = 2;
 	int count = 0;
@@ -418,7 +358,7 @@ void Predator::swarm(vector <Boid*> v)
 
 	for (int i = 0; i < v.size(); i++)
 	{
-		R = R.subTwoVector(location, v[i].location);
+		R = R.subTwoVector(location, v[i]->location);
 		float D = R.magnitude();
 		if (D > 0)
 		{
@@ -430,8 +370,6 @@ void Predator::swarm(vector <Boid*> v)
 
 	}
 	sum.divScalar(v.size() - 1);
-	applyForce(sum);
-	update();
-	borders();
-}*/
+	applyForce(sum);  
+}
 

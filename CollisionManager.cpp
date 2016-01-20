@@ -22,7 +22,7 @@ void CollisionManager::CheckCollisions()
 {
 	AsteroidCollisions();
 	BulletCollisions();
-	BulletPredCollisions();
+	BoidCollisions();
 	AsteroidPredCollisions();
 }
 
@@ -65,20 +65,30 @@ void CollisionManager::BulletCollisions()
 	}
 }
 
-void CollisionManager::BulletPredCollisions()
+void CollisionManager::BoidCollisions()
 {
 	for (int i = 0; i < boids->size(); i++)
 	{
 		for (int j = 0; j < bullets->size(); j++)
 		{
-			float distance = Distance(bullets->at(j)->getPos(), boids->at(i)->getPos());
-			float collisionDistance = bullets->at(j)->getRadius() + boids->at(i)->getRadius();
+			if (bullets->at(j)->playerBullet) {
+				float distance = Distance(bullets->at(j)->getPos(), boids->at(i)->getPos());
+				float collisionDistance = bullets->at(j)->getRadius() + boids->at(i)->getRadius();
 
-			if (distance < collisionDistance && bullets->at(j)->playerBullet)
-			{
-				bullets->at(j)->setDestroyed(true);
-				boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
+				if (distance < collisionDistance)
+				{
+					bullets->at(j)->setDestroyed(true);
+					boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
+				}
 			}
+		}
+
+		float distance = Distance(boids->at(i)->getPos(), player->getPosition());
+		float collisionDistance =  boids->at(i)->getRadius() + player->getRadius();
+
+		if (distance < collisionDistance)
+		{ 
+			boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
 		}
 	}
 }
