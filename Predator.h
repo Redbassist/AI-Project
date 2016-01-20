@@ -4,6 +4,7 @@
 
 #include "stdafx.h"  
 #include "Boid.h"
+#include "BoidManager.h"
 #include "Globals.h"
 #include "AsteroidManager.h"
 #include "Player.h"
@@ -28,7 +29,7 @@ public:
 	int window_height;
 	int window_width;
 	Predator() {}
-	Predator(float x, float y, Player*);
+	Predator(float x, float y, Player*, int);
 	~Predator();
 	void LoadAssets();
 	// Three Laws that boids follow
@@ -49,8 +50,7 @@ public:
 	float angle(Pvector v);
 	bool checkAsteroids();
 	bool search();
-	bool lost();
-	//void swarm(vector <Boid*> v);
+	bool lost(); 
 };
 
 #endif#pragma once

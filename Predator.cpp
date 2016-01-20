@@ -4,8 +4,9 @@
 
 using namespace std;
 
-Predator::Predator(float x, float y, Player* p) {
+Predator::Predator(float x, float y, Player* p, int f) {
 	player = p;
+	currentFlock = f;
 	window_height = globalBounds.y;
 	window_width = globalBounds.x;
 	maxSpeed = 7.5;
@@ -28,7 +29,7 @@ Predator::~Predator()
 
 void Predator::LoadAssets()
 {
-	if (!texture.loadFromFile("Sprites/predator.png"))
+	if (!texture.loadFromFile("Sprites/predator" + to_string(currentFlock) + ".png"))
 	{
 		cout << "cant find image";
 	}
@@ -283,8 +284,8 @@ void Predator::run(vector <Boid*> v)
 void Predator::flock(vector<Boid*> v)
 {
 	Pvector sep = Separation(v);
-	Pvector ali = Alignment(v);
-	Pvector coh = Cohesion(v);
+	Pvector ali = Alignment(BoidManager::GetInstance()->flocks[currentFlock]);
+	Pvector coh = Cohesion(BoidManager::GetInstance()->flocks[currentFlock]);
 	// Arbitrarily weight these forces
 	sep.mulScalar(1.5);
 	ali.mulScalar(1.0);
@@ -298,8 +299,8 @@ void Predator::flock(vector<Boid*> v)
 void Predator::chase(vector <Boid*> v)
 {
 	Pvector sep = Separation(v);
-	Pvector ali = Alignment(v);
-	Pvector coh = Cohesion(v);
+	Pvector ali = Alignment(BoidManager::GetInstance()->flocks[currentFlock]);
+	Pvector coh = Cohesion(BoidManager::GetInstance()->flocks[currentFlock]);
 	Pvector chs = ChasePlayer();
 	sep.mulScalar(1.0);
 	ali.mulScalar(1.5);
@@ -313,7 +314,7 @@ void Predator::chase(vector <Boid*> v)
 	borders();
 
 	float distancePlayer = location.distance(player->getPosition());
-	if (distancePlayer < 250) {
+	if (distancePlayer < 300) {
 		Shoot();
 	}
 }
@@ -382,7 +383,7 @@ bool Predator::checkAsteroids()
 
 bool Predator::search()
 {
-	if (player->getPosition().distance(location) < 600) {
+	if (player->getPosition().distance(location) < 450) {
 		return true;
 	}
 	return false;
@@ -390,48 +391,9 @@ bool Predator::search()
 
 bool Predator::lost()
 {
-	if (player->getPosition().distance(location) > 600) {
+	if (player->getPosition().distance(location) > 500) {
 		return true;
 	}
 	return false;
-}
-
-
-/*
-void Predator::swarm(vector <Boid*> v)
-{
-			Vector R = me.position - you.position
-	Real D = R.magnitude()
-	Real U = -A / pow(D, N) + B / pow(D, M)
-	R.normalise()
-
-	Me.force += vrotate2D(me.Orientation, R*U)
-
-	Pvector	R;
-	int A = 100;
-	int B = 5000;
-	int N = 1;
-	int M = 2;
-	int count = 0;
-	float totalForce = 0;
-	Pvector sum(0, 0);
-
-	for (int i = 0; i < v.size(); i++)
-	{
-		R = R.subTwoVector(location, v[i].location);
-		float D = R.magnitude();
-		if (D > 0)
-		{
-			float U = -A / pow(D, N) + B / pow(D, M);
-			R.normalize();
-			R.mulScalar(U);
-			sum.addVector(R);
-		}
-
-	}
-	sum.divScalar(v.size() - 1);
-	applyForce(sum);
-	update();
-	borders();
-}*/
+} 
 

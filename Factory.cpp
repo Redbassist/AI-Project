@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Factory.h"
 
-Factory::Factory(Player& p){
+Factory::Factory(Player& p, int i){
+	id = i;
 	speed = 1;
 	float randX = rand() % (int)(globalBounds.x - 50) + 50;
 	float randY = rand() % (int)(globalBounds.y - 50) + 50;
@@ -184,11 +185,11 @@ void Factory::Shoot()
 
 void Factory::Spawn()
 {
-	int numberOfBoids = 0;
-	int boidCount = BoidManager::GetInstance()->boids.size();
+	int numberOfBoids = 20;
+	int boidCount = BoidManager::GetInstance()->flocks[id].size();
 	if (spawnTimer < 0 && boidCount < numberOfBoids)
 	{
-		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player));
+		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player, id));
 		spawnTimer = 60;
 	}
 	spawnTimer--;

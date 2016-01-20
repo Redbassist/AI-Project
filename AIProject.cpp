@@ -51,18 +51,16 @@ int main()
 	 
 	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
 	View view = View(Vector2f(0, 0), Vector2f(1280, 720));
-	view.zoom(2);
+	view.zoom(1);
 	window->setView(view);
 	window->setFramerateLimit(60);
 	 
-	Player* player = new Player();
-	for (int i = 0; i < 60; i++)
-		BoidManager::GetInstance()->AddBoid(new Swarmer(100, 100, player));
-	 
+	Player* player = new Player(); 
+
 	int numFactories = 4;
 	for (int i = 0; i < numFactories; i++)
 	{
-		FactoryManager::GetInstance()->AddFactory(new Factory(*player));
+		FactoryManager::GetInstance()->AddFactory(new Factory(*player, i));
 	}
 
 	CollisionManager::GetInstance()->setPlayer(*player);

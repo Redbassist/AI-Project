@@ -16,6 +16,7 @@ public:
 	void Update();
 	void Draw();
 	vector<Boid*> boids;
+	vector<Boid*> flocks[4];
 };
 
 #endif 
