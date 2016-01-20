@@ -55,9 +55,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BoidManager.h">
-      <Filter>Header Files</Filter> 
-	</ClInclude>
-    <ClInclude Include="Factory.h"> 
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -91,7 +94,7 @@
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile> 
+    </ClCompile>
     <ClCompile Include="Boid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -99,9 +102,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BoidManager.cpp">
-      <Filter>Source Files</Filter> 
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Factory.cpp"> 
+    <ClCompile Include="Factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

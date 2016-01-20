@@ -15,12 +15,14 @@ CollisionManager::CollisionManager()
 {
 	asteroids = &AsteroidManager::GetInstance()->asteroids;
 	bullets = &BulletManager::GetInstance()->bullets;
+	boids = &BoidManager::GetInstance()->boids;
 }
 
 void CollisionManager::CheckCollisions()
 {
 	AsteroidCollisions();
 	BulletCollisions();
+	BulletPredCollisions();
 }
 
 void CollisionManager::AsteroidCollisions()
@@ -55,16 +57,26 @@ void CollisionManager::BulletCollisions()
 
 			if (distance < collisionDistance)
 			{
-				Pvector response;
-				response.x = asteroids->at(i)->getPos().x - bullets->at(j)->getPos().x;
-				response.y = asteroids->at(i)->getPos().y - bullets->at(j)->getPos().y;
-				response.normalize();
-				response.mulScalar(asteroids->at(i)->getSpeed());
-				//asteroids->at(i)->setDirection(Pvector(player->getDirection().x, player->getDirection().y));
-				//asteroids->at(i)->setDirection(response);
 				bullets->at(j)->setDestroyed(true);
 				asteroids->at(i)->setHealth(asteroids->at(i)->getHealth() - 25);
-				//player->setHealth(player->getHealth() - 10);
+			}
+		}
+	}
+}
+
+void CollisionManager::BulletPredCollisions()
+{
+	for (int i = 0; i < boids->size(); i++)
+	{
+		for (int j = 0; j < bullets->size(); j++)
+		{
+			float distance = Distance(bullets->at(j)->getPos(), boids->at(i)->getPos());
+			float collisionDistance = bullets->at(j)->getRadius() + boids->at(i)->getRadius();
+
+			if (distance < collisionDistance)
+			{
+				bullets->at(j)->setDestroyed(true);
+				boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
 			}
 		}
 	}

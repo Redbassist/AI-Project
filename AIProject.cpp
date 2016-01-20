@@ -26,6 +26,7 @@ using namespace std;
 #include "Predator.h"
 #include "AsteroidManager.h"
 #include "CollisionManager.h"
+#include "FactoryManager.h"
 
 int main()
 {
@@ -56,10 +57,14 @@ int main()
 	Player* player = new Player();
 	 
 	int numBoids = 20;
-	for (int i = 0; i < numBoids; i++ )
+	for (int i = 0; i < numBoids; i++)
 		BoidManager::GetInstance()->AddBoid(new Predator(100, 100, player));
- 
-	Factory factory = Factory(*player); 
+
+	int numFactories = 4;
+	for (int i = 0; i < numFactories; i++)
+	{
+		FactoryManager::GetInstance()->AddFactory(new Factory(*player));
+	}
 
 	CollisionManager::GetInstance()->setPlayer(*player);
 	sf::Texture background;
@@ -93,19 +98,19 @@ int main()
 
 		player->Update();
  
-		factory.Update(); 
 		AsteroidManager::GetInstance()->Update();
 		BoidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
+		FactoryManager::GetInstance()->Update();
 		CollisionManager::GetInstance()->CheckCollisions();
 
 		window->clear();
 		//draw stuff here
 		window->draw(backgroundSprite); 
 		player->Draw();
-		factory.Draw(); 
 		AsteroidManager::GetInstance()->Draw();
 		BoidManager::GetInstance()->Draw();
+		FactoryManager::GetInstance()->Draw();
 		BulletManager::GetInstance()->Draw();
 		window->display();
 

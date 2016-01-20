@@ -10,18 +10,22 @@
 #include "AsteroidManager.h"
 #include "Bullet.h"
 #include "BulletManager.h"
+#include "BoidManager.h"
+#include "Predator.h"
 
 class CollisionManager {
 private:
 	Player* player;
 	vector<Asteroid*>* asteroids;
 	vector<Bullet*>* bullets;
+	vector<Boid*>* boids;
 public:
 	CollisionManager();
 	static CollisionManager* GetInstance();
 	void CheckCollisions();
 	void AsteroidCollisions();
 	void BulletCollisions();
+	void BulletPredCollisions();
 	void setPlayer(Player &p);
 	float Distance(Pvector, Pvector);
 };
