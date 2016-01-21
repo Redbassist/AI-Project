@@ -206,12 +206,16 @@ void Factory::Shoot()
 
 void Factory::Spawn()
 {
-	int numberOfBoids = 20;
+	int numberOfBoids = 10;
 	int boidCount = BoidManager::GetInstance()->flocks[id].size();
-	if (spawnTimer < 0 && boidCount < numberOfBoids)
+	if (spawnTimer < 0 && boidCount < numberOfBoids && boidCount <= 5)
 	{
 		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player, id));
-		spawnTimer = 60;
+		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player, id));
+		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player, id));
+		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player, id));
+		BoidManager::GetInstance()->AddBoid(new Predator(position.x, position.y, player, id));
+		spawnTimer = 120;
 	}
 	spawnTimer--;
 }

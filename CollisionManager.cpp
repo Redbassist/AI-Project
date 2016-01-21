@@ -78,13 +78,16 @@ void CollisionManager::BulletCollisions()
 
 void CollisionManager::BoidCollisions()
 {
+	float distance;
+	float collisionDistance;
+
 	for (int i = 0; i < boids->size(); i++)
 	{
 		for (int j = 0; j < bullets->size(); j++)
 		{
 			if (bullets->at(j)->playerBullet) {
-				float distance = Distance(bullets->at(j)->getPos(), boids->at(i)->getPos());
-				float collisionDistance = bullets->at(j)->getRadius() + boids->at(i)->getRadius();
+				distance = Distance(bullets->at(j)->getPos(), boids->at(i)->getPos());
+				 collisionDistance = bullets->at(j)->getRadius() + boids->at(i)->getRadius();
 
 				if (distance < collisionDistance)
 				{
@@ -103,15 +106,14 @@ void CollisionManager::BoidCollisions()
 						}
 					}
 				}
-
-				distance = Distance(boids->at(i)->getPos(), player->getPosition());
-				collisionDistance = boids->at(i)->getRadius() + player->getRadius();
-
-				if (distance < collisionDistance)
-				{
-					boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
-				}
 			}
+		}
+		distance = Distance(boids->at(i)->getPos(), player->getPosition());
+		collisionDistance = boids->at(i)->getRadius() + player->getRadius();
+
+		if (distance < collisionDistance)
+		{
+			boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
 		}
 	}
 }
