@@ -15,7 +15,7 @@ Bullet::Bullet(Pvector p, Pvector dir, bool owner) :
 
 void Bullet::LoadAssets()
 {
-	if (!texture.loadFromFile("Sprites/bullet.png"))
+	if (!texture.loadFromFile("Sprites/bullet2.png"))
 	{
 		cout << "cant find image";
 	}

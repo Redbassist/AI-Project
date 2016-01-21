@@ -17,6 +17,7 @@ CollisionManager::CollisionManager()
 	bullets = &BulletManager::GetInstance()->bullets;
 	boids = &BoidManager::GetInstance()->boids;
 	powerups = &PowerUpManager::GetInstance()->powerups;
+	missiles = &MissileManager::GetInstance()->missiles;
 }
 
 void CollisionManager::CheckCollisions()
@@ -26,6 +27,7 @@ void CollisionManager::CheckCollisions()
 	BoidCollisions();
 	AsteroidPredCollisions();
 	PlayerPowerUpCollisions();
+	PlayerMissileCollisions();
 }
 
 void CollisionManager::AsteroidCollisions()
@@ -150,6 +152,21 @@ void CollisionManager::PlayerPowerUpCollisions()
 				player->ActivatePower();
 				powerups->at(i)->destroy = true;
 			}
+		}
+	}
+}
+
+void CollisionManager::PlayerMissileCollisions()
+{
+	for (int i = 0; i < missiles->size(); i++)
+	{
+		float distance = Distance(player->getPosition(), missiles->at(i)->getPos());
+		float collisionDistance = player->getRadius() + missiles->at(i)->getRadius();
+
+		if (distance < collisionDistance)
+		{
+			missiles->at(i)->setDestroyed(true);
+			player->setHealth(player->getHealth() - 10);
 		}
 	}
 }

@@ -3,7 +3,7 @@
 Missile::Missile(Pvector p, Player& pl) :
 	pos(p)
 {
-	speed = 2.5;
+	speed = 5;
 	destroyed = false;
 	player = &pl;
 	LoadAssets();
@@ -91,7 +91,7 @@ void Missile::Draw()
 
 Pvector Missile::getPos()
 {
-	return pos;
+	return position;
 }
 
 float Missile::getRadius()
