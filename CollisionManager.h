@@ -17,7 +17,6 @@
 
 class CollisionManager {
 private:
-	Player* player;
 	vector<Asteroid*>* asteroids;
 	vector<Bullet*>* bullets;
 	vector<Boid*>* boids;
@@ -33,6 +32,7 @@ public:
 	void PlayerPowerUpCollisions();
 	void setPlayer(Player &p);
 	float Distance(Pvector, Pvector);
+	Player* player;
 };
 
 #endif

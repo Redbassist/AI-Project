@@ -6,6 +6,7 @@
 #include "stdafx.h" 
 #include "Boid.h"
 #include "Globals.h"
+#include "Swarmer.h"
 
 class BoidManager {
 private: 

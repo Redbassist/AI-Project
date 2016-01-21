@@ -22,8 +22,20 @@ void AsteroidManager::Update()
 		asteroids[i]->Update();
 		//checking if the bullet is to be removed
 		if (asteroids[i]->LifeCheck()) {
+			float tempX = asteroids.at(i)->getPos().x;
+			float tempY = asteroids.at(i)->getPos().y;
 			asteroids.erase(asteroids.begin() + i);
 			i--;
+
+			int temp = (rand() % 10) + 1;
+
+			if (temp == 10)
+			{
+				for (int i = 0; i < 10; i++)
+				{
+					BoidManager::GetInstance()->AddBoid(new Swarmer(tempX, tempY, CollisionManager::GetInstance()->player));
+				}
+			}
 		}
 	}
 	SpawnAsteroids();

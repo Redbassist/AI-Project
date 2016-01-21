@@ -85,6 +85,11 @@ int main()
 
 	backgroundSprite.setOrigin(sf::Vector2f(1715, 1733));
 
+	//for (int i = 0; i < 50; i++)
+	//{
+	//	BoidManager::GetInstance()->AddBoid(new Swarmer(200, 200, CollisionManager::GetInstance()->player));
+	//}
+
 	//update loop
 	while (window->isOpen())
 	{

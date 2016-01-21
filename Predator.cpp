@@ -29,7 +29,7 @@ Predator::~Predator()
 
 void Predator::LoadAssets()
 {
-	if (!texture.loadFromFile("Sprites/predator" + to_string(currentFlock) + ".png"))
+	if (!texture.loadFromFile("Sprites/predator" + to_string(currentFlock) + "2.png"))
 	{
 		cout << "cant find image";
 	}
