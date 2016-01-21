@@ -203,6 +203,35 @@ Pvector Predator::ChasePlayer()
 	return steer;
 }
 
+Pvector Predator::CollectPowerup()
+{
+	Pvector collectVect;
+
+	PowerUp* closestPowerup = NULL;
+	float shortestDist = 10000;
+
+	int size = PowerUpManager::GetInstance()->powerups.size();
+	
+	for (int i = 0; i < size; i++) {
+		float distance = location.distance(PowerUpManager::GetInstance()->powerups[i]->getPos());
+		if (distance < shortestDist) {
+			closestPowerup = PowerUpManager::GetInstance()->powerups[i];
+			shortestDist = distance;
+		}
+	} 
+	if (closestPowerup != NULL) {
+		collectVect = closestPowerup->getPos() - location;
+
+		collectVect.normalize();	   		// Turn sum into a unit vector
+		collectVect.mulScalar(maxSpeed);    // Multiply by maxSpeed
+	}				  
+
+	Pvector steer;
+	steer = steer.subTwoVector(collectVect, velocity);
+	steer.limit(maxForce);
+	return steer;
+}
+
 void Predator::LimitAcceleration()
 {
 	float stayDistance = 200;
@@ -236,19 +265,34 @@ void Predator::update(vector <Boid*> v)
 		else if (checkAsteroids()) {
 			currentState = State::AVOIDASTEROID;
 		}
+		else if (checkPowerUps()) {
+			currentState = State::POWERUP;
+		}
 		break;
 
 	case(State::AVOIDASTEROID) :
 		avoid(v);
 		if (!checkAsteroids()) {
 			currentState = State::SEARCH;
-		}
+		} 
 		break;
 
 	case(State::ATTACK) :
 		chase(v);
 		if (lost()) {
 			currentState = State::ATTACK;
+		}
+		else if (checkAsteroids()) {
+			currentState = State::AVOIDASTEROID;
+		}
+		else if (checkPowerUps()) {
+			currentState = State::POWERUP;
+		}
+		break;
+	case(State::POWERUP) :
+		collect(v);
+		if (!checkPowerUps()) {
+			currentState = State::SEARCH;
 		}
 		else if (checkAsteroids()) {
 			currentState = State::AVOIDASTEROID;
@@ -319,12 +363,23 @@ void Predator::chase(vector <Boid*> v)
 	}
 }
 
+void Predator::collect(vector<Boid*> v)
+{
+	Pvector sep = Separation(v); 
+	Pvector col = CollectPowerup();
+	sep.mulScalar(1.0); 
+	col.mulScalar(1.5);
+	applyForce(col);
+	applyForce(sep);  
+	borders(); 
+}
+
 void Predator::avoid(vector<Boid*> v)
 {
 	Pvector sep = Separation(v);
 	Pvector astAvoid = AvoidAsteroids();
 	sep.mulScalar(1.0);
-	astAvoid.mulScalar(1.0);
+	astAvoid.mulScalar(1.7);
 	applyForce(sep);
 	applyForce(astAvoid);
 	borders();
@@ -362,8 +417,6 @@ bool Predator::checkAsteroids()
 	// Distance of field of vision for separation between boid and asteroids
 	float desiredseparation;
 
-	Pvector steer(0, 0);
-	int count = 0;
 	vector<Asteroid*> asts = AsteroidManager::GetInstance()->asteroids;
 	int size = asts.size();
 	// For every boid in the system, check if it's too close
@@ -380,6 +433,27 @@ bool Predator::checkAsteroids()
 	}
 	return false;
 }
+
+bool Predator::checkPowerUps()
+{
+	float reactionDistance;
+
+	vector<PowerUp*> powUps = PowerUpManager::GetInstance()->powerups;
+	int size = powUps.size();
+	// For every boid in the system, check if it's too close
+	for (int i = 0; i < size; i++)
+	{
+		reactionDistance = 400;
+		// Calculate distance from current boid to asteroid we're looking at
+		float d = location.distance(powUps[i]->getPos());
+		// If this is a fellow boid and it's too close, move away from it
+		if ((d > 0) && (d < reactionDistance))
+		{
+			return true;
+		}
+	}
+	return false;
+} 
 
 bool Predator::search()
 {

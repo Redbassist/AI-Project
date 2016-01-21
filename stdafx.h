@@ -19,12 +19,11 @@
 enum State {
 	SEARCH,
 	ATTACK,
+	POWERUP,
 	AVOIDASTEROID,
 	RETREAT
 };
 
 
 using namespace sf;
-using namespace std;
-
-// TODO: reference additional headers your program requires here
+using namespace std; 
