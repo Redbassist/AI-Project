@@ -10,6 +10,7 @@ Player::Player() {
 	fireRate = 5;
 	fireTimer = fireRate;
 	loadResources();
+	health = 1000;
 }
 
 void Player::loadResources() {
@@ -60,9 +61,9 @@ float Player::getHealth()
 	return health;
 }
 
-void Player::setHealth(float h)
+void Player::dropHealth(float h)
 {
-	health = h;
+	health -= h;
 }
 
 void Player::ActivateSpeed()
@@ -161,8 +162,14 @@ void Player::Shoot()
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (fireTimer > fireRate) {
 			fireTimer = 0;
-			Bullet* bullet = new Bullet((position + direction * 7), direction, true);
-			BulletManager::GetInstance()->AddBullet(bullet);
+			if (powerTimer > 0) {
+				Bullet* bullet = new Bullet((position + direction * 7), direction, true, true);
+				BulletManager::GetInstance()->AddBullet(bullet);
+			}
+			else {
+				Bullet* bullet = new Bullet((position + direction * 7), direction, true, false);
+				BulletManager::GetInstance()->AddBullet(bullet);
+			}
 		}
 	}
 	powerTimer--;

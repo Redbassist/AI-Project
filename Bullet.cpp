@@ -1,8 +1,9 @@
 #include "Bullet.h"
 
-Bullet::Bullet(Pvector p, Pvector dir, bool owner) :
+Bullet::Bullet(Pvector p, Pvector dir, bool owner, bool super) :
 	pos(p)
 {
+	superBullet = super;
 	playerBullet = owner;
 	speed = 10;
 	dir.normalize();

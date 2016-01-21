@@ -28,6 +28,8 @@ class Boid
 {
 private:
 public:
+	int powerTimer;
+	int speedTimer;
 	int currentFlock;
 	Texture texture;
 	Sprite sprite;

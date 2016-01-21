@@ -18,7 +18,8 @@ private:
 	bool destroyed;
 public:
 	bool playerBullet;
-	Bullet(Pvector, Pvector, bool);
+	bool superBullet;
+	Bullet(Pvector, Pvector, bool, bool);
 	void LoadAssets();
 	void Update();
 	bool LifeCheck();

@@ -61,7 +61,7 @@ public:
 
 	float getHealth();
 
-	void setHealth(float h);
+	void dropHealth(float h);
 
 	void ActivateSpeed();
 

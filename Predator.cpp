@@ -20,6 +20,8 @@ Predator::Predator(float x, float y, Player* p, int f) {
 
 	health = 1000;
 	fireRate = 120;
+	powerTimer = 0;
+	speedTimer = 0;
 }
 
 Predator::~Predator()
@@ -242,7 +244,8 @@ void Predator::LimitAcceleration()
 		acceleration.mulScalar((distancePlayer - stayDistance) / slowDistance);
 		velocity.mulScalar((distancePlayer - stayDistance) / slowDistance);
 	}
-	else if (distancePlayer < stayDistance) {
+
+	if (distancePlayer < stayDistance) {
 		velocity.mulScalar(0);
 	}
 
@@ -253,7 +256,8 @@ void Predator::LimitAcceleration()
 void Predator::update(vector <Boid*> v)
 {
 	fireTimer++;
-
+	powerTimer--;
+	speedTimer--;
 	//"FINITE STATE MACHINE"
 	switch (currentState) {
 
@@ -305,7 +309,11 @@ void Predator::update(vector <Boid*> v)
 	// Update velocity
 	velocity.addVector(acceleration);
 	// Limit speed
-	velocity.limit(maxSpeed);
+	if (speedTimer > 0)
+		velocity.limit(maxSpeed * 2);
+	else
+		velocity.limit(maxSpeed);
+
 	location.addVector(velocity);
 	// Reset accelertion to 0 each cycle
 	acceleration.mulScalar(0);
@@ -388,9 +396,15 @@ void Predator::avoid(vector<Boid*> v)
 void Predator::Shoot()
 {
 	if (fireTimer > fireRate) {
-		fireTimer = 0;
-		Bullet* bullet = new Bullet((location), velocity, false);
-		BulletManager::GetInstance()->AddBullet(bullet);
+		fireTimer = 0; 
+		if (powerTimer > 0) {
+			Bullet* bullet = new Bullet((location), velocity, false, true);
+			BulletManager::GetInstance()->AddBullet(bullet);
+		}
+		else {
+			Bullet* bullet = new Bullet((location), velocity, false, false);
+			BulletManager::GetInstance()->AddBullet(bullet);
+		} 
 	}
 }
 

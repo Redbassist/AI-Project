@@ -98,10 +98,9 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window->close();
-		}
+		} 
 
-		player->Update();
- 
+		player->Update(); 
 		AsteroidManager::GetInstance()->Update();
 		BoidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
@@ -120,8 +119,8 @@ int main()
 		FactoryManager::GetInstance()->Draw();
 		BulletManager::GetInstance()->Draw();
 		MissileManager::GetInstance()->Draw();
-		window->display();
 
+		window->display();
 	}
 
 	return 0;
