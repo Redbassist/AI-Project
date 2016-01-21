@@ -284,7 +284,7 @@ void Predator::update(vector <Boid*> v)
 	case(State::ATTACK) :
 		chase(v);
 		if (lost()) {
-			currentState = State::ATTACK;
+			currentState = State::SEARCH;
 		}
 		else if (checkAsteroids()) {
 			currentState = State::AVOIDASTEROID;

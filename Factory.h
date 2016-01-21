@@ -52,24 +52,11 @@ public:
 
 	void Update(vector<Factory*> Factories);
 
-	void Movement();
-
 	void WrapAround();
 
-	void Shoot();
+	void Shoot(); 
 
-	//these are the code from the gods that fix the rotation loop around 2 pi
-	float CurveAngle(float from, float to, float step);
-
-	Pvector Slerp(Pvector from, Pvector to, float step);
-
-	Pvector normalize(Pvector source);
-
-	float degreeToRadian(float angle);
-
-	float radiansToDegrees(float angle);
-
-	float dotProduct(Pvector v1, Pvector v2);
+	Pvector normalize(Pvector source); 
 
 	Pvector getPosition();
 
@@ -101,14 +88,12 @@ public:
 
 	Pvector Cohesion(vector<Factory*> Factories);
 
-	Pvector RunFromPlayer();
-	
-	void LimitAcceleration();
+	Pvector RunFromPlayer(); 
+
 	Pvector seek(Pvector v);
 	void run(vector<Factory*> Factories);
 	void flock(vector<Factory*> Factories);
-	void chase(vector<Factory*> Factories);
-	void collect(vector<Factory*> Factories);
+	void flee(vector<Factory*> Factories); 
 	void avoid(vector<Factory*> Factories);
 	float angle(Pvector v);
 	bool checkAsteroids();

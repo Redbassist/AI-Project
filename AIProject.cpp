@@ -53,7 +53,7 @@ int main()
 	 
 	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
 	View view = View(Vector2f(0, 0), Vector2f(1280, 720));
-	view.zoom(1);
+	view.zoom(3);
 	window->setView(view);
 	window->setFramerateLimit(60);
 	 

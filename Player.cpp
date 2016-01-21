@@ -163,11 +163,11 @@ void Player::Shoot()
 		if (fireTimer > fireRate) {
 			fireTimer = 0;
 			if (powerTimer > 0) {
-				Bullet* bullet = new Bullet((position + direction * 7), direction, true, true);
+				Bullet* bullet = new Bullet((position + direction * 3), direction, true, true);
 				BulletManager::GetInstance()->AddBullet(bullet);
 			}
 			else {
-				Bullet* bullet = new Bullet((position + direction * 7), direction, true, false);
+				Bullet* bullet = new Bullet((position + direction * 3), direction, true, false);
 				BulletManager::GetInstance()->AddBullet(bullet);
 			}
 		}

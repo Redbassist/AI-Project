@@ -150,6 +150,7 @@ void CollisionManager::BoidCollisions()
 
 		if (distance < collisionDistance)
 		{
+			player->dropHealth(50);
 			boids->at(i)->setHealth(boids->at(i)->getHealth() - 1000);
 		}
 	}

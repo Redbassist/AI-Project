@@ -8,7 +8,7 @@ Asteroid::Asteroid(Pvector p)
 	direction.x = (randomX - 10) / 10;
 	direction.y = (randomY - 10) / 10;
 	direction.normalize();
-	speed = (rand() % 20 + 10);
+	speed = (rand() % 15 + 5);
 	speed = speed / 10;
 	direction.mulScalar(speed);
 	LoadAssets();

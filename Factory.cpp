@@ -3,7 +3,7 @@
 
 #define PI 3.141592635
 
-Factory::Factory(Player& p, int i){
+Factory::Factory(Player& p, int i) {
 	id = i;
 	speed = 1;
 	float randX = rand() % (int)(globalBounds.x - 50) + 50;
@@ -11,6 +11,9 @@ Factory::Factory(Player& p, int i){
 	//float randX = 200;
 	//float randY = 200;
 	position = Pvector(randX, randY);
+	maxSpeed = 1.5;
+	maxForce = 0.5;
+	velocity = Pvector(rand() % 3 - 1, rand() % 3 - 1);
 	loadResources();
 	scared = false;
 	travelling = false;
@@ -18,6 +21,7 @@ Factory::Factory(Player& p, int i){
 	spawnTimer = 60;
 	maxMissiles = 0;
 	missileTimer = 600;
+	currentState = State::SEARCH;
 }
 
 void Factory::loadResources() {
@@ -54,12 +58,15 @@ void Factory::Draw() {
 }
 
 void Factory::Update(vector<Factory*> v) {
-	//State();
-	//Movement();
+
 	WrapAround();
-	//Shoot();
 	Spawn();
 
+	shootTimer--;
+	if (maxMissiles > 0)
+	{
+		missileTimer--;
+	}
 
 	//"FINITE STATE MACHINE"
 	switch (currentState) {
@@ -67,7 +74,7 @@ void Factory::Update(vector<Factory*> v) {
 	case(State::SEARCH) :
 		run(v);
 		if (search()) {
-			currentState = State::ATTACK;
+			currentState = State::RETREAT;
 		}
 		else if (checkAsteroids()) {
 			currentState = State::AVOIDASTEROID;
@@ -81,10 +88,10 @@ void Factory::Update(vector<Factory*> v) {
 		}
 		break;
 
-	case(State::ATTACK) :
-		chase(v);
+	case(State::RETREAT) :
+		flee(v);
 		if (lost()) {
-			currentState = State::ATTACK;
+			currentState = State::SEARCH;
 		}
 		else if (checkAsteroids()) {
 			currentState = State::AVOIDASTEROID;
@@ -98,18 +105,20 @@ void Factory::Update(vector<Factory*> v) {
 	velocity.addVector(acceleration);
 	// Limit speed
 	velocity.limit(maxSpeed);
-	location.addVector(velocity);
+	position.addVector(velocity);
 	// Reset accelertion to 0 each cycle
 	acceleration.mulScalar(0);
 
-	sprite.setRotation(angle(velocity));
-	sprite.setPosition(Vector2f(location.x, location.y));
+	sprite.setRotation(sprite.getRotation() + 0.1);
+	sprite2.setRotation(sprite2.getRotation() - 0.1);
+
+	sprite.setPosition(Vector2f(position.x, position.y));
 }
 
 Pvector Factory::Separation(vector<Factory*> v)
 {
 	// Distance of field of vision for separation between boids
-	float desiredseparation = 20;
+	float desiredseparation = 100;
 
 	Pvector steer(0, 0);
 	int count = 0;
@@ -117,19 +126,19 @@ Pvector Factory::Separation(vector<Factory*> v)
 	for (int i = 0; i < v.size(); i++)
 	{
 		// Calculate distance from current boid to boid we're looking at
-		float d = location.distance(v[i]->location);
+		float d = position.distance(v[i]->position);
 		// If this is a fellow boid and it's too close, move away from it
 		if ((d > 0) && (d < desiredseparation))
 		{
 			Pvector diff(0, 0);
-			diff = diff.subTwoVector(location, v[i]->location);
+			diff = diff.subTwoVector(position, v[i]->position);
 			diff.normalize();
 			diff.divScalar(d);      // Weight by distance
 			steer.addVector(diff);
 			count++;
 		}
 	}
-	// Adds average difference of location to acceleration
+	// Adds average difference of position to acceleration
 	if (count > 0)
 		steer.divScalar((float)count);
 	if (steer.magnitude() > 0)
@@ -157,19 +166,19 @@ Pvector Factory::AvoidAsteroids()
 	{
 		desiredseparation = asts[i]->getRadius() + 100;
 		// Calculate distance from current boid to boid we're looking at
-		float d = location.distance(asts[i]->getPos());
+		float d = position.distance(asts[i]->getPos());
 		// If this is a fellow boid and it's too close, move away from it
 		if ((d > 0) && (d < desiredseparation))
 		{
 			Pvector diff(0, 0);
-			diff = diff.subTwoVector(location, asts[i]->getPos());
+			diff = diff.subTwoVector(position, asts[i]->getPos());
 			diff.normalize();
 			diff.divScalar(d);      // Weight by distance
 			steer.addVector(diff);
 			count++;
 		}
 	}
-	// Adds average difference of location to acceleration
+	// Adds average difference of position to acceleration
 	if (count > 0)
 		steer.divScalar((float)count);
 	if (steer.magnitude() > 0)
@@ -188,13 +197,13 @@ Pvector Factory::AvoidAsteroids()
 // of nearby boids.
 Pvector Factory::Alignment(vector<Factory*> v)
 {
-	float neighbordist = 150;
+	float neighbordist = 500;
 
 	Pvector sum(0, 0);
 	int count = 0;
 	for (int i = 0; i < v.size(); i++)
 	{
-		float d = location.distance(v[i]->location);
+		float d = position.distance(v[i]->position);
 		if ((d > 0) && (d < neighbordist)) // 0 < d < 50
 		{
 			sum.addVector(v[i]->velocity);
@@ -219,20 +228,20 @@ Pvector Factory::Alignment(vector<Factory*> v)
 	}
 }
 
-// Cohesion finds the average location of nearby boids and manipulates the 
+// Cohesion finds the average position of nearby boids and manipulates the 
 // steering force to move in that direction.
 Pvector Factory::Cohesion(vector<Factory*> v)
 {
-	float neighbordist = 40;
+	float neighbordist = 160;
 
 	Pvector sum(0, 0);
 	int count = 0;
 	for (int i = 0; i < v.size(); i++)
 	{
-		float d = location.distance(v[i]->location);
+		float d = position.distance(v[i]->position);
 		if ((d > 0) && (d < neighbordist))
 		{
-			sum.addVector(v[i]->location);
+			sum.addVector(v[i]->position);
 			count++;
 		}
 	}
@@ -250,8 +259,8 @@ Pvector Factory::Cohesion(vector<Factory*> v)
 Pvector Factory::seek(Pvector v)
 {
 	Pvector desired;
-	desired = location;
-	desired.subVector(v);  // A vector pointing from the location to the target
+	desired = position;
+	desired.subVector(v);  // A vector pointing from the position to the target
 						   // Normalize desired and scale to maximum speed
 	desired.normalize();
 	desired.mulScalar(maxSpeed);
@@ -270,7 +279,7 @@ void Factory::applyForce(Pvector force)
 Pvector Factory::RunFromPlayer()
 {
 	Pvector chaseVect;
-	chaseVect = location - player->getPosition();
+	chaseVect = position - player->getPosition();
 
 	chaseVect.normalize();	   		// Turn sum into a unit vector, and
 	chaseVect.mulScalar(maxSpeed);    // Multiply by maxSpeed
@@ -281,21 +290,6 @@ Pvector Factory::RunFromPlayer()
 	return steer;
 }
 
-void Factory::LimitAcceleration()
-{
-	float stayDistance = 200;
-	float slowDistance = 200;
-	float distancePlayer = location.distance(player->getPosition());
-
-	if (distancePlayer > stayDistance && distancePlayer < stayDistance + slowDistance) {
-		acceleration.mulScalar((distancePlayer - stayDistance) / slowDistance);
-		velocity.mulScalar((distancePlayer - stayDistance) / slowDistance);
-	}
-	else if (distancePlayer < stayDistance) {
-		velocity.mulScalar(0);
-	}
-
-}
 //Run runs flock on the flock of boids for each boid.
 //Which applies the three rules, modifies accordingly, updates data, checks is data is
 //out of range, fixes that for SFML, and renders it on the window.
@@ -321,24 +315,23 @@ void Factory::flock(vector<Factory*> v)
 	applyForce(coh);
 }
 
-void Factory::chase(vector<Factory*> v)
+void Factory::flee(vector<Factory*> v)
 {
 	Pvector sep = Separation(v);
 	Pvector ali = Alignment(FactoryManager::GetInstance()->factories);
 	Pvector coh = Cohesion(FactoryManager::GetInstance()->factories);
-	Pvector chs = RunFromPlayer();
+	Pvector run = RunFromPlayer();
 	sep.mulScalar(1.0);
 	ali.mulScalar(1.5);
 	coh.mulScalar(0.2);
-	chs.mulScalar(1.5);
-	applyForce(chs);
+	run.mulScalar(1.5);
+	applyForce(run);
 	applyForce(sep);
 	applyForce(ali);
 	applyForce(coh);
-	LimitAcceleration();
 
-	float distancePlayer = location.distance(player->getPosition());
-	if (distancePlayer < 400) {
+	float distancePlayer = position.distance(player->getPosition());
+	if (distancePlayer < 450) {
 		Shoot();
 	}
 }
@@ -352,24 +345,6 @@ void Factory::avoid(vector<Factory*> v)
 	applyForce(sep);
 	applyForce(astAvoid);
 }
-
-//void Factory::Shoot()
-//{
-//	if (fireTimer > fireRate) {
-//		fireTimer = 0;
-//		Bullet* bullet = new Bullet((location), velocity, false);
-//		BulletManager::GetInstance()->AddBullet(bullet);
-//	}
-//}
-
-// Checks if boids go out of the window and if so, wraps them around to the other side.
-//void Factory::borders()
-//{
-//	if (location.x < 0) location.x += window_width;
-//	if (location.y < 0) location.y += window_height;
-//	if (location.x > window_width) location.x -= window_width;
-//	if (location.y > window_height) location.y -= window_height;
-//}
 
 // Calculates the angle for the velocity of a boid which allows the visual 
 // image to rotate in the direction that it is going in.
@@ -392,7 +367,7 @@ bool Factory::checkAsteroids()
 	{
 		desiredseparation = asts[i]->getRadius() + 100;
 		// Calculate distance from current boid to asteroid we're looking at
-		float d = location.distance(asts[i]->getPos());
+		float d = position.distance(asts[i]->getPos());
 		// If this is a fellow boid and it's too close, move away from it
 		if ((d > 0) && (d < desiredseparation))
 		{
@@ -413,7 +388,7 @@ bool Factory::checkPowerUps()
 	{
 		reactionDistance = 400;
 		// Calculate distance from current boid to asteroid we're looking at
-		float d = location.distance(powUps[i]->getPos());
+		float d = position.distance(powUps[i]->getPos());
 		// If this is a fellow boid and it's too close, move away from it
 		if ((d > 0) && (d < reactionDistance))
 		{
@@ -425,7 +400,7 @@ bool Factory::checkPowerUps()
 
 bool Factory::search()
 {
-	if (player->getPosition().distance(location) < 400) {
+	if (player->getPosition().distance(position) < 400) {
 		return true;
 	}
 	return false;
@@ -433,7 +408,7 @@ bool Factory::search()
 
 bool Factory::lost()
 {
-	if (player->getPosition().distance(location) > 450) {
+	if (player->getPosition().distance(position) > 450) {
 		return true;
 	}
 	return false;
@@ -476,91 +451,6 @@ bool Factory::LifeCheck()
 	return destroy;
 }
 
-void Factory::State()
-{
-	sprite.setRotation(sprite.getRotation() + 0.1);
-	sprite2.setRotation(sprite2.getRotation() - 0.1);
-
-	if (scared == false)
-	{
-		if (travelling == true)
-		{
-			Pvector vel;
-			vel.x = position.x - destination.x;
-			vel.y = position.y - destination.y;
-			vel.normalize();
-			vel.mulScalar(speed);
-			position.x = position.x - vel.x;
-			position.y = position.y - vel.y;
-		}
-		else
-		{
-			destination.x = rand() % (int)(globalBounds.x - 100) + 100;
-			destination.y = rand() % (int)(globalBounds.y - 100) + 100;
-			travelling = true;
-		}
-
-		if (Distance(position, destination) < 50)
-		{
-			travelling = false;
-		}
-
-		if (Distance(position, player->getPosition()) < 400)
-		{
-			scared = true;
-			travelling = false;
-		}
-	}
-	else
-	{
-		Pvector vel;
-		vel.x = position.x - player->getPosition().x;
-		vel.y = position.y - player->getPosition().y;
-		vel.normalize();
-		//vel.mulScalar(speed);
-		destination.x = position.x + (vel.x * 400);
-		destination.y = position.y + (vel.y * 400);
-		//position.x = position.x + vel.x;
-		//position.y = position.y + vel.y;
-
-		if (Distance(position, player->getPosition()) > 399)
-		{
-			scared = false;
-			travelling = false;
-		}
-	}
-}
-
-void Factory::Movement()
-{
-	prevRotation = rotation;
-	position = Pvector(sprite.getPosition());
-	//Vector2i mp = Mouse::getPosition(*window);
-	//used to convert to view coordinates
-	//sf::Vector2f worldMousePos = window->mapPixelToCoords(mp);
-	//Pvector mousePos = Pvector(worldMousePos);
-	Pvector mousePos = destination;
-	Pvector wantedVector = mousePos.subTwoVector(mousePos, position);
-
-	float angleBetweenTwo = atan2(mousePos.y - position.y, mousePos.x - position.x);
-
-	rotation = CurveAngle(rotation, angleBetweenTwo, 0.01f);
-
-	//error check, rotation was crashing every so often, this is a loose fix
-	if (isnan(rotation))
-		rotation = prevRotation;
-
-	direction = Pvector(cos(rotation), sin(rotation));
-	//normalize(direction);
-	direction.mulScalar(speed);
-
-	//if space is held down, will fly forwards
-	position.addVector(direction);
-
-	//sprite.setRotation(radiansToDegrees(rotation) + 90);
-	sprite.setPosition(sf::Vector2f(position.x, position.y));
-}
-
 void Factory::WrapAround()
 {
 	//checking if the player has moved off the side of the screen and moving it
@@ -579,19 +469,11 @@ void Factory::WrapAround()
 
 void Factory::Shoot()
 {
-	if (scared == true)
+	if (shootTimer < 0 && maxMissiles < 5)
 	{
-		if (shootTimer < 0 && maxMissiles < 5)
-		{
-			MissileManager::GetInstance()->AddMissile(new Missile(position, *player));
-			shootTimer = 120;
-			maxMissiles++;
-		}
-		shootTimer--;
-	}
-	if (maxMissiles > 0)
-	{
-		missileTimer--;
+		MissileManager::GetInstance()->AddMissile(new Missile(position, *player));
+		shootTimer = 120;
+		maxMissiles++;
 	}
 
 	if (missileTimer <= 0 && maxMissiles > 0)
@@ -626,36 +508,6 @@ float Factory::Distance(Pvector pos1, Pvector pos2)
 	return sqrt(pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2));
 }
 
-float Factory::CurveAngle(float from, float to, float step)
-{
-	if (step == 0)
-		return from;
-	if (from == to || step == 1)
-		return to;
-
-	Pvector fromVector = Pvector((float)cos(from), (float)sin(from));
-	Pvector toVector = Pvector((float)cos(to), (float)sin(to));
-
-	Pvector currentVector = Slerp(fromVector, toVector, step);
-
-	return (float)atan2(currentVector.y, currentVector.x);
-}
-
-Pvector Factory::Slerp(Pvector from, Pvector to, float step)
-{
-	if (step == 0) return from;
-	if (from == to || step == 1) return to;
-
-	double theta = acos(dotProduct(from, to));
-	if (theta == 0) return to;
-
-	double sinTheta = sin(theta);
-	from.mulScalar((float)(sin((1 - step) * theta) / sinTheta));
-	to.mulScalar((float)(sin(step * theta) / sinTheta));
-	from.addVector(to);
-	return from;
-}
-
 Pvector Factory::normalize(Pvector source)
 {
 	float length = sqrt((source.x * source.x) + (source.y * source.y));
@@ -663,20 +515,4 @@ Pvector Factory::normalize(Pvector source)
 		return sf::Vector2f(source.x / length, source.y / length);
 	else
 		return source;
-}
-
-float  Factory::degreeToRadian(float angle) {
-	float pi = 3.14159265358979323846;
-	return  pi * angle / 180.0;
-}
-
-float Factory::radiansToDegrees(float angle) {
-	float pi = 3.14159265358979323846;
-	return angle * (180.0 / pi);
-}
-
-float Factory::dotProduct(Pvector v1, Pvector v2) {
-	v1 = normalize(v1);
-	v2 = normalize(v2);
-	return (v1.x * v2.x) + (v1.y * v2.y);
 }
