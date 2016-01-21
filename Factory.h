@@ -6,6 +6,7 @@
 #include "BoidManager.h"
 #include "Predator.h"
 #include "MissileManager.h"
+#include "FactoryManager.h"
 
 class Factory{
 private:
@@ -31,7 +32,15 @@ private:
 	int shootTimer;
 	int maxMissiles;
 	int missileTimer;
+	Pvector location;
+	Pvector velocity;
+	Pvector acceleration;
+	float maxSpeed;
+	float maxForce;
+	int currentFlock;
 public:
+
+	State currentState;
 
 	Factory(Player& p, int);
 
@@ -39,7 +48,7 @@ public:
 
 	void Draw();
 
-	void Update();
+	void Update(vector<Factory*> Factories);
 
 	void Movement();
 
@@ -79,4 +88,31 @@ public:
 	void Spawn();
 
 	bool LifeCheck();
+
+	void applyForce(Pvector force);
+	
+	Pvector Separation(vector<Factory*> Factories);
+
+	Pvector AvoidAsteroids();
+
+	Pvector Alignment(vector<Factory*> Factories);
+
+	Pvector Cohesion(vector<Factory*> Factories);
+
+	Pvector RunFromPlayer();
+	
+	void LimitAcceleration();
+	Pvector seek(Pvector v);
+	void run(vector<Factory*> Factories);
+	void flock(vector<Factory*> Factories);
+	void chase(vector<Factory*> Factories);
+	void collect(vector<Factory*> Factories);
+	void avoid(vector<Factory*> Factories);
+	void borders();
+	float angle(Pvector v);
+	bool checkAsteroids();
+	bool checkPowerUps();
+	bool search();
+	bool lost();
+
 };
