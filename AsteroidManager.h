@@ -7,6 +7,8 @@
 #include "Player.h"
 #include "Asteroid.h"
 #include "Globals.h"
+#include "BoidManager.h"
+#include "CollisionManager.h"
 
 class AsteroidManager {
 private:   
