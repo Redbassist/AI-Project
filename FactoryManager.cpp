@@ -25,7 +25,10 @@ void FactoryManager::Update()
 {
 	for (int i = 0; i < factories.size(); i++) {
 		factories[i]->Update();
-		//checking if the boid is to be removed
+		if (factories[i]->LifeCheck()) {
+			factories.erase(factories.begin() + i);
+			i--;
+		}
 	}
 }
 

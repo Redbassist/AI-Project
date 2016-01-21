@@ -33,7 +33,7 @@ void AsteroidManager::Update()
 			{
 				for (int i = 0; i < 10; i++)
 				{
-					BoidManager::GetInstance()->AddBoid(new Swarmer(tempX, tempY, CollisionManager::GetInstance()->player));
+					BoidManager::GetInstance()->AddBoid(new Swarmer(tempX, tempY, player));
 				}
 			}
 		}

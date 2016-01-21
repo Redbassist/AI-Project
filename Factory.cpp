@@ -79,6 +79,23 @@ float Factory::getHealth()
 	return health;
 }
 
+void Factory::setHealth(float h)
+{
+	health = h;
+}
+
+bool Factory::LifeCheck()
+{
+	bool destroy = false;
+
+	if (health <= 0)
+	{
+		destroy = true;
+	}
+
+	return destroy;
+}
+
 void Factory::State()
 {
 	sprite.setRotation(sprite.getRotation() + 0.1);

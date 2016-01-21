@@ -5,9 +5,10 @@ Bullet::Bullet(Pvector p, Pvector dir, bool owner) :
 {
 	playerBullet = owner;
 	speed = 10;
-	dir.normalize();
 	direction = dir;
+	direction.normalize();
 	direction.mulScalar(speed);
+	direction = direction + dir;
 	destroyed = false;
 	ttl = 180;
 	LoadAssets();

@@ -161,7 +161,7 @@ void Player::Shoot()
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (fireTimer > fireRate) {
 			fireTimer = 0;
-			Bullet* bullet = new Bullet((position + direction * 7), direction, true);
+			Bullet* bullet = new Bullet((position + direction * 3), direction, true);
 			BulletManager::GetInstance()->AddBullet(bullet);
 		}
 	}

@@ -57,7 +57,9 @@ int main()
 	window->setView(view);
 	window->setFramerateLimit(60);
 	 
-	Player* player = new Player(); 
+	Player* player = new Player();
+
+	AsteroidManager::GetInstance()->player = player;
 
 	int numFactories = 4;
 	for (int i = 0; i < numFactories; i++)
@@ -84,11 +86,6 @@ int main()
 	backgroundSprite.setPosition(sf::Vector2f(1500, 0));
 
 	backgroundSprite.setOrigin(sf::Vector2f(1715, 1733));
-
-	//for (int i = 0; i < 50; i++)
-	//{
-	//	BoidManager::GetInstance()->AddBoid(new Swarmer(200, 200, CollisionManager::GetInstance()->player));
-	//}
 
 	//update loop
 	while (window->isOpen())

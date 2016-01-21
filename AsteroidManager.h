@@ -8,7 +8,7 @@
 #include "Asteroid.h"
 #include "Globals.h"
 #include "BoidManager.h"
-#include "CollisionManager.h"
+//#include "CollisionManager.h"
 
 class AsteroidManager {
 private:   
@@ -23,6 +23,7 @@ public:
 	void SpawnAsteroids();
 	bool CheckSpawnLocation(Pvector);
 	vector<Asteroid*> asteroids;
+	Player* player;
 };
 
 #endif

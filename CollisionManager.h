@@ -15,6 +15,7 @@
 #include "PowerUp.h"
 #include "PowerUpManager.h"
 #include "MissileManager.h"
+#include "FactoryManager.h"
 
 class CollisionManager {
 private:
@@ -23,6 +24,7 @@ private:
 	vector<Boid*>* boids;
 	vector<PowerUp*>* powerups;
 	vector<Missile*>* missiles;
+	vector<Factory*>* factories;
 public:
 	CollisionManager();
 	static CollisionManager* GetInstance();
@@ -33,6 +35,7 @@ public:
 	void AsteroidPredCollisions();
 	void PlayerPowerUpCollisions();
 	void PlayerMissileCollisions();
+	void BulletFactoryCollisions();
 	void setPlayer(Player &p);
 	float Distance(Pvector, Pvector);
 	Player* player;
