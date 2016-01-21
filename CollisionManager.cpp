@@ -17,6 +17,8 @@ CollisionManager::CollisionManager()
 	bullets = &BulletManager::GetInstance()->bullets;
 	boids = &BoidManager::GetInstance()->boids;
 	powerups = &PowerUpManager::GetInstance()->powerups;
+	missiles = &MissileManager::GetInstance()->missiles;
+	factories = &FactoryManager::GetInstance()->factories;
 }
 
 void CollisionManager::CheckCollisions()
@@ -26,6 +28,8 @@ void CollisionManager::CheckCollisions()
 	BoidCollisions();
 	AsteroidPredCollisions();
 	PlayerPowerUpCollisions();
+	PlayerMissileCollisions();
+	BulletFactoryCollisions();
 }
 
 void CollisionManager::AsteroidCollisions()
@@ -186,6 +190,39 @@ void CollisionManager::PlayerPowerUpCollisions()
 			{
 				player->ActivatePower();
 				powerups->at(i)->destroy = true;
+			}
+		}
+	}
+}
+
+void CollisionManager::PlayerMissileCollisions()
+{
+	for (int i = 0; i < missiles->size(); i++)
+	{
+		float distance = Distance(player->getPosition(), missiles->at(i)->getPos());
+		float collisionDistance = player->getRadius() + missiles->at(i)->getRadius();
+
+		if (distance < collisionDistance)
+		{
+			missiles->at(i)->setDestroyed(true);
+			player->dropHealth(player->getHealth() - 100);
+		}
+	}
+}
+
+void CollisionManager::BulletFactoryCollisions()
+{
+	for (int i = 0; i < factories->size(); i++)
+	{
+		for (int j = 0; j < bullets->size(); j++)
+		{
+			float distance = Distance(bullets->at(j)->getPos(), factories->at(i)->getPosition());
+			float collisionDistance = bullets->at(j)->getRadius() + factories->at(i)->getRadius();
+
+			if (distance < collisionDistance)
+			{
+				bullets->at(j)->setDestroyed(true);
+				factories->at(i)->setHealth(factories->at(i)->getHealth() - 10);
 			}
 		}
 	}

@@ -6,9 +6,10 @@ Bullet::Bullet(Pvector p, Pvector dir, bool owner, bool super) :
 	superBullet = super;
 	playerBullet = owner;
 	speed = 10;
-	dir.normalize();
 	direction = dir;
+	direction.normalize();
 	direction.mulScalar(speed);
+	direction = direction + dir;
 	destroyed = false;
 	ttl = 180;
 	LoadAssets();
@@ -16,7 +17,7 @@ Bullet::Bullet(Pvector p, Pvector dir, bool owner, bool super) :
 
 void Bullet::LoadAssets()
 {
-	if (!texture.loadFromFile("Sprites/bullet.png"))
+	if (!texture.loadFromFile("Sprites/bullet2.png"))
 	{
 		cout << "cant find image";
 	}
