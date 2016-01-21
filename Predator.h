@@ -54,7 +54,7 @@ public:
 	bool checkPowerUps();
 	bool search();
 	bool lost();
-	Pvector seek(Pvector v);
+	//Pvector seek(Pvector v);
 };
 
 #endif#pragma once

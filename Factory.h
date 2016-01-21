@@ -8,6 +8,8 @@
 #include "MissileManager.h"
 #include "FactoryManager.h"
 
+class FactoryManger;
+
 class Factory{
 private:
 	int id;
@@ -108,7 +110,6 @@ public:
 	void chase(vector<Factory*> Factories);
 	void collect(vector<Factory*> Factories);
 	void avoid(vector<Factory*> Factories);
-	void borders();
 	float angle(Pvector v);
 	bool checkAsteroids();
 	bool checkPowerUps();

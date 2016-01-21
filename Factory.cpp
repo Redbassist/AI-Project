@@ -302,7 +302,6 @@ void Factory::LimitAcceleration()
 void Factory::run(vector<Factory*> v)
 {
 	flock(v);
-	borders();
 }
 
 //Applies all three laws for the flock of boids and modifies to keep them from
@@ -337,7 +336,6 @@ void Factory::chase(vector<Factory*> v)
 	applyForce(ali);
 	applyForce(coh);
 	LimitAcceleration();
-	borders();
 
 	float distancePlayer = location.distance(player->getPosition());
 	if (distancePlayer < 400) {
@@ -353,7 +351,6 @@ void Factory::avoid(vector<Factory*> v)
 	astAvoid.mulScalar(1.7);
 	applyForce(sep);
 	applyForce(astAvoid);
-	borders();
 }
 
 //void Factory::Shoot()

@@ -7,6 +7,8 @@
 #include "Factory.h"
 #include "Globals.h"
 
+class Factory;
+
 class FactoryManager {
 private:
 public:

@@ -24,7 +24,7 @@ void FactoryManager::AddFactory(Factory * factory)
 void FactoryManager::Update()
 {
 	for (int i = 0; i < factories.size(); i++) {
-		factories[i]->Update();
+		factories[i]->Update(factories);
 		if (factories[i]->LifeCheck()) {
 			factories.erase(factories.begin() + i);
 			i--;
