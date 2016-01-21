@@ -9,7 +9,7 @@ Predator::Predator(float x, float y, Player* p, int f) {
 	currentFlock = f;
 	window_height = globalBounds.y;
 	window_width = globalBounds.x;
-	maxSpeed = 7.5;
+	maxSpeed = 6.0;
 	maxForce = 0.5;
 	velocity = Pvector(rand() % 3 - 1, rand() % 3 - 1);
 	acceleration = Pvector(0, 0);

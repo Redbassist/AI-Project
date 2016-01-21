@@ -8,7 +8,7 @@ Swarmer::Swarmer(float x, float y, Player* p) {
 	player = p;
 	window_height = globalBounds.y;
 	window_width = globalBounds.x;
-	maxSpeed = 7.5;
+	maxSpeed = 5.5;
 	maxForce = 0.5;
 	velocity = Pvector(rand() % 3 - 1, rand() % 3 - 1);
 	acceleration = Pvector(0, 0);
@@ -211,6 +211,7 @@ void Swarmer::update(vector <Boid*> v)
 		run(v);
 		if (search()) {
 			currentState = State::ATTACK;
+			maxSpeed = 6.5;
 		}
 		else if (checkAsteroids()) {
 			currentState = State::AVOIDASTEROID;
@@ -221,6 +222,7 @@ void Swarmer::update(vector <Boid*> v)
 		avoid(v);
 		if (!checkAsteroids()) {
 			currentState = State::SEARCH;
+			maxSpeed = 5.5;
 		}
 		break;
 
@@ -228,6 +230,7 @@ void Swarmer::update(vector <Boid*> v)
 		chase(v);
 		if (lost()) {
 			currentState = State::SEARCH;
+			maxSpeed = 5.5;
 		}
 		else if (checkAsteroids()) {
 			currentState = State::AVOIDASTEROID;
