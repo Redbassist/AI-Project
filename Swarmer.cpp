@@ -27,6 +27,16 @@ Swarmer::~Swarmer()
 
 void Swarmer::LoadAssets()
 {
+	if (!uitexture.loadFromFile("Sprites/blip.png"))
+	{
+		cout << "cant find image";
+	}
+
+	uitexture.setSmooth(true);
+	uisprite.setTexture(uitexture);
+	uisprite.setOrigin(uitexture.getSize().x / 2, uitexture.getSize().y / 2);
+	uisprite.setScale(0.1, 0.1);
+
 	if (!texture.loadFromFile("Sprites/predator.png"))
 	{
 		cout << "cant find image";

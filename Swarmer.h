@@ -17,8 +17,7 @@ that maximizes separation.
 
 class Swarmer : public Boid
 {
-private:
-	Player* player; 
+private: 
 public:
 	State currentState;
 	int window_height;

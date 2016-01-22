@@ -15,6 +15,8 @@ private:
 	float speed;
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Texture uitexture;
+	sf::Sprite uisprite;
 	float fireRate;
 	float fireTimer;
 	float radius;
@@ -27,6 +29,8 @@ public:
 	void loadResources();
 
 	void Draw();
+
+	void DrawUI();
 
 	void Update();
 

@@ -73,6 +73,23 @@ void Boid::draw()
 	window->draw(sprite);
 }
 
+void Boid::drawui()
+{
+	View tempView = window->getView();
+	Vector2f viewPos = tempView.getCenter();
+	
+	float d = location.distance(player->getPosition());
+	if (d < 1300) {
+		Pvector uiPos = location - player->getPosition();
+
+		uiPos.divScalar(20);
+
+		uisprite.setPosition(Vector2f(viewPos.x + 520 + uiPos.x, viewPos.y - 270 + uiPos.y));
+
+		window->draw(uisprite);
+	}
+}
+
 //Run runs flock on the flock of boids for each boid.
 //Which applies the three rules, modifies accordingly, updates data, checks is data is
 //out of range, fixes that for SFML, and renders it on the window.

@@ -21,7 +21,6 @@ that maximizes separation.
 class Predator : public Boid
 {
 private:
-	Player* player;
 	float fireRate;
 	float fireTimer;
 public:

@@ -50,13 +50,27 @@ int main()
 	settings.minorVersion = 0;
 
 	globalBounds = Vector2f(3840, 2160);
-	 
+
 	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
 	View view = View(Vector2f(0, 0), Vector2f(1280, 720));
-	view.zoom(3);
+	view.zoom(1);
 	window->setView(view);
 	window->setFramerateLimit(60);
-	 
+
+	sf::Texture overlay;
+	overlay.loadFromFile("Sprites/overlay.png");
+	overlay.setSmooth(true);
+	sf::Sprite overlaySprite;
+	overlaySprite.setTexture(overlay);
+	overlaySprite.setScale(0.3, 0.3);
+
+	sf::Texture underlay;
+	underlay.loadFromFile("Sprites/underlay.png");
+	underlay.setSmooth(true);
+	sf::Sprite underlaySprite;
+	underlaySprite.setTexture(underlay);
+	underlaySprite.setScale(0.3, 0.3);
+
 	Player* player = new Player();
 
 	AsteroidManager::GetInstance()->player = player;
@@ -95,9 +109,9 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window->close();
-		} 
+		}
 
-		player->Update(); 
+		player->Update();
 		AsteroidManager::GetInstance()->Update();
 		BoidManager::GetInstance()->Update();
 		BulletManager::GetInstance()->Update();
@@ -108,7 +122,7 @@ int main()
 
 		window->clear();
 		//draw stuff here
-		window->draw(backgroundSprite); 
+		window->draw(backgroundSprite);
 		player->Draw();
 		AsteroidManager::GetInstance()->Draw();
 		PowerUpManager::GetInstance()->Draw();
@@ -117,6 +131,20 @@ int main()
 		BulletManager::GetInstance()->Draw();
 		MissileManager::GetInstance()->Draw();
 
+		//UI stuff
+		View tempView = window->getView();
+		Vector2f viewPos = tempView.getCenter();
+
+		overlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
+		underlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
+
+		window->draw(underlaySprite);
+		window->draw(overlaySprite);
+
+
+		BoidManager::GetInstance()->DrawUI();
+		player->DrawUI();
+		
 		window->display();
 	}
 

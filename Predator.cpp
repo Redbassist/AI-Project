@@ -40,6 +40,17 @@ void Predator::LoadAssets()
 	sprite.setTexture(texture);
 	sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
 
+	if (!uitexture.loadFromFile("Sprites/blip.png"))
+	{
+		cout << "cant find image";
+	}
+
+	uitexture.setSmooth(true);
+	uisprite.setTexture(uitexture);
+	uisprite.setOrigin(uitexture.getSize().x / 2, uitexture.getSize().y / 2);
+	uisprite.setScale(0.1, 0.1);
+
+
 	float scale = 0.04;
 	sprite.setScale(scale, scale);
 

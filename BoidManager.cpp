@@ -48,3 +48,10 @@ void BoidManager::Draw()
 		boids[i]->draw(); 
 	}
 }
+
+void BoidManager::DrawUI()
+{
+	for (int i = 0; i < boids.size(); i++) {
+		boids[i]->drawui();
+	}
+}

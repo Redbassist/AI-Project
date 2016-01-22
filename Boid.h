@@ -28,11 +28,15 @@ class Boid
 {
 private:
 public:
+	Player* player;
+
 	int powerTimer;
 	int speedTimer;
 	int currentFlock;
 	Texture texture;
 	Sprite sprite;
+	Texture uitexture;
+	Sprite uisprite;
 	Pvector location;
 	float radius;
 	Pvector velocity;
@@ -41,6 +45,7 @@ public:
 	float maxForce;
 	float health;
 	Boid() {}
+
 	Boid(float x, float y)
 	{
 	}
@@ -62,6 +67,7 @@ public:
 	virtual void run(vector <Boid*> v);
 	virtual void update(vector <Boid*> v);
 	void draw();
+	void drawui();
 	virtual void flock(vector <Boid*> v);
 	void borders();
 	float angle(Pvector v);

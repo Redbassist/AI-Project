@@ -9,8 +9,7 @@ Player::Player() {
 	position = Pvector(randX, randY);
 	fireRate = 5;
 	fireTimer = fireRate;
-	loadResources();
-	health = 1000;
+	loadResources(); 
 }
 
 void Player::loadResources() {
@@ -25,6 +24,16 @@ void Player::loadResources() {
 	sprite.setScale(0.06f, 0.06f);
 	sprite.setPosition(position.x, position.y);
 
+	if (!uitexture.loadFromFile("Sprites/Spaceship3.png"))
+	{
+		std::cout << "cant find image";
+	}
+
+	uitexture.setSmooth(true);
+	uisprite.setTexture(uitexture);
+	uisprite.setOrigin(200, 400);
+	uisprite.setScale(0.02f, 0.02f); 
+
 	radius = 300 * sprite.getScale().x;
 
 	health = 1000;
@@ -32,6 +41,19 @@ void Player::loadResources() {
 
 void Player::Draw() {
 	window->draw(sprite);
+}
+
+void Player::DrawUI()
+{
+	View tempView = window->getView();
+	Vector2f viewPos = tempView.getCenter();
+
+	uisprite.setRotation(radiansToDegrees(rotation) + 90);
+	uisprite.setPosition(Vector2f(viewPos.x + 520, viewPos.y - 270));
+
+
+
+	window->draw(uisprite);
 }
 
 void Player::Update() {
@@ -88,7 +110,7 @@ void Player::Movement()
 
 	float angleBetweenTwo = atan2(mousePos.y - position.y, mousePos.x - position.x);
 
-	rotation = CurveAngle(rotation, angleBetweenTwo, 0.06f);
+	rotation = CurveAngle(rotation, angleBetweenTwo, 0.12f);
 
 	//error check, rotation was crashing every so often, this is a loose fix
 	if (isnan(rotation))

@@ -17,19 +17,27 @@ Bullet::Bullet(Pvector p, Pvector dir, bool owner, bool super) :
 
 void Bullet::LoadAssets()
 {
-	if (!texture.loadFromFile("Sprites/bullet2.png"))
-	{
-		cout << "cant find image";
+	if (superBullet) {
+		if (!texture.loadFromFile("Sprites/bullet3.png"))
+		{
+			cout << "cant find image";
+		}
+	}
+	else {
+		if (!texture.loadFromFile("Sprites/bullet2.png"))
+		{
+			cout << "cant find image";
+		}
 	}
 
 	texture.setSmooth(true);
 	sprite.setTexture(texture);
-	sprite.setOrigin(2.5, 2.5);
+	sprite.setOrigin(texture.getSize().x / 2, texture.getSize().x / 2);
 
 	float scale = 0.5;
 	sprite.setScale(scale, scale);
 
-	radius = 2.5 * scale;
+	radius = texture.getSize().x / 2 * scale;
 	sprite.setPosition(sf::Vector2f(pos.x, pos.y));
 }
 
