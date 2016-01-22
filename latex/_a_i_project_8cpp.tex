@@ -1,0 +1,89 @@
+\hypertarget{_a_i_project_8cpp}{}\section{A\+I\+Project.\+cpp File Reference}
+\label{_a_i_project_8cpp}\index{A\+I\+Project.\+cpp@{A\+I\+Project.\+cpp}}
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Globals.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}Factory.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$S\+F\+M\+L/\+Graphics.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}Player.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Boid.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Boid\+Manager.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Predator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Swarmer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Asteroid\+Manager.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Collision\+Manager.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Factory\+Manager.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Missile\+Manager.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Power\+Up\+Manager.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_a_i_project_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{A\+I\+Project.\+cpp@{A\+I\+Project.\+cpp}!main@{main}}
+\index{main@{main}!A\+I\+Project.\+cpp@{A\+I\+Project.\+cpp}}
+\subsubsection[{\texorpdfstring{main()}{main()}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{_a_i_project_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{_a_i_project_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+The main function for the project $<$ Used to control when the updating / drawing of the game is occuring
+
+$<$ Only checks for enter being pressed once before starting the game
+
+$<$ Bool representing the lose state
+
+$<$ Bool representing the win state
+
+$<$ setting seed for random
+
+The following are the settings for the render window
+
+$<$ Size of the game world
+
+$<$ Frame limit set to 60
+
+The start screen sprite and texture
+
+The win screen sprite and texture
+
+The lose screen sprite and texture
+
+The overlay sprite and texture
+
+The underlay sprite and texture
+
+The health UI sprite and texture
+
+The health bar sprite and texture
+
+The background screen sprite and texture
+
+$<$ The player that the user controls
+
+$<$ sending address of player to the asteroid manager so that it can be used
+
+$<$ creating the desired number of factories
+
+$<$ sending address of the player to the collision manager
+
+Game will only update when game\+On has been set to true
+
+\hyperlink{class_player}{Player} only updated when game is running. Also contains the win and lose conditions of the game
+
+Updating the entities in the game
+
+Drawing the entities in the game
+
+Updating the UI entites of the game
+
+$<$ Used to set the positions of the UI elements
+
+Only drawing the UI elements of the game when the game is running
+
+checking if the enter button has been pushed, starts the game!
+
+Drawing the start screen of the game

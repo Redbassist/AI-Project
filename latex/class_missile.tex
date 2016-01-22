@@ -1,0 +1,98 @@
+\hypertarget{class_missile}{}\section{Missile Class Reference}
+\label{class_missile}\index{Missile@{Missile}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Missile} (\hyperlink{class_pvector}{Pvector}, \hyperlink{class_player}{Player} \&p)\hypertarget{class_missile_a486c5930b538aac8b868cb72e26e0aa2}{}\label{class_missile_a486c5930b538aac8b868cb72e26e0aa2}
+
+\item 
+void {\bfseries Load\+Assets} ()\hypertarget{class_missile_a9e703621eaacbc90cde9c2972af9da22}{}\label{class_missile_a9e703621eaacbc90cde9c2972af9da22}
+
+\item 
+void {\bfseries Update} ()\hypertarget{class_missile_a67ad40ce9019f783cfd88c438e301123}{}\label{class_missile_a67ad40ce9019f783cfd88c438e301123}
+
+\item 
+bool {\bfseries Life\+Check} ()\hypertarget{class_missile_aafa58d766ceabd86866a6e98be1f3d43}{}\label{class_missile_aafa58d766ceabd86866a6e98be1f3d43}
+
+\item 
+void {\bfseries Movement} ()\hypertarget{class_missile_a0ad78df6fcc042fb297279eade71e58e}{}\label{class_missile_a0ad78df6fcc042fb297279eade71e58e}
+
+\item 
+void {\bfseries Draw} ()\hypertarget{class_missile_ad01229ab0416b2c7b680893aaea207e2}{}\label{class_missile_ad01229ab0416b2c7b680893aaea207e2}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries get\+Pos} ()\hypertarget{class_missile_a3274049c11b63589b934df4fdc5fff56}{}\label{class_missile_a3274049c11b63589b934df4fdc5fff56}
+
+\item 
+float {\bfseries get\+Radius} ()\hypertarget{class_missile_a48742215f9c57684a945fef5096065b8}{}\label{class_missile_a48742215f9c57684a945fef5096065b8}
+
+\item 
+void {\bfseries set\+Destroyed} (bool)\hypertarget{class_missile_aeb2f1251c3820b203bc40dae545b3d37}{}\label{class_missile_aeb2f1251c3820b203bc40dae545b3d37}
+
+\item 
+float {\bfseries Curve\+Angle} (float from, float to, float step)\hypertarget{class_missile_ab9be0dc0d69a7805e8802d85b0bac920}{}\label{class_missile_ab9be0dc0d69a7805e8802d85b0bac920}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries Slerp} (\hyperlink{class_pvector}{Pvector} from, \hyperlink{class_pvector}{Pvector} to, float step)\hypertarget{class_missile_a6b812375fab935579403dbc586c8bca3}{}\label{class_missile_a6b812375fab935579403dbc586c8bca3}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries normalize} (\hyperlink{class_pvector}{Pvector} source)\hypertarget{class_missile_adcfe8208a230cd62e99a4c01610d8dea}{}\label{class_missile_adcfe8208a230cd62e99a4c01610d8dea}
+
+\item 
+float {\bfseries degree\+To\+Radian} (float angle)\hypertarget{class_missile_a50407cc2ceac229a071a6ef9347bd671}{}\label{class_missile_a50407cc2ceac229a071a6ef9347bd671}
+
+\item 
+float {\bfseries radians\+To\+Degrees} (float angle)\hypertarget{class_missile_a5c053f8cd78416602048ef6bfc89efb8}{}\label{class_missile_a5c053f8cd78416602048ef6bfc89efb8}
+
+\item 
+float {\bfseries dot\+Product} (\hyperlink{class_pvector}{Pvector} v1, \hyperlink{class_pvector}{Pvector} v2)\hypertarget{class_missile_abfdfc0cd3e087ec5d8fc3f8382f9a42b}{}\label{class_missile_abfdfc0cd3e087ec5d8fc3f8382f9a42b}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float {\bfseries prev\+Rotation}\hypertarget{class_missile_a5c1e1e31b57d15c7df157fabae766370}{}\label{class_missile_a5c1e1e31b57d15c7df157fabae766370}
+
+\item 
+float {\bfseries rotation}\hypertarget{class_missile_a6e6441df2ded3f9b810d1712dd5058f4}{}\label{class_missile_a6e6441df2ded3f9b810d1712dd5058f4}
+
+\item 
+float {\bfseries target\+Rotation}\hypertarget{class_missile_a91aa9eca9faf35b16741dd5620440aa3}{}\label{class_missile_a91aa9eca9faf35b16741dd5620440aa3}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries position}\hypertarget{class_missile_a3047427db06f6da12c61eb79dcc89f28}{}\label{class_missile_a3047427db06f6da12c61eb79dcc89f28}
+
+\item 
+Texture {\bfseries texture}\hypertarget{class_missile_a73f10a985ec2ad6aab1ffcad71ac3f0f}{}\label{class_missile_a73f10a985ec2ad6aab1ffcad71ac3f0f}
+
+\item 
+Sprite {\bfseries sprite}\hypertarget{class_missile_a84727a05964bdd3176772a2269437c9a}{}\label{class_missile_a84727a05964bdd3176772a2269437c9a}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries pos}\hypertarget{class_missile_aeb3f6c0b8bc2d1c6774c1f44c4d5497e}{}\label{class_missile_aeb3f6c0b8bc2d1c6774c1f44c4d5497e}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries direction}\hypertarget{class_missile_a60d4508dca32872e639f052a3522f94d}{}\label{class_missile_a60d4508dca32872e639f052a3522f94d}
+
+\item 
+float {\bfseries speed}\hypertarget{class_missile_a6d40d98f169464ca3b6f56a348eea4ac}{}\label{class_missile_a6d40d98f169464ca3b6f56a348eea4ac}
+
+\item 
+float {\bfseries radius}\hypertarget{class_missile_ae43ff42f6a305b3756ace5180830e25b}{}\label{class_missile_ae43ff42f6a305b3756ace5180830e25b}
+
+\item 
+bool {\bfseries destroyed}\hypertarget{class_missile_a501ac92b3928ddde1b3d7bf242a2b833}{}\label{class_missile_a501ac92b3928ddde1b3d7bf242a2b833}
+
+\item 
+\hyperlink{class_player}{Player} $\ast$ {\bfseries player}\hypertarget{class_missile_a9c5b67605eacae8bcb25b0d8ec72a173}{}\label{class_missile_a9c5b67605eacae8bcb25b0d8ec72a173}
+
+\item 
+int {\bfseries ttl}\hypertarget{class_missile_af0a7f9c0aa52d39bba311fef136f969c}{}\label{class_missile_af0a7f9c0aa52d39bba311fef136f969c}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Missile.\+h\item 
+Missile.\+cpp\end{DoxyCompactItemize}

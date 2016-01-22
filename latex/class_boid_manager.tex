@@ -1,0 +1,97 @@
+\hypertarget{class_boid_manager}{}\section{Boid\+Manager Class Reference}
+\label{class_boid_manager}\index{Boid\+Manager@{Boid\+Manager}}
+
+
+{\ttfamily \#include $<$Boid\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_boid_manager_a605e34b9275cbd7d0c00ed65d771b23e}{Boid\+Manager} ()
+\item 
+void \hyperlink{class_boid_manager_a072752bb16c5ede0155932c40eef1db7}{Add\+Boid} (\hyperlink{class_boid}{Boid} $\ast$)
+\item 
+void \hyperlink{class_boid_manager_a45aa4d3cdbe39b30b1c42e028b0fff9f}{Update} ()
+\item 
+void \hyperlink{class_boid_manager_ad3646a44a8e0f8970d3a5925c63f78f5}{Draw} ()
+\item 
+void \hyperlink{class_boid_manager_a35d2ffedc1bf85259592e3047e014f9e}{Draw\+UI} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_boid_manager}{Boid\+Manager} $\ast$ \hyperlink{class_boid_manager_a05908f2393277c384066d35703de6c89}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ \hyperlink{class_boid_manager_a7e2b1c2dfced5cb8f36255742afa6e83}{boids}
+\item 
+vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ \hyperlink{class_boid_manager_aa4c01eee1d357cb75db650bb1c63bf60}{flocks} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_boid}{Boid} Manager class. This manager contains the boids of the game. Is in charge of updating and drawing. Contains the different flocks as well. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Boid\+Manager@{Boid\+Manager}!Boid\+Manager@{Boid\+Manager}}
+\index{Boid\+Manager@{Boid\+Manager}!Boid\+Manager@{Boid\+Manager}}
+\subsubsection[{\texorpdfstring{Boid\+Manager()}{BoidManager()}}]{\setlength{\rightskip}{0pt plus 5cm}Boid\+Manager\+::\+Boid\+Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_manager_a605e34b9275cbd7d0c00ed65d771b23e}{}\label{class_boid_manager_a605e34b9275cbd7d0c00ed65d771b23e}
+Constructor for the \hyperlink{class_boid_manager}{Boid\+Manager}. Sets the starting attributes for the manager 
+
+\subsection{Member Function Documentation}
+\index{Boid\+Manager@{Boid\+Manager}!Add\+Boid@{Add\+Boid}}
+\index{Add\+Boid@{Add\+Boid}!Boid\+Manager@{Boid\+Manager}}
+\subsubsection[{\texorpdfstring{Add\+Boid(\+Boid $\ast$)}{AddBoid(Boid *)}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+Manager\+::\+Add\+Boid (
+\begin{DoxyParamCaption}
+\item[{{\bf Boid} $\ast$}]{boid}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_manager_a072752bb16c5ede0155932c40eef1db7}{}\label{class_boid_manager_a072752bb16c5ede0155932c40eef1db7}
+Add boid to the boids list and to the boids flocks as well. \index{Boid\+Manager@{Boid\+Manager}!Draw@{Draw}}
+\index{Draw@{Draw}!Boid\+Manager@{Boid\+Manager}}
+\subsubsection[{\texorpdfstring{Draw()}{Draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+Manager\+::\+Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_manager_ad3646a44a8e0f8970d3a5925c63f78f5}{}\label{class_boid_manager_ad3646a44a8e0f8970d3a5925c63f78f5}
+Drawing the boids in the list \index{Boid\+Manager@{Boid\+Manager}!Draw\+UI@{Draw\+UI}}
+\index{Draw\+UI@{Draw\+UI}!Boid\+Manager@{Boid\+Manager}}
+\subsubsection[{\texorpdfstring{Draw\+U\+I()}{DrawUI()}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+Manager\+::\+Draw\+UI (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_manager_a35d2ffedc1bf85259592e3047e014f9e}{}\label{class_boid_manager_a35d2ffedc1bf85259592e3047e014f9e}
+Calling the drawui method of all the boids \index{Boid\+Manager@{Boid\+Manager}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Boid\+Manager@{Boid\+Manager}}
+\subsubsection[{\texorpdfstring{Get\+Instance()}{GetInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Boid\+Manager} $\ast$ Boid\+Manager\+::\+Get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_boid_manager_a05908f2393277c384066d35703de6c89}{}\label{class_boid_manager_a05908f2393277c384066d35703de6c89}
+Returns the instance of the boid manager. Creates an instance if one has not already been created. \index{Boid\+Manager@{Boid\+Manager}!Update@{Update}}
+\index{Update@{Update}!Boid\+Manager@{Boid\+Manager}}
+\subsubsection[{\texorpdfstring{Update()}{Update()}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+Manager\+::\+Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_manager_a45aa4d3cdbe39b30b1c42e028b0fff9f}{}\label{class_boid_manager_a45aa4d3cdbe39b30b1c42e028b0fff9f}
+Updating the boids in the list. 
+
+\subsection{Member Data Documentation}
+\index{Boid\+Manager@{Boid\+Manager}!boids@{boids}}
+\index{boids@{boids}!Boid\+Manager@{Boid\+Manager}}
+\subsubsection[{\texorpdfstring{boids}{boids}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Boid}$\ast$$>$ Boid\+Manager\+::boids}\hypertarget{class_boid_manager_a7e2b1c2dfced5cb8f36255742afa6e83}{}\label{class_boid_manager_a7e2b1c2dfced5cb8f36255742afa6e83}
+Contains all the worlds boids \index{Boid\+Manager@{Boid\+Manager}!flocks@{flocks}}
+\index{flocks@{flocks}!Boid\+Manager@{Boid\+Manager}}
+\subsubsection[{\texorpdfstring{flocks}{flocks}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Boid}$\ast$$>$ Boid\+Manager\+::flocks\mbox{[}4\mbox{]}}\hypertarget{class_boid_manager_aa4c01eee1d357cb75db650bb1c63bf60}{}\label{class_boid_manager_aa4c01eee1d357cb75db650bb1c63bf60}
+Seperate vector for each flock of boids in the world. Corresponds to each factory 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Boid\+Manager.\+h\item 
+Boid\+Manager.\+cpp\end{DoxyCompactItemize}

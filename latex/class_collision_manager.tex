@@ -1,0 +1,174 @@
+\hypertarget{class_collision_manager}{}\section{Collision\+Manager Class Reference}
+\label{class_collision_manager}\index{Collision\+Manager@{Collision\+Manager}}
+
+
+{\ttfamily \#include $<$Collision\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_collision_manager_a81f0b3f0cc0268c80f54714cd7ddb55f}{Collision\+Manager} ()
+\item 
+void \hyperlink{class_collision_manager_aa1c1b2c09960c0bad6b9c980324f9f92}{Check\+Collisions} ()
+\item 
+void \hyperlink{class_collision_manager_a3b8aaa6390c3f6180a5a0249f056b7c0}{Asteroid\+Collisions} ()
+\item 
+void \hyperlink{class_collision_manager_a43ae00d17f886cf3907b3afc128bffbb}{Bullet\+Collisions} ()
+\item 
+void \hyperlink{class_collision_manager_ad4be439c8a229dc80aa62626ddf59719}{Boid\+Collisions} ()
+\item 
+void \hyperlink{class_collision_manager_a25b561a8f6e4d3a3acf189f906ba98b4}{Asteroid\+Pred\+Collisions} ()
+\item 
+void \hyperlink{class_collision_manager_a274813dccff41e23538606229dc976e5}{Player\+Power\+Up\+Collisions} ()
+\item 
+void \hyperlink{class_collision_manager_a3ae0d2b33bc8e256a50e5646b794b83d}{Player\+Missile\+Collisions} ()
+\item 
+void \hyperlink{class_collision_manager_a99dd76e84b4fa2f2fa03f4b72b5a191b}{Bullet\+Factory\+Collisions} ()
+\item 
+void {\bfseries set\+Player} (\hyperlink{class_player}{Player} \&p)\hypertarget{class_collision_manager_abb793fa039b78ec6f817c58d1bac6391}{}\label{class_collision_manager_abb793fa039b78ec6f817c58d1bac6391}
+
+\item 
+float \hyperlink{class_collision_manager_a867cc7c35792a6bc65efbae9cd82fcc4}{Distance} (\hyperlink{class_pvector}{Pvector}, \hyperlink{class_pvector}{Pvector})
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_collision_manager}{Collision\+Manager} $\ast$ \hyperlink{class_collision_manager_abe639306dbd7b68510f99d8dc663f3a0}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_player}{Player} $\ast$ \hyperlink{class_collision_manager_aaa92cb687e2b743571212e2e3c9f86bf}{player}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{class_asteroid}{Asteroid} $\ast$ $>$ $\ast$ \hyperlink{class_collision_manager_aef5cf9ee9391bf3329907b812e05bd2d}{asteroids}
+\item 
+vector$<$ \hyperlink{class_bullet}{Bullet} $\ast$ $>$ $\ast$ \hyperlink{class_collision_manager_a4a41bb9794197a0eb75aed6e8f936e14}{bullets}
+\item 
+vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ $\ast$ \hyperlink{class_collision_manager_aab48fcf9176eaa95c8562740b3617a58}{boids}
+\item 
+vector$<$ \hyperlink{class_power_up}{Power\+Up} $\ast$ $>$ $\ast$ \hyperlink{class_collision_manager_a0e37f140934d53f752e758faddcea315}{powerups}
+\item 
+vector$<$ \hyperlink{class_missile}{Missile} $\ast$ $>$ $\ast$ \hyperlink{class_collision_manager_a9d14346744bea49c6b45534dc7bf74fc}{missiles}
+\item 
+vector$<$ \hyperlink{class_factory}{Factory} $\ast$ $>$ $\ast$ \hyperlink{class_collision_manager_ad46ec3ec145aeacb4446ad42797964cd}{factories}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Collision Manager class. This manager uses circle based collision detection for collisions between entities. Resolves collisions and calls relevant methods of collding entities 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Collision\+Manager@{Collision\+Manager}!Collision\+Manager@{Collision\+Manager}}
+\index{Collision\+Manager@{Collision\+Manager}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Collision\+Manager()}{CollisionManager()}}]{\setlength{\rightskip}{0pt plus 5cm}Collision\+Manager\+::\+Collision\+Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_a81f0b3f0cc0268c80f54714cd7ddb55f}{}\label{class_collision_manager_a81f0b3f0cc0268c80f54714cd7ddb55f}
+Constructor for the \hyperlink{class_collision_manager}{Collision\+Manager}. Sets the vector references for all entities 
+
+\subsection{Member Function Documentation}
+\index{Collision\+Manager@{Collision\+Manager}!Asteroid\+Collisions@{Asteroid\+Collisions}}
+\index{Asteroid\+Collisions@{Asteroid\+Collisions}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Asteroid\+Collisions()}{AsteroidCollisions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Asteroid\+Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_a3b8aaa6390c3f6180a5a0249f056b7c0}{}\label{class_collision_manager_a3b8aaa6390c3f6180a5a0249f056b7c0}
+Checks the asteroids collisions (bullets / player) \index{Collision\+Manager@{Collision\+Manager}!Asteroid\+Pred\+Collisions@{Asteroid\+Pred\+Collisions}}
+\index{Asteroid\+Pred\+Collisions@{Asteroid\+Pred\+Collisions}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Asteroid\+Pred\+Collisions()}{AsteroidPredCollisions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Asteroid\+Pred\+Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_a25b561a8f6e4d3a3acf189f906ba98b4}{}\label{class_collision_manager_a25b561a8f6e4d3a3acf189f906ba98b4}
+Checks the collisions between boids and asteroids \index{Collision\+Manager@{Collision\+Manager}!Boid\+Collisions@{Boid\+Collisions}}
+\index{Boid\+Collisions@{Boid\+Collisions}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Boid\+Collisions()}{BoidCollisions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Boid\+Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_ad4be439c8a229dc80aa62626ddf59719}{}\label{class_collision_manager_ad4be439c8a229dc80aa62626ddf59719}
+Checks to see what the boids have collided with and calls methods depending on these collisions \index{Collision\+Manager@{Collision\+Manager}!Bullet\+Collisions@{Bullet\+Collisions}}
+\index{Bullet\+Collisions@{Bullet\+Collisions}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Bullet\+Collisions()}{BulletCollisions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Bullet\+Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_a43ae00d17f886cf3907b3afc128bffbb}{}\label{class_collision_manager_a43ae00d17f886cf3907b3afc128bffbb}
+Checks to see what the bullets have collided with \index{Collision\+Manager@{Collision\+Manager}!Bullet\+Factory\+Collisions@{Bullet\+Factory\+Collisions}}
+\index{Bullet\+Factory\+Collisions@{Bullet\+Factory\+Collisions}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Bullet\+Factory\+Collisions()}{BulletFactoryCollisions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Bullet\+Factory\+Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_a99dd76e84b4fa2f2fa03f4b72b5a191b}{}\label{class_collision_manager_a99dd76e84b4fa2f2fa03f4b72b5a191b}
+Checks colision between factory and bullet. \index{Collision\+Manager@{Collision\+Manager}!Check\+Collisions@{Check\+Collisions}}
+\index{Check\+Collisions@{Check\+Collisions}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Check\+Collisions()}{CheckCollisions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Check\+Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_aa1c1b2c09960c0bad6b9c980324f9f92}{}\label{class_collision_manager_aa1c1b2c09960c0bad6b9c980324f9f92}
+Calls all the collision methods in the manager \index{Collision\+Manager@{Collision\+Manager}!Distance@{Distance}}
+\index{Distance@{Distance}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Distance(\+Pvector, Pvector)}{Distance(Pvector, Pvector)}}]{\setlength{\rightskip}{0pt plus 5cm}float Collision\+Manager\+::\+Distance (
+\begin{DoxyParamCaption}
+\item[{{\bf Pvector}}]{pos1, }
+\item[{{\bf Pvector}}]{pos2}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_a867cc7c35792a6bc65efbae9cd82fcc4}{}\label{class_collision_manager_a867cc7c35792a6bc65efbae9cd82fcc4}
+Gets distance between two entites \index{Collision\+Manager@{Collision\+Manager}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Get\+Instance()}{GetInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Collision\+Manager} $\ast$ Collision\+Manager\+::\+Get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_collision_manager_abe639306dbd7b68510f99d8dc663f3a0}{}\label{class_collision_manager_abe639306dbd7b68510f99d8dc663f3a0}
+Returns the instance of the collision manager. Creates an instance if one has not already been created. \index{Collision\+Manager@{Collision\+Manager}!Player\+Missile\+Collisions@{Player\+Missile\+Collisions}}
+\index{Player\+Missile\+Collisions@{Player\+Missile\+Collisions}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Player\+Missile\+Collisions()}{PlayerMissileCollisions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Player\+Missile\+Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_a3ae0d2b33bc8e256a50e5646b794b83d}{}\label{class_collision_manager_a3ae0d2b33bc8e256a50e5646b794b83d}
+Checks colision between player and missile. Damages player \index{Collision\+Manager@{Collision\+Manager}!Player\+Power\+Up\+Collisions@{Player\+Power\+Up\+Collisions}}
+\index{Player\+Power\+Up\+Collisions@{Player\+Power\+Up\+Collisions}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{Player\+Power\+Up\+Collisions()}{PlayerPowerUpCollisions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Player\+Power\+Up\+Collisions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_collision_manager_a274813dccff41e23538606229dc976e5}{}\label{class_collision_manager_a274813dccff41e23538606229dc976e5}
+Checks collision between plaeyr and powerups and powers up player depending on type 
+
+\subsection{Member Data Documentation}
+\index{Collision\+Manager@{Collision\+Manager}!asteroids@{asteroids}}
+\index{asteroids@{asteroids}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{asteroids}{asteroids}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Asteroid}$\ast$$>$$\ast$ Collision\+Manager\+::asteroids\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_collision_manager_aef5cf9ee9391bf3329907b812e05bd2d}{}\label{class_collision_manager_aef5cf9ee9391bf3329907b812e05bd2d}
+reference to vector of asteroids \index{Collision\+Manager@{Collision\+Manager}!boids@{boids}}
+\index{boids@{boids}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{boids}{boids}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Boid}$\ast$$>$$\ast$ Collision\+Manager\+::boids\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_collision_manager_aab48fcf9176eaa95c8562740b3617a58}{}\label{class_collision_manager_aab48fcf9176eaa95c8562740b3617a58}
+reference to vector of boids \index{Collision\+Manager@{Collision\+Manager}!bullets@{bullets}}
+\index{bullets@{bullets}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{bullets}{bullets}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Bullet}$\ast$$>$$\ast$ Collision\+Manager\+::bullets\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_collision_manager_a4a41bb9794197a0eb75aed6e8f936e14}{}\label{class_collision_manager_a4a41bb9794197a0eb75aed6e8f936e14}
+reference to vector of bullets \index{Collision\+Manager@{Collision\+Manager}!factories@{factories}}
+\index{factories@{factories}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{factories}{factories}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Factory}$\ast$$>$$\ast$ Collision\+Manager\+::factories\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_collision_manager_ad46ec3ec145aeacb4446ad42797964cd}{}\label{class_collision_manager_ad46ec3ec145aeacb4446ad42797964cd}
+reference to vector of factories \index{Collision\+Manager@{Collision\+Manager}!missiles@{missiles}}
+\index{missiles@{missiles}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{missiles}{missiles}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Missile}$\ast$$>$$\ast$ Collision\+Manager\+::missiles\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_collision_manager_a9d14346744bea49c6b45534dc7bf74fc}{}\label{class_collision_manager_a9d14346744bea49c6b45534dc7bf74fc}
+reference to vector of missiles \index{Collision\+Manager@{Collision\+Manager}!player@{player}}
+\index{player@{player}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{player}{player}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ Collision\+Manager\+::player}\hypertarget{class_collision_manager_aaa92cb687e2b743571212e2e3c9f86bf}{}\label{class_collision_manager_aaa92cb687e2b743571212e2e3c9f86bf}
+A reference to the player \index{Collision\+Manager@{Collision\+Manager}!powerups@{powerups}}
+\index{powerups@{powerups}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{\texorpdfstring{powerups}{powerups}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Power\+Up}$\ast$$>$$\ast$ Collision\+Manager\+::powerups\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_collision_manager_a0e37f140934d53f752e758faddcea315}{}\label{class_collision_manager_a0e37f140934d53f752e758faddcea315}
+reference to vector of powerups 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Collision\+Manager.\+h\item 
+Collision\+Manager.\+cpp\end{DoxyCompactItemize}

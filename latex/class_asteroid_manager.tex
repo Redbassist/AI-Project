@@ -1,0 +1,115 @@
+\hypertarget{class_asteroid_manager}{}\section{Asteroid\+Manager Class Reference}
+\label{class_asteroid_manager}\index{Asteroid\+Manager@{Asteroid\+Manager}}
+
+
+{\ttfamily \#include $<$Asteroid\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_asteroid_manager_a8f60197b9c284c845a7589adf9d08e6b}{Asteroid\+Manager} ()
+\item 
+void \hyperlink{class_asteroid_manager_a3bf950032652d720b4e3aa9d1583cbc3}{Update} ()
+\item 
+void \hyperlink{class_asteroid_manager_a735c2f7d45e752d63a2106593fa73dfe}{Draw} ()
+\item 
+void \hyperlink{class_asteroid_manager_a4aef338a305d3a40fc345b31ba63c43c}{Spawn\+Asteroids} ()
+\item 
+bool \hyperlink{class_asteroid_manager_a5f989e3e36c51f4c9f2bdc7cbf6bcaee}{Check\+Spawn\+Location} (\hyperlink{class_pvector}{Pvector})
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_asteroid_manager}{Asteroid\+Manager} $\ast$ \hyperlink{class_asteroid_manager_af5c3011f97991504257e8feadbbb95d6}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{class_asteroid}{Asteroid} $\ast$ $>$ \hyperlink{class_asteroid_manager_a1a6850a31e14ab93a9b239510e4c2f8d}{asteroids}
+\item 
+\hyperlink{class_player}{Player} $\ast$ \hyperlink{class_asteroid_manager_a35e449894f3f0e715fd5f5aad03619d5}{player}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_asteroid_manager_a2c69adede16e785e12ffc51cd0c211d4}{max\+Asteroids}
+\item 
+float \hyperlink{class_asteroid_manager_ac6ecdbf121103bb4440cd6624e8c5cdf}{add\+Timer}
+\item 
+float \hyperlink{class_asteroid_manager_aca7c60ae9430d71d66e8dd012962dfdb}{timer\+Length}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_asteroid}{Asteroid} Manager class. This manager contains the asteroids of the game. Is in charge of creating more asteroids if below amount expected in game. Always spawned outside the user\textquotesingle{}s view. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Asteroid\+Manager@{Asteroid\+Manager}!Asteroid\+Manager@{Asteroid\+Manager}}
+\index{Asteroid\+Manager@{Asteroid\+Manager}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{Asteroid\+Manager()}{AsteroidManager()}}]{\setlength{\rightskip}{0pt plus 5cm}Asteroid\+Manager\+::\+Asteroid\+Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_manager_a8f60197b9c284c845a7589adf9d08e6b}{}\label{class_asteroid_manager_a8f60197b9c284c845a7589adf9d08e6b}
+Constructor for the \hyperlink{class_asteroid}{Asteroid} Manager. Sets the starting attributes for the manager 
+
+\subsection{Member Function Documentation}
+\index{Asteroid\+Manager@{Asteroid\+Manager}!Check\+Spawn\+Location@{Check\+Spawn\+Location}}
+\index{Check\+Spawn\+Location@{Check\+Spawn\+Location}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{Check\+Spawn\+Location(\+Pvector)}{CheckSpawnLocation(Pvector)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Asteroid\+Manager\+::\+Check\+Spawn\+Location (
+\begin{DoxyParamCaption}
+\item[{{\bf Pvector}}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_manager_a5f989e3e36c51f4c9f2bdc7cbf6bcaee}{}\label{class_asteroid_manager_a5f989e3e36c51f4c9f2bdc7cbf6bcaee}
+Used to check if the asteroid is in the view. \index{Asteroid\+Manager@{Asteroid\+Manager}!Draw@{Draw}}
+\index{Draw@{Draw}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{Draw()}{Draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+Manager\+::\+Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_manager_a735c2f7d45e752d63a2106593fa73dfe}{}\label{class_asteroid_manager_a735c2f7d45e752d63a2106593fa73dfe}
+Draws all the asteroids in the world. \index{Asteroid\+Manager@{Asteroid\+Manager}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{Get\+Instance()}{GetInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Asteroid\+Manager} $\ast$ Asteroid\+Manager\+::\+Get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_asteroid_manager_af5c3011f97991504257e8feadbbb95d6}{}\label{class_asteroid_manager_af5c3011f97991504257e8feadbbb95d6}
+Returns the instance of the asteroid manager. Creates an instance if one has not already been created. \index{Asteroid\+Manager@{Asteroid\+Manager}!Spawn\+Asteroids@{Spawn\+Asteroids}}
+\index{Spawn\+Asteroids@{Spawn\+Asteroids}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{Spawn\+Asteroids()}{SpawnAsteroids()}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+Manager\+::\+Spawn\+Asteroids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_manager_a4aef338a305d3a40fc345b31ba63c43c}{}\label{class_asteroid_manager_a4aef338a305d3a40fc345b31ba63c43c}
+If the amount of asteroids in the world is less than the max, will try and spawn a new one. \index{Asteroid\+Manager@{Asteroid\+Manager}!Update@{Update}}
+\index{Update@{Update}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{Update()}{Update()}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+Manager\+::\+Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_manager_a3bf950032652d720b4e3aa9d1583cbc3}{}\label{class_asteroid_manager_a3bf950032652d720b4e3aa9d1583cbc3}
+Updates the asteroid manager, calling the spawn asteroid method. 
+
+\subsection{Member Data Documentation}
+\index{Asteroid\+Manager@{Asteroid\+Manager}!add\+Timer@{add\+Timer}}
+\index{add\+Timer@{add\+Timer}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{add\+Timer}{addTimer}}]{\setlength{\rightskip}{0pt plus 5cm}float Asteroid\+Manager\+::add\+Timer\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_manager_ac6ecdbf121103bb4440cd6624e8c5cdf}{}\label{class_asteroid_manager_ac6ecdbf121103bb4440cd6624e8c5cdf}
+How often asteroids are added into the level \index{Asteroid\+Manager@{Asteroid\+Manager}!asteroids@{asteroids}}
+\index{asteroids@{asteroids}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{asteroids}{asteroids}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Asteroid}$\ast$$>$ Asteroid\+Manager\+::asteroids}\hypertarget{class_asteroid_manager_a1a6850a31e14ab93a9b239510e4c2f8d}{}\label{class_asteroid_manager_a1a6850a31e14ab93a9b239510e4c2f8d}
+List of asteroids in the level \index{Asteroid\+Manager@{Asteroid\+Manager}!max\+Asteroids@{max\+Asteroids}}
+\index{max\+Asteroids@{max\+Asteroids}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{max\+Asteroids}{maxAsteroids}}]{\setlength{\rightskip}{0pt plus 5cm}int Asteroid\+Manager\+::max\+Asteroids\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_manager_a2c69adede16e785e12ffc51cd0c211d4}{}\label{class_asteroid_manager_a2c69adede16e785e12ffc51cd0c211d4}
+max amount of asteroids in the level \index{Asteroid\+Manager@{Asteroid\+Manager}!player@{player}}
+\index{player@{player}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{player}{player}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ Asteroid\+Manager\+::player}\hypertarget{class_asteroid_manager_a35e449894f3f0e715fd5f5aad03619d5}{}\label{class_asteroid_manager_a35e449894f3f0e715fd5f5aad03619d5}
+A reference to the player \index{Asteroid\+Manager@{Asteroid\+Manager}!timer\+Length@{timer\+Length}}
+\index{timer\+Length@{timer\+Length}!Asteroid\+Manager@{Asteroid\+Manager}}
+\subsubsection[{\texorpdfstring{timer\+Length}{timerLength}}]{\setlength{\rightskip}{0pt plus 5cm}float Asteroid\+Manager\+::timer\+Length\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_manager_aca7c60ae9430d71d66e8dd012962dfdb}{}\label{class_asteroid_manager_aca7c60ae9430d71d66e8dd012962dfdb}
+Used in tandom with the add\+Timer 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Asteroid\+Manager.\+h\item 
+Asteroid\+Manager.\+cpp\end{DoxyCompactItemize}

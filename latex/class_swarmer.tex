@@ -1,0 +1,133 @@
+\hypertarget{class_swarmer}{}\section{Swarmer Class Reference}
+\label{class_swarmer}\index{Swarmer@{Swarmer}}
+Inheritance diagram for Swarmer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_swarmer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Swarmer} (float x, float y, \hyperlink{class_player}{Player} $\ast$)\hypertarget{class_swarmer_acbc98c4d22c4cf003cc6742e7cf980ab}{}\label{class_swarmer_acbc98c4d22c4cf003cc6742e7cf980ab}
+
+\item 
+void {\bfseries Load\+Assets} ()\hypertarget{class_swarmer_a670c7216011b1a009295efe2d2aa84b8}{}\label{class_swarmer_a670c7216011b1a009295efe2d2aa84b8}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_swarmer_a5f552b9442dcef5ec23c1acd71660df3}{Separation} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries Avoid\+Asteroids} ()\hypertarget{class_swarmer_a5c7b023cf740b5947d09a8f789b5d50c}{}\label{class_swarmer_a5c7b023cf740b5947d09a8f789b5d50c}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_swarmer_a5e6ce35ee09287cc288c43dc4cc15beb}{Alignment} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_swarmer_acbade5306e05b325c30431fd662f6084}{Cohesion} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries Chase\+Player} ()\hypertarget{class_swarmer_a3a2c0465d28a7b0856bb7d6f8819d0fe}{}\label{class_swarmer_a3a2c0465d28a7b0856bb7d6f8819d0fe}
+
+\item 
+void \hyperlink{class_swarmer_a29c7d44ad87b663ed71cb8d23bc14f0f}{run} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+void \hyperlink{class_swarmer_a02959b4af97e6c0979c20f0b8298635b}{update} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+void {\bfseries avoid} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)\hypertarget{class_swarmer_a835556f89ae34a62302d6e80f6be053b}{}\label{class_swarmer_a835556f89ae34a62302d6e80f6be053b}
+
+\item 
+void {\bfseries chase} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)\hypertarget{class_swarmer_afcbd4b37f2c2a0ce5018c5999edc4aca}{}\label{class_swarmer_afcbd4b37f2c2a0ce5018c5999edc4aca}
+
+\item 
+void {\bfseries borders} ()\hypertarget{class_swarmer_a174e66d0bd98c3fc9478b3d3b901ed0a}{}\label{class_swarmer_a174e66d0bd98c3fc9478b3d3b901ed0a}
+
+\item 
+float {\bfseries angle} (\hyperlink{class_pvector}{Pvector} v)\hypertarget{class_swarmer_a416ea6dfaffedd2f5c054aa8ffd0802c}{}\label{class_swarmer_a416ea6dfaffedd2f5c054aa8ffd0802c}
+
+\item 
+bool {\bfseries check\+Asteroids} ()\hypertarget{class_swarmer_af743b3c533a7d9d801a859b9983a6475}{}\label{class_swarmer_af743b3c533a7d9d801a859b9983a6475}
+
+\item 
+bool {\bfseries search} ()\hypertarget{class_swarmer_a791785498a23bcac8b500744c035af2e}{}\label{class_swarmer_a791785498a23bcac8b500744c035af2e}
+
+\item 
+bool {\bfseries lost} ()\hypertarget{class_swarmer_ab0dc5f3339157d2fda84f1df986feff6}{}\label{class_swarmer_ab0dc5f3339157d2fda84f1df986feff6}
+
+\item 
+void {\bfseries swarm} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)\hypertarget{class_swarmer_a8b79b199bb0c108cc078af6397e4fa2a}{}\label{class_swarmer_a8b79b199bb0c108cc078af6397e4fa2a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+State {\bfseries current\+State}\hypertarget{class_swarmer_a81e202572710a9ae0010801411ffc8f6}{}\label{class_swarmer_a81e202572710a9ae0010801411ffc8f6}
+
+\item 
+int {\bfseries window\+\_\+height}\hypertarget{class_swarmer_a2de3ae4f634af29497f0bbcab44aec94}{}\label{class_swarmer_a2de3ae4f634af29497f0bbcab44aec94}
+
+\item 
+int {\bfseries window\+\_\+width}\hypertarget{class_swarmer_a98494b00ff9dd3dd80a3bfd2257b322a}{}\label{class_swarmer_a98494b00ff9dd3dd80a3bfd2257b322a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Swarmer@{Swarmer}!Alignment@{Alignment}}
+\index{Alignment@{Alignment}!Swarmer@{Swarmer}}
+\subsubsection[{\texorpdfstring{Alignment(vector$<$ Boid $\ast$ $>$ Boids)}{Alignment(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Swarmer\+::\+Alignment (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_swarmer_a5e6ce35ee09287cc288c43dc4cc15beb}{}\label{class_swarmer_a5e6ce35ee09287cc288c43dc4cc15beb}
+Averages the current direction of boids within a range. Applies this to current acceleration to makes all point in same direction. 
+
+Reimplemented from \hyperlink{class_boid_a9db5db2460a2fed2006740bebae9e15f}{Boid}.
+
+\index{Swarmer@{Swarmer}!Cohesion@{Cohesion}}
+\index{Cohesion@{Cohesion}!Swarmer@{Swarmer}}
+\subsubsection[{\texorpdfstring{Cohesion(vector$<$ Boid $\ast$ $>$ Boids)}{Cohesion(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Swarmer\+::\+Cohesion (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_swarmer_acbade5306e05b325c30431fd662f6084}{}\label{class_swarmer_acbade5306e05b325c30431fd662f6084}
+Averages out current locations from boids in a range. Keeps boids in a group. 
+
+Reimplemented from \hyperlink{class_boid_af566a172498e7019687316c2ccf111a9}{Boid}.
+
+\index{Swarmer@{Swarmer}!run@{run}}
+\index{run@{run}!Swarmer@{Swarmer}}
+\subsubsection[{\texorpdfstring{run(vector$<$ Boid $\ast$ $>$ v)}{run(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Swarmer\+::run (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_swarmer_a29c7d44ad87b663ed71cb8d23bc14f0f}{}\label{class_swarmer_a29c7d44ad87b663ed71cb8d23bc14f0f}
+General flocking method that calls flock as well as the border check 
+
+Reimplemented from \hyperlink{class_boid_a61f243a032aafc4fdbcfe8a4b29ba22f}{Boid}.
+
+\index{Swarmer@{Swarmer}!Separation@{Separation}}
+\index{Separation@{Separation}!Swarmer@{Swarmer}}
+\subsubsection[{\texorpdfstring{Separation(vector$<$ Boid $\ast$ $>$ Boids)}{Separation(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Swarmer\+::\+Separation (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_swarmer_a5f552b9442dcef5ec23c1acd71660df3}{}\label{class_swarmer_a5f552b9442dcef5ec23c1acd71660df3}
+Checks other boids in the world. If there are any boids with a given range, will get the direction away from those that are close, average them and then apply to acceleration. 
+
+Reimplemented from \hyperlink{class_boid_a88b4b07542a7c340df58f10fc1516666}{Boid}.
+
+\index{Swarmer@{Swarmer}!update@{update}}
+\index{update@{update}!Swarmer@{Swarmer}}
+\subsubsection[{\texorpdfstring{update(vector$<$ Boid $\ast$ $>$ v)}{update(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Swarmer\+::update (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_swarmer_a02959b4af97e6c0979c20f0b8298635b}{}\label{class_swarmer_a02959b4af97e6c0979c20f0b8298635b}
+Holds the finite state machine of the boid. Moves through different behavious depending on the situation. S\+E\+A\+R\+CH / A\+T\+T\+A\+CK / A\+V\+O\+ID 
+
+Reimplemented from \hyperlink{class_boid_aba6608b5a1645b4812cc895aff338606}{Boid}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Swarmer.\+h\item 
+Swarmer.\+cpp\end{DoxyCompactItemize}

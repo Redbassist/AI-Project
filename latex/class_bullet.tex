@@ -1,0 +1,134 @@
+\hypertarget{class_bullet}{}\section{Bullet Class Reference}
+\label{class_bullet}\index{Bullet@{Bullet}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bullet_a553afe91ba9760d22b57cbf6f53c6feb}{Bullet} (\hyperlink{class_pvector}{Pvector}, \hyperlink{class_pvector}{Pvector}, bool, bool)
+\item 
+void \hyperlink{class_bullet_a5b84efc6a1415e3ad88a2633268e3ff1}{Load\+Assets} ()
+\item 
+void \hyperlink{class_bullet_a180b7054fdf2547b1d1e0de7d8001bf9}{Update} ()
+\item 
+bool \hyperlink{class_bullet_a757c394af4c888c6761bf32925a747ab}{Life\+Check} ()
+\item 
+void \hyperlink{class_bullet_a2f4547c6e79f2c703dd915e623efce82}{Movement} ()
+\item 
+void \hyperlink{class_bullet_a17d4579dee8d6eac9d519cec20cb75a4}{Draw} ()
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries get\+Pos} ()\hypertarget{class_bullet_a2deda94a9e8cf0e965705d1a84aa303d}{}\label{class_bullet_a2deda94a9e8cf0e965705d1a84aa303d}
+
+\item 
+float {\bfseries get\+Radius} ()\hypertarget{class_bullet_a1979905e213e11ede2ce8fc44642e8cc}{}\label{class_bullet_a1979905e213e11ede2ce8fc44642e8cc}
+
+\item 
+void {\bfseries set\+Destroyed} (bool)\hypertarget{class_bullet_a7d9ed238b2dadcc802008ba3d70f3276}{}\label{class_bullet_a7d9ed238b2dadcc802008ba3d70f3276}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries player\+Bullet}\hypertarget{class_bullet_afdaf4761983c08764072fb938de0e427}{}\label{class_bullet_afdaf4761983c08764072fb938de0e427}
+
+\item 
+bool {\bfseries super\+Bullet}\hypertarget{class_bullet_a14a46d142693b70910c19eb1db286ad4}{}\label{class_bullet_a14a46d142693b70910c19eb1db286ad4}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Texture {\bfseries texture}\hypertarget{class_bullet_ae14d9fc5a9df27e8436e4220d813857c}{}\label{class_bullet_ae14d9fc5a9df27e8436e4220d813857c}
+
+\item 
+Sprite {\bfseries sprite}\hypertarget{class_bullet_a1e429ea8f1f7fc09535b05d8dc0231f3}{}\label{class_bullet_a1e429ea8f1f7fc09535b05d8dc0231f3}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_bullet_a8921c8e343c4345b3d6704e2b89f2b37}{pos}
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_bullet_ae868f8e7c0fa8e97a8fc3fc64bb477ed}{direction}
+\item 
+float \hyperlink{class_bullet_a5fbd5204eec00c8285686abeb4547f16}{speed}
+\item 
+float \hyperlink{class_bullet_af530c165781cd8524045bb075636aefc}{radius}
+\item 
+int \hyperlink{class_bullet_a8b359e5e8cbd4739e2eb477e943ca558}{ttl}
+\item 
+bool \hyperlink{class_bullet_a3860cd0c2d7e8191ef04efddd6d7579a}{destroyed}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{Bullet(\+Pvector, Pvector, bool, bool)}{Bullet(Pvector, Pvector, bool, bool)}}]{\setlength{\rightskip}{0pt plus 5cm}Bullet\+::\+Bullet (
+\begin{DoxyParamCaption}
+\item[{{\bf Pvector}}]{p, }
+\item[{{\bf Pvector}}]{dir, }
+\item[{bool}]{owner, }
+\item[{bool}]{super}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_a553afe91ba9760d22b57cbf6f53c6feb}{}\label{class_bullet_a553afe91ba9760d22b57cbf6f53c6feb}
+Contructor Creates at given location with sent direction, if it is player bullet and if it is a strong bullet. 
+
+\subsection{Member Function Documentation}
+\index{Bullet@{Bullet}!Draw@{Draw}}
+\index{Draw@{Draw}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{Draw()}{Draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Bullet\+::\+Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_a17d4579dee8d6eac9d519cec20cb75a4}{}\label{class_bullet_a17d4579dee8d6eac9d519cec20cb75a4}
+Draws the bullet sprite at current location \index{Bullet@{Bullet}!Life\+Check@{Life\+Check}}
+\index{Life\+Check@{Life\+Check}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{Life\+Check()}{LifeCheck()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Bullet\+::\+Life\+Check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_a757c394af4c888c6761bf32925a747ab}{}\label{class_bullet_a757c394af4c888c6761bf32925a747ab}
+Checks if the bullet is still alive (ttl) \index{Bullet@{Bullet}!Load\+Assets@{Load\+Assets}}
+\index{Load\+Assets@{Load\+Assets}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{Load\+Assets()}{LoadAssets()}}]{\setlength{\rightskip}{0pt plus 5cm}void Bullet\+::\+Load\+Assets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_a5b84efc6a1415e3ad88a2633268e3ff1}{}\label{class_bullet_a5b84efc6a1415e3ad88a2633268e3ff1}
+Loads sprites and texture of bullet as well as sets radius. \index{Bullet@{Bullet}!Movement@{Movement}}
+\index{Movement@{Movement}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{Movement()}{Movement()}}]{\setlength{\rightskip}{0pt plus 5cm}void Bullet\+::\+Movement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_a2f4547c6e79f2c703dd915e623efce82}{}\label{class_bullet_a2f4547c6e79f2c703dd915e623efce82}
+Moves the bullet in the direction it was assigned at construction \index{Bullet@{Bullet}!Update@{Update}}
+\index{Update@{Update}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{Update()}{Update()}}]{\setlength{\rightskip}{0pt plus 5cm}void Bullet\+::\+Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_a180b7054fdf2547b1d1e0de7d8001bf9}{}\label{class_bullet_a180b7054fdf2547b1d1e0de7d8001bf9}
+calls the variouis update methods of the bullet. Movement / Lifecheck 
+
+\subsection{Member Data Documentation}
+\index{Bullet@{Bullet}!destroyed@{destroyed}}
+\index{destroyed@{destroyed}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{destroyed}{destroyed}}]{\setlength{\rightskip}{0pt plus 5cm}bool Bullet\+::destroyed\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_bullet_a3860cd0c2d7e8191ef04efddd6d7579a}{}\label{class_bullet_a3860cd0c2d7e8191ef04efddd6d7579a}
+Shows if the bullet is dead for removal from list \index{Bullet@{Bullet}!direction@{direction}}
+\index{direction@{direction}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{direction}{direction}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Bullet\+::direction\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_bullet_ae868f8e7c0fa8e97a8fc3fc64bb477ed}{}\label{class_bullet_ae868f8e7c0fa8e97a8fc3fc64bb477ed}
+Current direction of the bullet \index{Bullet@{Bullet}!pos@{pos}}
+\index{pos@{pos}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{pos}{pos}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Bullet\+::pos\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_bullet_a8921c8e343c4345b3d6704e2b89f2b37}{}\label{class_bullet_a8921c8e343c4345b3d6704e2b89f2b37}
+Current position of the bullet \index{Bullet@{Bullet}!radius@{radius}}
+\index{radius@{radius}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{radius}{radius}}]{\setlength{\rightskip}{0pt plus 5cm}float Bullet\+::radius\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_bullet_af530c165781cd8524045bb075636aefc}{}\label{class_bullet_af530c165781cd8524045bb075636aefc}
+Used for the collision detection of the game \index{Bullet@{Bullet}!speed@{speed}}
+\index{speed@{speed}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{speed}{speed}}]{\setlength{\rightskip}{0pt plus 5cm}float Bullet\+::speed\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_bullet_a5fbd5204eec00c8285686abeb4547f16}{}\label{class_bullet_a5fbd5204eec00c8285686abeb4547f16}
+max speed of the bullet \index{Bullet@{Bullet}!ttl@{ttl}}
+\index{ttl@{ttl}!Bullet@{Bullet}}
+\subsubsection[{\texorpdfstring{ttl}{ttl}}]{\setlength{\rightskip}{0pt plus 5cm}int Bullet\+::ttl\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_bullet_a8b359e5e8cbd4739e2eb477e943ca558}{}\label{class_bullet_a8b359e5e8cbd4739e2eb477e943ca558}
+How long the bullet will live for 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Bullet.\+h\item 
+Bullet.\+cpp\end{DoxyCompactItemize}

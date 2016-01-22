@@ -38,6 +38,9 @@ public:
 	Pvector Cohesion(vector<Boid*> Boids);
 	Pvector ChasePlayer();
 	Pvector CollectPowerup();
+	/**
+	* Limit speed when near to the player, to sit near and shoot
+	*/
 	void LimitAcceleration();
 	//Functions involving SFML and visualisation linking 
 	void run(vector <Boid*> v);
@@ -46,12 +49,27 @@ public:
 	void chase(vector <Boid*> v);
 	void collect(vector <Boid*> v);
 	void avoid(vector <Boid*> v);
+	/**
+	* Shoot the player if nearby
+	*/
 	void Shoot();
 	void borders();
 	float angle(Pvector v);
+	/**
+	* checks to see if asteroids are nearby
+	*/
 	bool checkAsteroids();
+	/**
+	* checks to see if powerups are nearby
+	*/
 	bool checkPowerUps();
+	/**
+	* checks to see if player is nearby
+	*/
 	bool search();
+	/**
+	* checks to see if player is outside of range
+	*/
 	bool lost();
 	//Pvector seek(Pvector v);
 };

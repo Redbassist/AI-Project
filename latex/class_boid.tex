@@ -1,0 +1,287 @@
+\hypertarget{class_boid}{}\section{Boid Class Reference}
+\label{class_boid}\index{Boid@{Boid}}
+
+
+{\ttfamily \#include $<$Boid.\+h$>$}
+
+Inheritance diagram for Boid\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_boid}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Boid} (float x, float y)\hypertarget{class_boid_a61c7081f12c16ba99dc4b3c094195bb2}{}\label{class_boid_a61c7081f12c16ba99dc4b3c094195bb2}
+
+\item 
+\hyperlink{class_boid_a809353c5168106191f3fa0c0841eb83e}{Boid} (float x, float y, \hyperlink{class_player}{Player} $\ast$, int)
+\item 
+\hyperlink{class_boid_a712f84ddc1b8ad06ad7ecd6c10a1666c}{$\sim$\+Boid} ()
+\item 
+void \hyperlink{class_boid_acef10e100c27b76f6b867ae7468c09bb}{apply\+Force} (\hyperlink{class_pvector}{Pvector} force)
+\item 
+virtual \hyperlink{class_pvector}{Pvector} \hyperlink{class_boid_a88b4b07542a7c340df58f10fc1516666}{Separation} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+virtual \hyperlink{class_pvector}{Pvector} \hyperlink{class_boid_a9db5db2460a2fed2006740bebae9e15f}{Alignment} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+virtual \hyperlink{class_pvector}{Pvector} \hyperlink{class_boid_af566a172498e7019687316c2ccf111a9}{Cohesion} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_boid_a3135a25087ac386d92e28b5718f6504f}{seek} (\hyperlink{class_pvector}{Pvector} v)
+\item 
+virtual void \hyperlink{class_boid_a61f243a032aafc4fdbcfe8a4b29ba22f}{run} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+virtual void \hyperlink{class_boid_aba6608b5a1645b4812cc895aff338606}{update} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+void \hyperlink{class_boid_a07b641cc0b78b95fa38d862dd173b05b}{draw} ()
+\item 
+void \hyperlink{class_boid_a420a63dc83217c22eb0937d57a6c197e}{drawui} ()
+\item 
+virtual void \hyperlink{class_boid_a6bbef162cb1a5439a4b02464c79f7e1f}{flock} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+void \hyperlink{class_boid_ab297036090d8dad9e70379ecfeb60137}{borders} ()
+\item 
+float \hyperlink{class_boid_afeb7353f3946b4bd1072a14aee888770}{angle} (\hyperlink{class_pvector}{Pvector} v)
+\item 
+void \hyperlink{class_boid_a2cbcd088c7dbe32f5103325cd5cfc3d3}{swarm} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+float {\bfseries get\+Health} ()\hypertarget{class_boid_ac98a6ee214e20502c895c4601b755322}{}\label{class_boid_ac98a6ee214e20502c895c4601b755322}
+
+\item 
+void {\bfseries set\+Health} (float h)\hypertarget{class_boid_af00fa2b56aabe0bfdc76eafba4b5f49a}{}\label{class_boid_af00fa2b56aabe0bfdc76eafba4b5f49a}
+
+\item 
+float {\bfseries get\+Radius} ()\hypertarget{class_boid_a43367d6d521678b3cfaeac628d2c5a46}{}\label{class_boid_a43367d6d521678b3cfaeac628d2c5a46}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries get\+Pos} ()\hypertarget{class_boid_adba55cca47bd48b838a6b881f00dfc88}{}\label{class_boid_adba55cca47bd48b838a6b881f00dfc88}
+
+\item 
+bool \hyperlink{class_boid_ac2ac201120f2abb6bbc919515848322b}{Life\+Check} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_player}{Player} $\ast$ \hyperlink{class_boid_ab5e134ab60644014edeff8d84a8187e6}{player}
+\item 
+int \hyperlink{class_boid_a33dde2d19ee395c259f90fe2b463b0b1}{power\+Timer}
+\item 
+int \hyperlink{class_boid_a67c611146020a06068a82e5ebf9bf837}{speed\+Timer}
+\item 
+int \hyperlink{class_boid_a0003756062f939e9781d84f2dcd5a1cc}{current\+Flock}
+\item 
+Texture {\bfseries texture}\hypertarget{class_boid_aeded40126cf8edac56759d0ec39351d3}{}\label{class_boid_aeded40126cf8edac56759d0ec39351d3}
+
+\item 
+Sprite {\bfseries sprite}\hypertarget{class_boid_ac4b36d33d698f68e2638252c747bbc4a}{}\label{class_boid_ac4b36d33d698f68e2638252c747bbc4a}
+
+\item 
+Texture {\bfseries uitexture}\hypertarget{class_boid_aa1dcb7e4e304a476f0a4878aacadb21d}{}\label{class_boid_aa1dcb7e4e304a476f0a4878aacadb21d}
+
+\item 
+Sprite {\bfseries uisprite}\hypertarget{class_boid_ad2623593e526100d07895daedee6d3af}{}\label{class_boid_ad2623593e526100d07895daedee6d3af}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_boid_a92a7f1ed6423149cd8a28426695d127e}{location}
+\item 
+float \hyperlink{class_boid_ac6f5c1abc120b30b0b24d78062e317cc}{radius}
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_boid_af79ca165b4d1a6ad1db2cbc534095bab}{velocity}
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_boid_ac29a50172433e865b12e1023f00f90c0}{acceleration}
+\item 
+float \hyperlink{class_boid_ac57e1058fb698a542990405ecfd1d88b}{max\+Speed}
+\item 
+float \hyperlink{class_boid_a2a6d579118276efaeac7ba0e4b872afd}{max\+Force}
+\item 
+float {\bfseries health}\hypertarget{class_boid_a1e059bba204cff62323c2e36797029de}{}\label{class_boid_a1e059bba204cff62323c2e36797029de}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_boid}{Boid} class. These are the boids in the game and predators and swarmers inherit from them. Contains basic AI that these build on. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Boid@{Boid}!Boid@{Boid}}
+\index{Boid@{Boid}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{Boid(float x, float y, Player $\ast$, int)}{Boid(float x, float y, Player *, int)}}]{\setlength{\rightskip}{0pt plus 5cm}Boid\+::\+Boid (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y, }
+\item[{{\bf Player} $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_boid_a809353c5168106191f3fa0c0841eb83e}{}\label{class_boid_a809353c5168106191f3fa0c0841eb83e}
+Contrustor for the boid. Sets the start position as well as reference to the player. Sent the current flock number as well when created by factory. \index{Boid@{Boid}!````~Boid@{$\sim$\+Boid}}
+\index{````~Boid@{$\sim$\+Boid}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{$\sim$\+Boid()}{~Boid()}}]{\setlength{\rightskip}{0pt plus 5cm}Boid\+::$\sim$\+Boid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_boid_a712f84ddc1b8ad06ad7ecd6c10a1666c}{}\label{class_boid_a712f84ddc1b8ad06ad7ecd6c10a1666c}
+Destructor of the boid. 
+
+\subsection{Member Function Documentation}
+\index{Boid@{Boid}!Alignment@{Alignment}}
+\index{Alignment@{Alignment}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{Alignment(vector$<$ Boid $\ast$ $>$ Boids)}{Alignment(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Boid\+::\+Alignment (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_boid_a9db5db2460a2fed2006740bebae9e15f}{}\label{class_boid_a9db5db2460a2fed2006740bebae9e15f}
+Averages the current direction of boids within a range. Applies this to current acceleration to makes all point in same direction. 
+
+Reimplemented in \hyperlink{class_predator_a468cabfeb5853a46ec9cc7981c93177c}{Predator}, and \hyperlink{class_swarmer_a5e6ce35ee09287cc288c43dc4cc15beb}{Swarmer}.
+
+\index{Boid@{Boid}!angle@{angle}}
+\index{angle@{angle}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{angle(\+Pvector v)}{angle(Pvector v)}}]{\setlength{\rightskip}{0pt plus 5cm}float Boid\+::angle (
+\begin{DoxyParamCaption}
+\item[{{\bf Pvector}}]{v}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_afeb7353f3946b4bd1072a14aee888770}{}\label{class_boid_afeb7353f3946b4bd1072a14aee888770}
+Gets the radian angle of sent p\+Vector \index{Boid@{Boid}!apply\+Force@{apply\+Force}}
+\index{apply\+Force@{apply\+Force}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{apply\+Force(\+Pvector force)}{applyForce(Pvector force)}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+::apply\+Force (
+\begin{DoxyParamCaption}
+\item[{{\bf Pvector}}]{force}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_acef10e100c27b76f6b867ae7468c09bb}{}\label{class_boid_acef10e100c27b76f6b867ae7468c09bb}
+Adds sent vector onto the acceleration vector \index{Boid@{Boid}!borders@{borders}}
+\index{borders@{borders}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{borders()}{borders()}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+::borders (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_ab297036090d8dad9e70379ecfeb60137}{}\label{class_boid_ab297036090d8dad9e70379ecfeb60137}
+Wrap around check, teleports to otherside of world if out of bounds. \index{Boid@{Boid}!Cohesion@{Cohesion}}
+\index{Cohesion@{Cohesion}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{Cohesion(vector$<$ Boid $\ast$ $>$ Boids)}{Cohesion(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Boid\+::\+Cohesion (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_boid_af566a172498e7019687316c2ccf111a9}{}\label{class_boid_af566a172498e7019687316c2ccf111a9}
+Averages out current locations from boids in a range. Keeps boids in a group. 
+
+Reimplemented in \hyperlink{class_predator_a394fda92031d5703c78c12a207b3f18b}{Predator}, and \hyperlink{class_swarmer_acbade5306e05b325c30431fd662f6084}{Swarmer}.
+
+\index{Boid@{Boid}!draw@{draw}}
+\index{draw@{draw}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{draw()}{draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_a07b641cc0b78b95fa38d862dd173b05b}{}\label{class_boid_a07b641cc0b78b95fa38d862dd173b05b}
+Draws the boid sprite using current position and velocity for rotation \index{Boid@{Boid}!drawui@{drawui}}
+\index{drawui@{drawui}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{drawui()}{drawui()}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+::drawui (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_a420a63dc83217c22eb0937d57a6c197e}{}\label{class_boid_a420a63dc83217c22eb0937d57a6c197e}
+Draws dot on radar in relation to centre of the radar. Will not be drawn if far enough away. \index{Boid@{Boid}!flock@{flock}}
+\index{flock@{flock}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{flock(vector$<$ Boid $\ast$ $>$ v)}{flock(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+::flock (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_boid_a6bbef162cb1a5439a4b02464c79f7e1f}{}\label{class_boid_a6bbef162cb1a5439a4b02464c79f7e1f}
+Applies the three different methods (seperation / alignment / cohesion) and these are weighted to give certain behavious. These are then applied to the acceleration vector. 
+
+Reimplemented in \hyperlink{class_predator_ac7d906a6fef7ec8d152af0d8c199a100}{Predator}.
+
+\index{Boid@{Boid}!Life\+Check@{Life\+Check}}
+\index{Life\+Check@{Life\+Check}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{Life\+Check()}{LifeCheck()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Boid\+::\+Life\+Check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_ac2ac201120f2abb6bbc919515848322b}{}\label{class_boid_ac2ac201120f2abb6bbc919515848322b}
+Checks the current life of the boid, returns true if under 0. \index{Boid@{Boid}!run@{run}}
+\index{run@{run}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{run(vector$<$ Boid $\ast$ $>$ v)}{run(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+::run (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_boid_a61f243a032aafc4fdbcfe8a4b29ba22f}{}\label{class_boid_a61f243a032aafc4fdbcfe8a4b29ba22f}
+General flocking method that calls flock as well as the border check 
+
+Reimplemented in \hyperlink{class_predator_a0cad59d52edbb2ba808971ff116b2f0b}{Predator}, and \hyperlink{class_swarmer_a29c7d44ad87b663ed71cb8d23bc14f0f}{Swarmer}.
+
+\index{Boid@{Boid}!seek@{seek}}
+\index{seek@{seek}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{seek(\+Pvector v)}{seek(Pvector v)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Boid\+::seek (
+\begin{DoxyParamCaption}
+\item[{{\bf Pvector}}]{v}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_a3135a25087ac386d92e28b5718f6504f}{}\label{class_boid_a3135a25087ac386d92e28b5718f6504f}
+Seeks out given \hyperlink{class_pvector}{Pvector} using current location. Direction from desired -\/ location. \index{Boid@{Boid}!Separation@{Separation}}
+\index{Separation@{Separation}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{Separation(vector$<$ Boid $\ast$ $>$ Boids)}{Separation(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Boid\+::\+Separation (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_boid_a88b4b07542a7c340df58f10fc1516666}{}\label{class_boid_a88b4b07542a7c340df58f10fc1516666}
+Checks other boids in the world. If there are any boids with a given range, will get the direction away from those that are close, average them and then apply to acceleration. 
+
+Reimplemented in \hyperlink{class_predator_a39709215e0af7c6d6842dac7ea26c785}{Predator}, and \hyperlink{class_swarmer_a5f552b9442dcef5ec23c1acd71660df3}{Swarmer}.
+
+\index{Boid@{Boid}!swarm@{swarm}}
+\index{swarm@{swarm}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{swarm(vector$<$ Boid $\ast$ $>$ v)}{swarm(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+::swarm (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)}\hypertarget{class_boid_a2cbcd088c7dbe32f5103325cd5cfc3d3}{}\label{class_boid_a2cbcd088c7dbe32f5103325cd5cfc3d3}
+Implements swarming equation. \index{Boid@{Boid}!update@{update}}
+\index{update@{update}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{update(vector$<$ Boid $\ast$ $>$ v)}{update(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Boid\+::update (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_boid_aba6608b5a1645b4812cc895aff338606}{}\label{class_boid_aba6608b5a1645b4812cc895aff338606}
+Holds the finite state machine of the boid. Moves through different behavious depending on the situation. S\+E\+A\+R\+CH / A\+T\+T\+A\+CK / A\+V\+O\+ID 
+
+Reimplemented in \hyperlink{class_predator_a30cfc426131aaa9300435185830d0ebe}{Predator}, and \hyperlink{class_swarmer_a02959b4af97e6c0979c20f0b8298635b}{Swarmer}.
+
+
+
+\subsection{Member Data Documentation}
+\index{Boid@{Boid}!acceleration@{acceleration}}
+\index{acceleration@{acceleration}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{acceleration}{acceleration}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Boid\+::acceleration}\hypertarget{class_boid_ac29a50172433e865b12e1023f00f90c0}{}\label{class_boid_ac29a50172433e865b12e1023f00f90c0}
+The vector that is affected by the different AI methods. Then added to velocity \index{Boid@{Boid}!current\+Flock@{current\+Flock}}
+\index{current\+Flock@{current\+Flock}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{current\+Flock}{currentFlock}}]{\setlength{\rightskip}{0pt plus 5cm}int Boid\+::current\+Flock}\hypertarget{class_boid_a0003756062f939e9781d84f2dcd5a1cc}{}\label{class_boid_a0003756062f939e9781d84f2dcd5a1cc}
+the id of the current flock. Assigned depending on the factory that it is produced from \index{Boid@{Boid}!location@{location}}
+\index{location@{location}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{location}{location}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Boid\+::location}\hypertarget{class_boid_a92a7f1ed6423149cd8a28426695d127e}{}\label{class_boid_a92a7f1ed6423149cd8a28426695d127e}
+Position vector \index{Boid@{Boid}!max\+Force@{max\+Force}}
+\index{max\+Force@{max\+Force}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{max\+Force}{maxForce}}]{\setlength{\rightskip}{0pt plus 5cm}float Boid\+::max\+Force}\hypertarget{class_boid_a2a6d579118276efaeac7ba0e4b872afd}{}\label{class_boid_a2a6d579118276efaeac7ba0e4b872afd}
+Used to limit force \index{Boid@{Boid}!max\+Speed@{max\+Speed}}
+\index{max\+Speed@{max\+Speed}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{max\+Speed}{maxSpeed}}]{\setlength{\rightskip}{0pt plus 5cm}float Boid\+::max\+Speed}\hypertarget{class_boid_ac57e1058fb698a542990405ecfd1d88b}{}\label{class_boid_ac57e1058fb698a542990405ecfd1d88b}
+Used to limit speed. \index{Boid@{Boid}!player@{player}}
+\index{player@{player}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{player}{player}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ Boid\+::player}\hypertarget{class_boid_ab5e134ab60644014edeff8d84a8187e6}{}\label{class_boid_ab5e134ab60644014edeff8d84a8187e6}
+Reference to the player \index{Boid@{Boid}!power\+Timer@{power\+Timer}}
+\index{power\+Timer@{power\+Timer}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{power\+Timer}{powerTimer}}]{\setlength{\rightskip}{0pt plus 5cm}int Boid\+::power\+Timer}\hypertarget{class_boid_a33dde2d19ee395c259f90fe2b463b0b1}{}\label{class_boid_a33dde2d19ee395c259f90fe2b463b0b1}
+Dictates how long that the bullets produced are produced as super bullets. \index{Boid@{Boid}!radius@{radius}}
+\index{radius@{radius}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{radius}{radius}}]{\setlength{\rightskip}{0pt plus 5cm}float Boid\+::radius}\hypertarget{class_boid_ac6f5c1abc120b30b0b24d78062e317cc}{}\label{class_boid_ac6f5c1abc120b30b0b24d78062e317cc}
+Size and used for the collisions \index{Boid@{Boid}!speed\+Timer@{speed\+Timer}}
+\index{speed\+Timer@{speed\+Timer}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{speed\+Timer}{speedTimer}}]{\setlength{\rightskip}{0pt plus 5cm}int Boid\+::speed\+Timer}\hypertarget{class_boid_a67c611146020a06068a82e5ebf9bf837}{}\label{class_boid_a67c611146020a06068a82e5ebf9bf837}
+Increased speed lasts as long as this is over 0 \index{Boid@{Boid}!velocity@{velocity}}
+\index{velocity@{velocity}!Boid@{Boid}}
+\subsubsection[{\texorpdfstring{velocity}{velocity}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Boid\+::velocity}\hypertarget{class_boid_af79ca165b4d1a6ad1db2cbc534095bab}{}\label{class_boid_af79ca165b4d1a6ad1db2cbc534095bab}
+Current velocity. Used for moving. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Boid.\+h\item 
+Boid.\+cpp\end{DoxyCompactItemize}

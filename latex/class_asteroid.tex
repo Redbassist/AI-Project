@@ -1,0 +1,156 @@
+\hypertarget{class_asteroid}{}\section{Asteroid Class Reference}
+\label{class_asteroid}\index{Asteroid@{Asteroid}}
+
+
+{\ttfamily \#include $<$Asteroid.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_asteroid_a4894a169d3ae1dfa1b314b4aecd8ffcb}{Asteroid} (\hyperlink{class_pvector}{Pvector})
+\item 
+void \hyperlink{class_asteroid_a941bf4fe76b8b847cddd7e1f43aa346d}{Load\+Assets} ()
+\item 
+void \hyperlink{class_asteroid_a7e4a4f128d86078c8827ac9a1e015771}{Update} ()
+\item 
+void \hyperlink{class_asteroid_aa1e8a8317207efd5aaf905b8d55d2a02}{Wrap\+Around} ()
+\item 
+void \hyperlink{class_asteroid_a3c7bcc166401e873e79a7ce1dfd0e4e2}{Movement} ()
+\item 
+void \hyperlink{class_asteroid_af92af7c2a74de217fb7c5f78b6f6ef51}{Draw} ()
+\item 
+float {\bfseries get\+Radius} ()\hypertarget{class_asteroid_a7045538aaa343478dc63c38427196db5}{}\label{class_asteroid_a7045538aaa343478dc63c38427196db5}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries get\+Pos} ()\hypertarget{class_asteroid_a2b9759c6fc0619a8d71a518ef770a966}{}\label{class_asteroid_a2b9759c6fc0619a8d71a518ef770a966}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries get\+Direction} ()\hypertarget{class_asteroid_aae858268d7f844d39b608ec71971e5e2}{}\label{class_asteroid_aae858268d7f844d39b608ec71971e5e2}
+
+\item 
+void {\bfseries set\+Direction} (\hyperlink{class_pvector}{Pvector} d)\hypertarget{class_asteroid_af23ca4053790762dc930e4401245396a}{}\label{class_asteroid_af23ca4053790762dc930e4401245396a}
+
+\item 
+float {\bfseries get\+Speed} ()\hypertarget{class_asteroid_abacbb8c84d1dbbc442c16653110cab66}{}\label{class_asteroid_abacbb8c84d1dbbc442c16653110cab66}
+
+\item 
+bool \hyperlink{class_asteroid_a1c1248b2ea5c9ea0416c3f8008369684}{Life\+Check} ()
+\item 
+float {\bfseries get\+Health} ()\hypertarget{class_asteroid_a7feae79f96d755f2132f94d553dccaf4}{}\label{class_asteroid_a7feae79f96d755f2132f94d553dccaf4}
+
+\item 
+void \hyperlink{class_asteroid_a8009e78ee2ceeafe362752b7711604c1}{set\+Health} (float h)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Texture {\bfseries texture}\hypertarget{class_asteroid_a6f7a87db97a08cd5d88ccb82878dd35b}{}\label{class_asteroid_a6f7a87db97a08cd5d88ccb82878dd35b}
+
+\item 
+Sprite {\bfseries sprite}\hypertarget{class_asteroid_aadbfc0f728dafa63cc1ac23c7417f153}{}\label{class_asteroid_aadbfc0f728dafa63cc1ac23c7417f153}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_asteroid_a904f545cbd4987ad462fe823ec354893}{pos}
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_asteroid_a1a55ac140029715018de592f36114fb8}{direction}
+\item 
+float \hyperlink{class_asteroid_a8288705d515d1504e5e0966dfa8cdf2e}{speed}
+\item 
+float \hyperlink{class_asteroid_adab1cde40d42ab75226228bab7f29141}{radius}
+\item 
+float \hyperlink{class_asteroid_a381a4221420bf9ba5173fa2b1e3e8725}{health}
+\item 
+float \hyperlink{class_asteroid_aee0c41aeafc6f3d1ae4fad8a1010a06b}{rot}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_asteroid}{Asteroid} class. These are the obstacles in the game and will float around the level. Contain powerups 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Asteroid@{Asteroid}!Asteroid@{Asteroid}}
+\index{Asteroid@{Asteroid}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{Asteroid(\+Pvector)}{Asteroid(Pvector)}}]{\setlength{\rightskip}{0pt plus 5cm}Asteroid\+::\+Asteroid (
+\begin{DoxyParamCaption}
+\item[{{\bf Pvector}}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_a4894a169d3ae1dfa1b314b4aecd8ffcb}{}\label{class_asteroid_a4894a169d3ae1dfa1b314b4aecd8ffcb}
+Constructor for the \hyperlink{class_asteroid}{Asteroid}. Sets the location of the asteroid as well as the starting attributes 
+
+\subsection{Member Function Documentation}
+\index{Asteroid@{Asteroid}!Draw@{Draw}}
+\index{Draw@{Draw}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{Draw()}{Draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+::\+Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_af92af7c2a74de217fb7c5f78b6f6ef51}{}\label{class_asteroid_af92af7c2a74de217fb7c5f78b6f6ef51}
+Draws the asteroid sprite \index{Asteroid@{Asteroid}!Life\+Check@{Life\+Check}}
+\index{Life\+Check@{Life\+Check}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{Life\+Check()}{LifeCheck()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Asteroid\+::\+Life\+Check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_a1c1248b2ea5c9ea0416c3f8008369684}{}\label{class_asteroid_a1c1248b2ea5c9ea0416c3f8008369684}
+Checks to see if the life is below 0, if so it will return a bool value of true. \index{Asteroid@{Asteroid}!Load\+Assets@{Load\+Assets}}
+\index{Load\+Assets@{Load\+Assets}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{Load\+Assets()}{LoadAssets()}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+::\+Load\+Assets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_a941bf4fe76b8b847cddd7e1f43aa346d}{}\label{class_asteroid_a941bf4fe76b8b847cddd7e1f43aa346d}
+Loads the texture and sprites for the \hyperlink{class_asteroid}{Asteroid}. Also sets the radius of the asteroid (random) \index{Asteroid@{Asteroid}!Movement@{Movement}}
+\index{Movement@{Movement}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{Movement()}{Movement()}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+::\+Movement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_a3c7bcc166401e873e79a7ce1dfd0e4e2}{}\label{class_asteroid_a3c7bcc166401e873e79a7ce1dfd0e4e2}
+The movement of the asteroid is dictated by the random direction that is assigned during construction. \index{Asteroid@{Asteroid}!set\+Health@{set\+Health}}
+\index{set\+Health@{set\+Health}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{set\+Health(float h)}{setHealth(float h)}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+::set\+Health (
+\begin{DoxyParamCaption}
+\item[{float}]{h}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_a8009e78ee2ceeafe362752b7711604c1}{}\label{class_asteroid_a8009e78ee2ceeafe362752b7711604c1}
+Sets health of the asteroid to the sent value \index{Asteroid@{Asteroid}!Update@{Update}}
+\index{Update@{Update}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{Update()}{Update()}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+::\+Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_a7e4a4f128d86078c8827ac9a1e015771}{}\label{class_asteroid_a7e4a4f128d86078c8827ac9a1e015771}
+Calls the movement and wrap around methods of the asteroid. Sets sprite location to the position. \index{Asteroid@{Asteroid}!Wrap\+Around@{Wrap\+Around}}
+\index{Wrap\+Around@{Wrap\+Around}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{Wrap\+Around()}{WrapAround()}}]{\setlength{\rightskip}{0pt plus 5cm}void Asteroid\+::\+Wrap\+Around (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_asteroid_aa1e8a8317207efd5aaf905b8d55d2a02}{}\label{class_asteroid_aa1e8a8317207efd5aaf905b8d55d2a02}
+If the asteroid moves outside the bounds of the level, will be shifted to the otherside of the world. 
+
+\subsection{Member Data Documentation}
+\index{Asteroid@{Asteroid}!direction@{direction}}
+\index{direction@{direction}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{direction}{direction}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Asteroid\+::direction\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_a1a55ac140029715018de592f36114fb8}{}\label{class_asteroid_a1a55ac140029715018de592f36114fb8}
+The direction that the asteroid is moving \index{Asteroid@{Asteroid}!health@{health}}
+\index{health@{health}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{health}{health}}]{\setlength{\rightskip}{0pt plus 5cm}float Asteroid\+::health\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_a381a4221420bf9ba5173fa2b1e3e8725}{}\label{class_asteroid_a381a4221420bf9ba5173fa2b1e3e8725}
+Health of the asteroid \index{Asteroid@{Asteroid}!pos@{pos}}
+\index{pos@{pos}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{pos}{pos}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Asteroid\+::pos\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_a904f545cbd4987ad462fe823ec354893}{}\label{class_asteroid_a904f545cbd4987ad462fe823ec354893}
+Position of the asteroid \index{Asteroid@{Asteroid}!radius@{radius}}
+\index{radius@{radius}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{radius}{radius}}]{\setlength{\rightskip}{0pt plus 5cm}float Asteroid\+::radius\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_adab1cde40d42ab75226228bab7f29141}{}\label{class_asteroid_adab1cde40d42ab75226228bab7f29141}
+Size of the asteroid, used for collision detection \index{Asteroid@{Asteroid}!rot@{rot}}
+\index{rot@{rot}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{rot}{rot}}]{\setlength{\rightskip}{0pt plus 5cm}float Asteroid\+::rot\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_aee0c41aeafc6f3d1ae4fad8a1010a06b}{}\label{class_asteroid_aee0c41aeafc6f3d1ae4fad8a1010a06b}
+Rotation of the asteroid, spins around at random rate \index{Asteroid@{Asteroid}!speed@{speed}}
+\index{speed@{speed}!Asteroid@{Asteroid}}
+\subsubsection[{\texorpdfstring{speed}{speed}}]{\setlength{\rightskip}{0pt plus 5cm}float Asteroid\+::speed\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_asteroid_a8288705d515d1504e5e0966dfa8cdf2e}{}\label{class_asteroid_a8288705d515d1504e5e0966dfa8cdf2e}
+Speed the asteroid is moving across the world 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Asteroid.\+h\item 
+Asteroid.\+cpp\end{DoxyCompactItemize}

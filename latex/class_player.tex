@@ -1,0 +1,291 @@
+\hypertarget{class_player}{}\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8}{Player} ()
+\item 
+void \hyperlink{class_player_a6d26d9aae1117ad8d49683888f464210}{load\+Resources} ()
+\item 
+void \hyperlink{class_player_a00ae3ebe88af8f9cfabd819176516a73}{Draw} ()
+\item 
+void \hyperlink{class_player_a6c671476697db2887b71f6b7cf69550c}{Draw\+UI} ()
+\item 
+void \hyperlink{class_player_a05b60cac1922c5be5c1be16baffa4497}{Update} ()
+\item 
+void \hyperlink{class_player_a08199310a7297522b60671c3fc3e5131}{Movement} ()
+\item 
+void \hyperlink{class_player_a24cc2c3efad6862c6b4ee7d2a1378ede}{Wrap\+Around} ()
+\item 
+void \hyperlink{class_player_af8664a649de1954c150e8e77ba0614e6}{Center\+Camera} ()
+\item 
+void \hyperlink{class_player_a2105394431517a41d38140cb65982331}{Shoot} ()
+\item 
+void \hyperlink{class_player_a98dc6c9d4af55d012bd52cf867cec151}{Respawn} ()
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries get\+Position} ()\hypertarget{class_player_a56cdb7168e3e2b796cb9db52ca6d5700}{}\label{class_player_a56cdb7168e3e2b796cb9db52ca6d5700}
+
+\item 
+float \hyperlink{class_player_a7454b006a10feed9e2ffae58c00afaf9}{Curve\+Angle} (float from, float to, float step)
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries Slerp} (\hyperlink{class_pvector}{Pvector} from, \hyperlink{class_pvector}{Pvector} to, float step)\hypertarget{class_player_ac44d1b3058189fac7cb238fefc9d2cb4}{}\label{class_player_ac44d1b3058189fac7cb238fefc9d2cb4}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_player_aa43e7eb990573c6a6e78ba17b60a19c1}{normalize} (\hyperlink{class_pvector}{Pvector} source)
+\item 
+float {\bfseries degree\+To\+Radian} (float angle)\hypertarget{class_player_ac0c8e4e69ee942244032003276f0ddc7}{}\label{class_player_ac0c8e4e69ee942244032003276f0ddc7}
+
+\item 
+float {\bfseries radians\+To\+Degrees} (float angle)\hypertarget{class_player_a2fb9437794be127ab141387bd96c2d56}{}\label{class_player_a2fb9437794be127ab141387bd96c2d56}
+
+\item 
+float {\bfseries dot\+Product} (\hyperlink{class_pvector}{Pvector} v1, \hyperlink{class_pvector}{Pvector} v2)\hypertarget{class_player_a92ee7aa8a114dec6307697b727116e95}{}\label{class_player_a92ee7aa8a114dec6307697b727116e95}
+
+\item 
+float {\bfseries get\+Radius} ()\hypertarget{class_player_af2d2f95afa14ee652f5f47b7bc3ddca1}{}\label{class_player_af2d2f95afa14ee652f5f47b7bc3ddca1}
+
+\item 
+sf\+::\+Sprite {\bfseries get\+Sprite} ()\hypertarget{class_player_aabef659f696be314cdb705a1ce77ec2a}{}\label{class_player_aabef659f696be314cdb705a1ce77ec2a}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries get\+Direction} ()\hypertarget{class_player_aed591232c705afa85e8839a4c62340fd}{}\label{class_player_aed591232c705afa85e8839a4c62340fd}
+
+\item 
+float {\bfseries get\+Health} ()\hypertarget{class_player_a2d1542816021d46bf0d007d57a2c7291}{}\label{class_player_a2d1542816021d46bf0d007d57a2c7291}
+
+\item 
+void \hyperlink{class_player_a13c96708a445b4d679a6bedad4cc1b9d}{drop\+Health} (float h)
+\item 
+void \hyperlink{class_player_a9cc44c591dbf061567919aa5e29a0ceb}{Activate\+Speed} ()
+\item 
+void \hyperlink{class_player_ad1f63604e673673c8919a29321aec6f4}{Activate\+Power} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries lives}\hypertarget{class_player_ab3300fa23175647f3ff50311dd2a7e04}{}\label{class_player_ab3300fa23175647f3ff50311dd2a7e04}
+
+\item 
+int \hyperlink{class_player_a04fce59d939c7644cf08ca86441e7285}{power\+Timer}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries width}\hypertarget{class_player_ab112e078741802afd6c095ddea241b2f}{}\label{class_player_ab112e078741802afd6c095ddea241b2f}
+
+\item 
+int {\bfseries height}\hypertarget{class_player_a682cd9664c9ea2e27c0f269d762bfa28}{}\label{class_player_a682cd9664c9ea2e27c0f269d762bfa28}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_player_acf13aec63f3c028acbbf431a3c2aa9f5}{position}
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_player_a98523d6528d6b4a04f910335599dfd0f}{direction}
+\item 
+float \hyperlink{class_player_a458923e42b021f2a7747e6d94912ad2a}{prev\+Rotation}
+\item 
+float \hyperlink{class_player_ad94d3e5ab67795f8f848a7fd565f376f}{rotation}
+\item 
+float \hyperlink{class_player_a6185b0bd1fac283fb37a3f29e36d29f5}{target\+Rotation}
+\item 
+float \hyperlink{class_player_a770942101eff683b030edde9f730d537}{speed}
+\item 
+sf\+::\+Texture {\bfseries texture}\hypertarget{class_player_a9c6c14b89a6f99031a0d677828f1fa1a}{}\label{class_player_a9c6c14b89a6f99031a0d677828f1fa1a}
+
+\item 
+sf\+::\+Sprite {\bfseries sprite}\hypertarget{class_player_a19bc8731e5e84613a2ae7c4b5134dfab}{}\label{class_player_a19bc8731e5e84613a2ae7c4b5134dfab}
+
+\item 
+sf\+::\+Texture \hyperlink{class_player_a5958cdcfe9ad932e79fa1ec92c99fcfc}{uitexture}
+\item 
+sf\+::\+Sprite \hyperlink{class_player_a77d9d9c028b74c1d83744762f655352d}{uisprite}
+\item 
+sf\+::\+Texture \hyperlink{class_player_a91cb40005f212595ce807fedf874fde6}{lives\+Texture}
+\item 
+sf\+::\+Sprite {\bfseries lives\+Sprite}\hypertarget{class_player_a8af7d98210c40a0f16015daeec697862}{}\label{class_player_a8af7d98210c40a0f16015daeec697862}
+
+\item 
+float \hyperlink{class_player_ab57719649fc78bc97d80142c6005b5dd}{fire\+Rate}
+\item 
+float \hyperlink{class_player_ae8b23ab465912493b87f42d8104ee851}{fire\+Timer}
+\item 
+float \hyperlink{class_player_a9bb3da6cfcb057fb879b5e22f22bf3b7}{radius}
+\item 
+float {\bfseries health}\hypertarget{class_player_adc89cdfcf04e9e8aa8a45090fc52dc96}{}\label{class_player_adc89cdfcf04e9e8aa8a45090fc52dc96}
+
+\item 
+int \hyperlink{class_player_a76c58869bfd24e6439b9aa4e27474d82}{speed\+Timer}
+\item 
+bool {\bfseries dead}\hypertarget{class_player_a8092377fdcc462194dce820e867d904a}{}\label{class_player_a8092377fdcc462194dce820e867d904a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The player class 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Player()}{Player()}}]{\setlength{\rightskip}{0pt plus 5cm}Player\+::\+Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8}{}\label{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8}
+Constructor for the player Sets the location of the player as well as the starting attributes 
+
+\subsection{Member Function Documentation}
+\index{Player@{Player}!Activate\+Power@{Activate\+Power}}
+\index{Activate\+Power@{Activate\+Power}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Activate\+Power()}{ActivatePower()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Activate\+Power (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_ad1f63604e673673c8919a29321aec6f4}{}\label{class_player_ad1f63604e673673c8919a29321aec6f4}
+Allows the player to shoot strong bullets while the power timer is over 0. \index{Player@{Player}!Activate\+Speed@{Activate\+Speed}}
+\index{Activate\+Speed@{Activate\+Speed}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Activate\+Speed()}{ActivateSpeed()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Activate\+Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a9cc44c591dbf061567919aa5e29a0ceb}{}\label{class_player_a9cc44c591dbf061567919aa5e29a0ceb}
+Sets the speed timer to 10 seconds and increases the movement speed of the player for this given amount of time. \index{Player@{Player}!Center\+Camera@{Center\+Camera}}
+\index{Center\+Camera@{Center\+Camera}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Center\+Camera()}{CenterCamera()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Center\+Camera (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_af8664a649de1954c150e8e77ba0614e6}{}\label{class_player_af8664a649de1954c150e8e77ba0614e6}
+Centres the camera on the player, unless near the edge of the world. Camera edge will not go off the side of the level, will start moving in that case. \index{Player@{Player}!Curve\+Angle@{Curve\+Angle}}
+\index{Curve\+Angle@{Curve\+Angle}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Curve\+Angle(float from, float to, float step)}{CurveAngle(float from, float to, float step)}}]{\setlength{\rightskip}{0pt plus 5cm}float Player\+::\+Curve\+Angle (
+\begin{DoxyParamCaption}
+\item[{float}]{from, }
+\item[{float}]{to, }
+\item[{float}]{step}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a7454b006a10feed9e2ffae58c00afaf9}{}\label{class_player_a7454b006a10feed9e2ffae58c00afaf9}
+Used to rotate the player to the desired direction. Step\+: The speed at which it turns \index{Player@{Player}!Draw@{Draw}}
+\index{Draw@{Draw}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Draw()}{Draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a00ae3ebe88af8f9cfabd819176516a73}{}\label{class_player_a00ae3ebe88af8f9cfabd819176516a73}
+Draws the player sprite at it\textquotesingle{}s current location using the render window \index{Player@{Player}!Draw\+UI@{Draw\+UI}}
+\index{Draw\+UI@{Draw\+UI}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Draw\+U\+I()}{DrawUI()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Draw\+UI (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a6c671476697db2887b71f6b7cf69550c}{}\label{class_player_a6c671476697db2887b71f6b7cf69550c}
+Draws the UI pieces for the player (lives / radar player) \index{Player@{Player}!drop\+Health@{drop\+Health}}
+\index{drop\+Health@{drop\+Health}!Player@{Player}}
+\subsubsection[{\texorpdfstring{drop\+Health(float h)}{dropHealth(float h)}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::drop\+Health (
+\begin{DoxyParamCaption}
+\item[{float}]{h}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a13c96708a445b4d679a6bedad4cc1b9d}{}\label{class_player_a13c96708a445b4d679a6bedad4cc1b9d}
+Lowers the player health by the sent amount (h) \index{Player@{Player}!load\+Resources@{load\+Resources}}
+\index{load\+Resources@{load\+Resources}!Player@{Player}}
+\subsubsection[{\texorpdfstring{load\+Resources()}{loadResources()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::load\+Resources (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a6d26d9aae1117ad8d49683888f464210}{}\label{class_player_a6d26d9aae1117ad8d49683888f464210}
+Loads the sprites and textures for the player and the UI pieces \index{Player@{Player}!Movement@{Movement}}
+\index{Movement@{Movement}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Movement()}{Movement()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Movement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a08199310a7297522b60671c3fc3e5131}{}\label{class_player_a08199310a7297522b60671c3fc3e5131}
+Controls the movement of the player Uses the world mouse coordinates to aim the player at the mouse. Space key is used to thrust the player in the direction currently facing \index{Player@{Player}!normalize@{normalize}}
+\index{normalize@{normalize}!Player@{Player}}
+\subsubsection[{\texorpdfstring{normalize(\+Pvector source)}{normalize(Pvector source)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Player\+::normalize (
+\begin{DoxyParamCaption}
+\item[{{\bf Pvector}}]{source}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_aa43e7eb990573c6a6e78ba17b60a19c1}{}\label{class_player_aa43e7eb990573c6a6e78ba17b60a19c1}
+Normalises the \hyperlink{class_pvector}{Pvector} \index{Player@{Player}!Respawn@{Respawn}}
+\index{Respawn@{Respawn}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Respawn()}{Respawn()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Respawn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a98dc6c9d4af55d012bd52cf867cec151}{}\label{class_player_a98dc6c9d4af55d012bd52cf867cec151}
+IF the health of the player is below 0, will respawn in a random location Also drops the lives of the player by one \index{Player@{Player}!Shoot@{Shoot}}
+\index{Shoot@{Shoot}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Shoot()}{Shoot()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Shoot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a2105394431517a41d38140cb65982331}{}\label{class_player_a2105394431517a41d38140cb65982331}
+Checks for the space key being pressed and if the attributes are right for a bullet to be fired. Uses the timer and fire rate \index{Player@{Player}!Update@{Update}}
+\index{Update@{Update}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Update()}{Update()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a05b60cac1922c5be5c1be16baffa4497}{}\label{class_player_a05b60cac1922c5be5c1be16baffa4497}
+Calls the various methods that control the player Movement/ Wraparound \index{Player@{Player}!Wrap\+Around@{Wrap\+Around}}
+\index{Wrap\+Around@{Wrap\+Around}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Wrap\+Around()}{WrapAround()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::\+Wrap\+Around (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a24cc2c3efad6862c6b4ee7d2a1378ede}{}\label{class_player_a24cc2c3efad6862c6b4ee7d2a1378ede}
+If the player moves outside the bounds of the level, will be shifted to the otherside of the world. 
+
+\subsection{Member Data Documentation}
+\index{Player@{Player}!direction@{direction}}
+\index{direction@{direction}!Player@{Player}}
+\subsubsection[{\texorpdfstring{direction}{direction}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Player\+::direction\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a98523d6528d6b4a04f910335599dfd0f}{}\label{class_player_a98523d6528d6b4a04f910335599dfd0f}
+The direction that the player is facing \index{Player@{Player}!fire\+Rate@{fire\+Rate}}
+\index{fire\+Rate@{fire\+Rate}!Player@{Player}}
+\subsubsection[{\texorpdfstring{fire\+Rate}{fireRate}}]{\setlength{\rightskip}{0pt plus 5cm}float Player\+::fire\+Rate\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_ab57719649fc78bc97d80142c6005b5dd}{}\label{class_player_ab57719649fc78bc97d80142c6005b5dd}
+How fast bullets are fired by the player \index{Player@{Player}!fire\+Timer@{fire\+Timer}}
+\index{fire\+Timer@{fire\+Timer}!Player@{Player}}
+\subsubsection[{\texorpdfstring{fire\+Timer}{fireTimer}}]{\setlength{\rightskip}{0pt plus 5cm}float Player\+::fire\+Timer\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_ae8b23ab465912493b87f42d8104ee851}{}\label{class_player_ae8b23ab465912493b87f42d8104ee851}
+works in tandom with the fire\+Rate variable \index{Player@{Player}!lives\+Texture@{lives\+Texture}}
+\index{lives\+Texture@{lives\+Texture}!Player@{Player}}
+\subsubsection[{\texorpdfstring{lives\+Texture}{livesTexture}}]{\setlength{\rightskip}{0pt plus 5cm}sf\+::\+Texture Player\+::lives\+Texture\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a91cb40005f212595ce807fedf874fde6}{}\label{class_player_a91cb40005f212595ce807fedf874fde6}
+Represents the amount of player lives are left \index{Player@{Player}!position@{position}}
+\index{position@{position}!Player@{Player}}
+\subsubsection[{\texorpdfstring{position}{position}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Player\+::position\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_acf13aec63f3c028acbbf431a3c2aa9f5}{}\label{class_player_acf13aec63f3c028acbbf431a3c2aa9f5}
+Position of the player (is updated to move) \index{Player@{Player}!power\+Timer@{power\+Timer}}
+\index{power\+Timer@{power\+Timer}!Player@{Player}}
+\subsubsection[{\texorpdfstring{power\+Timer}{powerTimer}}]{\setlength{\rightskip}{0pt plus 5cm}int Player\+::power\+Timer}\hypertarget{class_player_a04fce59d939c7644cf08ca86441e7285}{}\label{class_player_a04fce59d939c7644cf08ca86441e7285}
+For checking if the player can fire strong bullets. Global for access. \index{Player@{Player}!prev\+Rotation@{prev\+Rotation}}
+\index{prev\+Rotation@{prev\+Rotation}!Player@{Player}}
+\subsubsection[{\texorpdfstring{prev\+Rotation}{prevRotation}}]{\setlength{\rightskip}{0pt plus 5cm}float Player\+::prev\+Rotation\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a458923e42b021f2a7747e6d94912ad2a}{}\label{class_player_a458923e42b021f2a7747e6d94912ad2a}
+Used for small bug fix, stores rotation of last update tick \index{Player@{Player}!radius@{radius}}
+\index{radius@{radius}!Player@{Player}}
+\subsubsection[{\texorpdfstring{radius}{radius}}]{\setlength{\rightskip}{0pt plus 5cm}float Player\+::radius\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a9bb3da6cfcb057fb879b5e22f22bf3b7}{}\label{class_player_a9bb3da6cfcb057fb879b5e22f22bf3b7}
+circle collision variable \index{Player@{Player}!rotation@{rotation}}
+\index{rotation@{rotation}!Player@{Player}}
+\subsubsection[{\texorpdfstring{rotation}{rotation}}]{\setlength{\rightskip}{0pt plus 5cm}float Player\+::rotation\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_ad94d3e5ab67795f8f848a7fd565f376f}{}\label{class_player_ad94d3e5ab67795f8f848a7fd565f376f}
+Current rotation angle of the player (radians) \index{Player@{Player}!speed@{speed}}
+\index{speed@{speed}!Player@{Player}}
+\subsubsection[{\texorpdfstring{speed}{speed}}]{\setlength{\rightskip}{0pt plus 5cm}float Player\+::speed\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a770942101eff683b030edde9f730d537}{}\label{class_player_a770942101eff683b030edde9f730d537}
+the speed at which the player moves around the game \index{Player@{Player}!speed\+Timer@{speed\+Timer}}
+\index{speed\+Timer@{speed\+Timer}!Player@{Player}}
+\subsubsection[{\texorpdfstring{speed\+Timer}{speedTimer}}]{\setlength{\rightskip}{0pt plus 5cm}int Player\+::speed\+Timer\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a76c58869bfd24e6439b9aa4e27474d82}{}\label{class_player_a76c58869bfd24e6439b9aa4e27474d82}
+How long the speed powerup will last \index{Player@{Player}!target\+Rotation@{target\+Rotation}}
+\index{target\+Rotation@{target\+Rotation}!Player@{Player}}
+\subsubsection[{\texorpdfstring{target\+Rotation}{targetRotation}}]{\setlength{\rightskip}{0pt plus 5cm}float Player\+::target\+Rotation\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a6185b0bd1fac283fb37a3f29e36d29f5}{}\label{class_player_a6185b0bd1fac283fb37a3f29e36d29f5}
+The next rotation step for the player \index{Player@{Player}!uisprite@{uisprite}}
+\index{uisprite@{uisprite}!Player@{Player}}
+\subsubsection[{\texorpdfstring{uisprite}{uisprite}}]{\setlength{\rightskip}{0pt plus 5cm}sf\+::\+Sprite Player\+::uisprite\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a77d9d9c028b74c1d83744762f655352d}{}\label{class_player_a77d9d9c028b74c1d83744762f655352d}
+For drawing a small UI version of the player \index{Player@{Player}!uitexture@{uitexture}}
+\index{uitexture@{uitexture}!Player@{Player}}
+\subsubsection[{\texorpdfstring{uitexture}{uitexture}}]{\setlength{\rightskip}{0pt plus 5cm}sf\+::\+Texture Player\+::uitexture\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_player_a5958cdcfe9ad932e79fa1ec92c99fcfc}{}\label{class_player_a5958cdcfe9ad932e79fa1ec92c99fcfc}
+For drawing a small UI version of the player 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Player.\+h\item 
+Player.\+cpp\end{DoxyCompactItemize}

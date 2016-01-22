@@ -1,0 +1,203 @@
+\hypertarget{class_predator}{}\section{Predator Class Reference}
+\label{class_predator}\index{Predator@{Predator}}
+Inheritance diagram for Predator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_predator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Predator} (float x, float y, \hyperlink{class_player}{Player} $\ast$, int)\hypertarget{class_predator_a07d4dc6bd3e422d16dfa9fe583330a77}{}\label{class_predator_a07d4dc6bd3e422d16dfa9fe583330a77}
+
+\item 
+void {\bfseries Load\+Assets} ()\hypertarget{class_predator_aa2b53123af3c2fbbaa57d3c786579d5b}{}\label{class_predator_aa2b53123af3c2fbbaa57d3c786579d5b}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_predator_a39709215e0af7c6d6842dac7ea26c785}{Separation} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries Avoid\+Asteroids} ()\hypertarget{class_predator_a4fb9706ecbd7b89c72d322270b6a3548}{}\label{class_predator_a4fb9706ecbd7b89c72d322270b6a3548}
+
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_predator_a468cabfeb5853a46ec9cc7981c93177c}{Alignment} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+\hyperlink{class_pvector}{Pvector} \hyperlink{class_predator_a394fda92031d5703c78c12a207b3f18b}{Cohesion} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ Boids)
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries Chase\+Player} ()\hypertarget{class_predator_a2657838b5bfc93ec396428f3dbc49635}{}\label{class_predator_a2657838b5bfc93ec396428f3dbc49635}
+
+\item 
+\hyperlink{class_pvector}{Pvector} {\bfseries Collect\+Powerup} ()\hypertarget{class_predator_a6bfdec84ee33ec37f0b7f992ee033c80}{}\label{class_predator_a6bfdec84ee33ec37f0b7f992ee033c80}
+
+\item 
+void \hyperlink{class_predator_a87852c5b5f7a4fd0a00cc775cfe3bed7}{Limit\+Acceleration} ()
+\item 
+void \hyperlink{class_predator_a0cad59d52edbb2ba808971ff116b2f0b}{run} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+void \hyperlink{class_predator_a30cfc426131aaa9300435185830d0ebe}{update} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+void \hyperlink{class_predator_ac7d906a6fef7ec8d152af0d8c199a100}{flock} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)
+\item 
+void {\bfseries chase} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)\hypertarget{class_predator_af0e9aefb6652b21365ce26142f903331}{}\label{class_predator_af0e9aefb6652b21365ce26142f903331}
+
+\item 
+void {\bfseries collect} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)\hypertarget{class_predator_aaf3ad972a24646832416236c86ab36aa}{}\label{class_predator_aaf3ad972a24646832416236c86ab36aa}
+
+\item 
+void {\bfseries avoid} (vector$<$ \hyperlink{class_boid}{Boid} $\ast$ $>$ v)\hypertarget{class_predator_aa6d6052914c3a871de7ebf1fd34d94f3}{}\label{class_predator_aa6d6052914c3a871de7ebf1fd34d94f3}
+
+\item 
+void \hyperlink{class_predator_aab6685aa7f3dade3240bfcee3048e858}{Shoot} ()
+\item 
+void {\bfseries borders} ()\hypertarget{class_predator_a81ff4b9425c0ffc0bfd0196cefd0bcae}{}\label{class_predator_a81ff4b9425c0ffc0bfd0196cefd0bcae}
+
+\item 
+float {\bfseries angle} (\hyperlink{class_pvector}{Pvector} v)\hypertarget{class_predator_a6773b9bc44f50915a04d103098dbaa12}{}\label{class_predator_a6773b9bc44f50915a04d103098dbaa12}
+
+\item 
+bool \hyperlink{class_predator_a0449f244349677659a5cd27080c9aca1}{check\+Asteroids} ()
+\item 
+bool \hyperlink{class_predator_a347766d9f7d0e61a2a12f68f666e53ca}{check\+Power\+Ups} ()
+\item 
+bool \hyperlink{class_predator_a745d27d50ed80880f6b46457317bb5e8}{search} ()
+\item 
+bool \hyperlink{class_predator_a54f146394015e6aa909aab06dd114dc6}{lost} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+State {\bfseries current\+State}\hypertarget{class_predator_ad3076bd4d85d226df66aaf734a5061ef}{}\label{class_predator_ad3076bd4d85d226df66aaf734a5061ef}
+
+\item 
+int {\bfseries window\+\_\+height}\hypertarget{class_predator_aa3e9d3174e5360cbf39fc888d4c4fa43}{}\label{class_predator_aa3e9d3174e5360cbf39fc888d4c4fa43}
+
+\item 
+int {\bfseries window\+\_\+width}\hypertarget{class_predator_a2c2fc58cedd05944e1b896e4d950cde5}{}\label{class_predator_a2c2fc58cedd05944e1b896e4d950cde5}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float {\bfseries fire\+Rate}\hypertarget{class_predator_a48887f3a0db8d3358d2cc667b7ddf9a6}{}\label{class_predator_a48887f3a0db8d3358d2cc667b7ddf9a6}
+
+\item 
+float {\bfseries fire\+Timer}\hypertarget{class_predator_af34bc546d11c64e3ab7fccdf988541a4}{}\label{class_predator_af34bc546d11c64e3ab7fccdf988541a4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Predator@{Predator}!Alignment@{Alignment}}
+\index{Alignment@{Alignment}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{Alignment(vector$<$ Boid $\ast$ $>$ Boids)}{Alignment(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Predator\+::\+Alignment (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_predator_a468cabfeb5853a46ec9cc7981c93177c}{}\label{class_predator_a468cabfeb5853a46ec9cc7981c93177c}
+Averages the current direction of boids within a range. Applies this to current acceleration to makes all point in same direction. 
+
+Reimplemented from \hyperlink{class_boid_a9db5db2460a2fed2006740bebae9e15f}{Boid}.
+
+\index{Predator@{Predator}!check\+Asteroids@{check\+Asteroids}}
+\index{check\+Asteroids@{check\+Asteroids}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{check\+Asteroids()}{checkAsteroids()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Predator\+::check\+Asteroids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_predator_a0449f244349677659a5cd27080c9aca1}{}\label{class_predator_a0449f244349677659a5cd27080c9aca1}
+checks to see if asteroids are nearby \index{Predator@{Predator}!check\+Power\+Ups@{check\+Power\+Ups}}
+\index{check\+Power\+Ups@{check\+Power\+Ups}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{check\+Power\+Ups()}{checkPowerUps()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Predator\+::check\+Power\+Ups (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_predator_a347766d9f7d0e61a2a12f68f666e53ca}{}\label{class_predator_a347766d9f7d0e61a2a12f68f666e53ca}
+checks to see if powerups are nearby \index{Predator@{Predator}!Cohesion@{Cohesion}}
+\index{Cohesion@{Cohesion}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{Cohesion(vector$<$ Boid $\ast$ $>$ Boids)}{Cohesion(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Predator\+::\+Cohesion (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_predator_a394fda92031d5703c78c12a207b3f18b}{}\label{class_predator_a394fda92031d5703c78c12a207b3f18b}
+Averages out current locations from boids in a range. Keeps boids in a group. 
+
+Reimplemented from \hyperlink{class_boid_af566a172498e7019687316c2ccf111a9}{Boid}.
+
+\index{Predator@{Predator}!flock@{flock}}
+\index{flock@{flock}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{flock(vector$<$ Boid $\ast$ $>$ v)}{flock(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Predator\+::flock (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_predator_ac7d906a6fef7ec8d152af0d8c199a100}{}\label{class_predator_ac7d906a6fef7ec8d152af0d8c199a100}
+Applies the three different methods (seperation / alignment / cohesion) and these are weighted to give certain behavious. These are then applied to the acceleration vector. 
+
+Reimplemented from \hyperlink{class_boid_a6bbef162cb1a5439a4b02464c79f7e1f}{Boid}.
+
+\index{Predator@{Predator}!Limit\+Acceleration@{Limit\+Acceleration}}
+\index{Limit\+Acceleration@{Limit\+Acceleration}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{Limit\+Acceleration()}{LimitAcceleration()}}]{\setlength{\rightskip}{0pt plus 5cm}void Predator\+::\+Limit\+Acceleration (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_predator_a87852c5b5f7a4fd0a00cc775cfe3bed7}{}\label{class_predator_a87852c5b5f7a4fd0a00cc775cfe3bed7}
+Limit speed when near to the player, to sit near and shoot \index{Predator@{Predator}!lost@{lost}}
+\index{lost@{lost}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{lost()}{lost()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Predator\+::lost (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_predator_a54f146394015e6aa909aab06dd114dc6}{}\label{class_predator_a54f146394015e6aa909aab06dd114dc6}
+checks to see if player is outside of range \index{Predator@{Predator}!run@{run}}
+\index{run@{run}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{run(vector$<$ Boid $\ast$ $>$ v)}{run(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Predator\+::run (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_predator_a0cad59d52edbb2ba808971ff116b2f0b}{}\label{class_predator_a0cad59d52edbb2ba808971ff116b2f0b}
+General flocking method that calls flock as well as the border check 
+
+Reimplemented from \hyperlink{class_boid_a61f243a032aafc4fdbcfe8a4b29ba22f}{Boid}.
+
+\index{Predator@{Predator}!search@{search}}
+\index{search@{search}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{search()}{search()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Predator\+::search (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_predator_a745d27d50ed80880f6b46457317bb5e8}{}\label{class_predator_a745d27d50ed80880f6b46457317bb5e8}
+checks to see if player is nearby \index{Predator@{Predator}!Separation@{Separation}}
+\index{Separation@{Separation}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{Separation(vector$<$ Boid $\ast$ $>$ Boids)}{Separation(vector< Boid * > Boids)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pvector} Predator\+::\+Separation (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{Boids}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_predator_a39709215e0af7c6d6842dac7ea26c785}{}\label{class_predator_a39709215e0af7c6d6842dac7ea26c785}
+Checks other boids in the world. If there are any boids with a given range, will get the direction away from those that are close, average them and then apply to acceleration. 
+
+Reimplemented from \hyperlink{class_boid_a88b4b07542a7c340df58f10fc1516666}{Boid}.
+
+\index{Predator@{Predator}!Shoot@{Shoot}}
+\index{Shoot@{Shoot}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{Shoot()}{Shoot()}}]{\setlength{\rightskip}{0pt plus 5cm}void Predator\+::\+Shoot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_predator_aab6685aa7f3dade3240bfcee3048e858}{}\label{class_predator_aab6685aa7f3dade3240bfcee3048e858}
+Shoot the player if nearby \index{Predator@{Predator}!update@{update}}
+\index{update@{update}!Predator@{Predator}}
+\subsubsection[{\texorpdfstring{update(vector$<$ Boid $\ast$ $>$ v)}{update(vector< Boid * > v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Predator\+::update (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Boid} $\ast$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_predator_a30cfc426131aaa9300435185830d0ebe}{}\label{class_predator_a30cfc426131aaa9300435185830d0ebe}
+Holds the finite state machine of the boid. Moves through different behavious depending on the situation. S\+E\+A\+R\+CH / A\+T\+T\+A\+CK / A\+V\+O\+ID 
+
+Reimplemented from \hyperlink{class_boid_aba6608b5a1645b4812cc895aff338606}{Boid}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Predator.\+h\item 
+Predator.\+cpp\end{DoxyCompactItemize}

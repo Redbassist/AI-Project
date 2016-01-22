@@ -1,0 +1,77 @@
+\hypertarget{class_bullet_manager}{}\section{Bullet\+Manager Class Reference}
+\label{class_bullet_manager}\index{Bullet\+Manager@{Bullet\+Manager}}
+
+
+{\ttfamily \#include $<$Bullet\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bullet_manager_a4aae3d492898b93dd5730dc28f2cc910}{Bullet\+Manager} ()
+\item 
+void \hyperlink{class_bullet_manager_a26b49b882e3e99a170c1bfb64049e615}{Add\+Bullet} (\hyperlink{class_bullet}{Bullet} $\ast$)
+\item 
+void \hyperlink{class_bullet_manager_a321c590e7fb717b27ef6273eb6ec0495}{Update} ()
+\item 
+void {\bfseries Draw} ()\hypertarget{class_bullet_manager_af861af018a598aaa613ff7ad6ad904e3}{}\label{class_bullet_manager_af861af018a598aaa613ff7ad6ad904e3}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_bullet_manager}{Bullet\+Manager} $\ast$ \hyperlink{class_bullet_manager_aec024d08c1c6c5ff738823f0a4de2783}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{class_bullet}{Bullet} $\ast$ $>$ \hyperlink{class_bullet_manager_a1968fcc88d5fb374e30f7cdb8497f62f}{bullets}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_bullet}{Bullet} Manager class. This manager contains the Bullets of the game. In charge of updating and drawing bullets in the game. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Bullet\+Manager@{Bullet\+Manager}!Bullet\+Manager@{Bullet\+Manager}}
+\index{Bullet\+Manager@{Bullet\+Manager}!Bullet\+Manager@{Bullet\+Manager}}
+\subsubsection[{\texorpdfstring{Bullet\+Manager()}{BulletManager()}}]{\setlength{\rightskip}{0pt plus 5cm}Bullet\+Manager\+::\+Bullet\+Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_manager_a4aae3d492898b93dd5730dc28f2cc910}{}\label{class_bullet_manager_a4aae3d492898b93dd5730dc28f2cc910}
+Constructor for the \hyperlink{class_bullet}{Bullet} Manager. Sets the starting attributes for the manager 
+
+\subsection{Member Function Documentation}
+\index{Bullet\+Manager@{Bullet\+Manager}!Add\+Bullet@{Add\+Bullet}}
+\index{Add\+Bullet@{Add\+Bullet}!Bullet\+Manager@{Bullet\+Manager}}
+\subsubsection[{\texorpdfstring{Add\+Bullet(\+Bullet $\ast$)}{AddBullet(Bullet *)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bullet\+Manager\+::\+Add\+Bullet (
+\begin{DoxyParamCaption}
+\item[{{\bf Bullet} $\ast$}]{bullet}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_manager_a26b49b882e3e99a170c1bfb64049e615}{}\label{class_bullet_manager_a26b49b882e3e99a170c1bfb64049e615}
+Adds a bullet to the bullet list \index{Bullet\+Manager@{Bullet\+Manager}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Bullet\+Manager@{Bullet\+Manager}}
+\subsubsection[{\texorpdfstring{Get\+Instance()}{GetInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bullet\+Manager} $\ast$ Bullet\+Manager\+::\+Get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_bullet_manager_aec024d08c1c6c5ff738823f0a4de2783}{}\label{class_bullet_manager_aec024d08c1c6c5ff738823f0a4de2783}
+Returns the instance of the bullet manager. Creates an instance if one has not already been created. \index{Bullet\+Manager@{Bullet\+Manager}!Update@{Update}}
+\index{Update@{Update}!Bullet\+Manager@{Bullet\+Manager}}
+\subsubsection[{\texorpdfstring{Update()}{Update()}}]{\setlength{\rightskip}{0pt plus 5cm}void Bullet\+Manager\+::\+Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_bullet_manager_a321c590e7fb717b27ef6273eb6ec0495}{}\label{class_bullet_manager_a321c590e7fb717b27ef6273eb6ec0495}
+Updates the bullets as well as removing them from the list if they are to be destroyed. 
+
+\subsection{Member Data Documentation}
+\index{Bullet\+Manager@{Bullet\+Manager}!bullets@{bullets}}
+\index{bullets@{bullets}!Bullet\+Manager@{Bullet\+Manager}}
+\subsubsection[{\texorpdfstring{bullets}{bullets}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Bullet}$\ast$$>$ Bullet\+Manager\+::bullets}\hypertarget{class_bullet_manager_a1968fcc88d5fb374e30f7cdb8497f62f}{}\label{class_bullet_manager_a1968fcc88d5fb374e30f7cdb8497f62f}
+List of bullets in the world 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Bullet\+Manager.\+h\item 
+Bullet\+Manager.\+cpp\end{DoxyCompactItemize}
