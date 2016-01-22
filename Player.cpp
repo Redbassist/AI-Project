@@ -154,7 +154,9 @@ void Player::Movement()
 		position.addVector(direction);
 
 	sprite.setRotation(radiansToDegrees(rotation) + 90);
-	sprite.setPosition(sf::Vector2f(position.x, position.y));
+	
+	if (!dead)
+		sprite.setPosition(sf::Vector2f(position.x, position.y));
 }
 
 void Player::WrapAround()
@@ -230,6 +232,7 @@ void Player::Respawn()
 
 		if (lives == 0)
 		{
+			position = Pvector(-100000, -100000);
 			dead = true;
 		}
 	}

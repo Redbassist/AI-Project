@@ -33,6 +33,11 @@ using namespace std;
 
 int main()
 {
+	bool gameOn = false;
+	bool checkEnter = true;
+	bool loser = false;
+	bool winner = false;
+
 	srand(time(NULL));
 	sf::Font MyFont;
 	if (!MyFont.loadFromFile("arial.ttf"))
@@ -56,6 +61,27 @@ int main()
 	view.zoom(1);
 	window->setView(view);
 	window->setFramerateLimit(60);
+
+	sf::Texture start;
+	start.loadFromFile("Sprites/start.png");
+	start.setSmooth(true);
+	sf::Sprite startSprite;
+	startSprite.setTexture(start);
+	startSprite.setScale(1, 1);
+
+	sf::Texture win;
+	win.loadFromFile("Sprites/win.png");
+	win.setSmooth(true);
+	sf::Sprite winSprite;
+	winSprite.setTexture(win);
+	winSprite.setScale(1, 1);
+
+	sf::Texture lose;
+	lose.loadFromFile("Sprites/lose.png");
+	lose.setSmooth(true);
+	sf::Sprite loseSprite;
+	loseSprite.setTexture(lose);
+	loseSprite.setScale(1, 1);
 
 	sf::Texture overlay;
 	overlay.loadFromFile("Sprites/overlay.png");
@@ -85,6 +111,19 @@ int main()
 	healthbarSprite.setTexture(healthbar);
 	healthbarSprite.setScale(0.3, 0.3);
 
+	sf::Texture background;
+	if (!background.loadFromFile("Sprites/background.jpg"))
+	{
+		// error...
+	}
+
+	background.setSmooth(true);
+	sf::Sprite backgroundSprite;
+	backgroundSprite.setTexture(background);
+	backgroundSprite.setScale(sf::Vector2f(1.5f, 1.5f));
+	backgroundSprite.setPosition(sf::Vector2f(1500, 0));
+	backgroundSprite.setOrigin(sf::Vector2f(1715, 1733));
+
 	Player* player = new Player();
 
 	AsteroidManager::GetInstance()->player = player;
@@ -96,24 +135,6 @@ int main()
 	}
 
 	CollisionManager::GetInstance()->setPlayer(*player);
-	sf::Texture background;
-
-	if (!background.loadFromFile("Sprites/background.jpg"))
-	{
-		// error...
-	}
-
-	background.setSmooth(true);
-
-	sf::Sprite backgroundSprite;
-
-	backgroundSprite.setTexture(background);
-
-	backgroundSprite.setScale(sf::Vector2f(1.5f, 1.5f));
-
-	backgroundSprite.setPosition(sf::Vector2f(1500, 0));
-
-	backgroundSprite.setOrigin(sf::Vector2f(1715, 1733));
 
 	//update loop
 	while (window->isOpen())
@@ -125,49 +146,86 @@ int main()
 				window->close();
 		}
 
-		player->Update();
-		AsteroidManager::GetInstance()->Update();
-		BoidManager::GetInstance()->Update();
-		BulletManager::GetInstance()->Update();
-		MissileManager::GetInstance()->Update();
-		FactoryManager::GetInstance()->Update();
-		CollisionManager::GetInstance()->CheckCollisions();
-		PowerUpManager::GetInstance()->Update();
+		if (gameOn == true) {
+			
+			if (!winner && !loser) {
+				player->Update();
+				if (FactoryManager::GetInstance()->factories.size() == 0)
+					winner = true;
+				else if (player->lives == 0)
+					loser = true;
+			}
 
-		window->clear();
-		//draw stuff here
-		window->draw(backgroundSprite);
-		player->Draw();
-		AsteroidManager::GetInstance()->Draw();
-		PowerUpManager::GetInstance()->Draw();
-		BoidManager::GetInstance()->Draw();
-		FactoryManager::GetInstance()->Draw();
-		BulletManager::GetInstance()->Draw();
-		MissileManager::GetInstance()->Draw();
+			AsteroidManager::GetInstance()->Update();
+			BoidManager::GetInstance()->Update();
+			BulletManager::GetInstance()->Update();
+			MissileManager::GetInstance()->Update();
+			FactoryManager::GetInstance()->Update();
+			CollisionManager::GetInstance()->CheckCollisions();
+			PowerUpManager::GetInstance()->Update();
 
-		//UI stuff
-		View tempView = window->getView();
-		Vector2f viewPos = tempView.getCenter();
+			window->clear();
+			//draw stuff here
+			window->draw(backgroundSprite);
 
-		overlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
-		underlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
-		healthUISprite.setPosition(Vector2f(viewPos.x + 330, viewPos.y - 360));
-		
-		float scaleY = 0.3 * (player->getHealth() / 1000);
-		healthbarSprite.setScale(0.3, scaleY);
-		healthbarSprite.setPosition(Vector2f(viewPos.x + 352, viewPos.y - 330));
+			if (!winner && !loser)
+				player->Draw();
 
-		window->draw(underlaySprite);
-		window->draw(overlaySprite);
-		window->draw(healthUISprite);
-		window->draw(healthbarSprite);
+			AsteroidManager::GetInstance()->Draw();
+			PowerUpManager::GetInstance()->Draw();
+			BoidManager::GetInstance()->Draw();
+			FactoryManager::GetInstance()->Draw();
+			BulletManager::GetInstance()->Draw();
+			MissileManager::GetInstance()->Draw();
 
+			//UI stuff
+			View tempView = window->getView();
+			Vector2f viewPos = tempView.getCenter();
 
-		BoidManager::GetInstance()->DrawUI();
-		FactoryManager::GetInstance()->DrawUI();
-		player->DrawUI();
-		
-		window->display();
+			overlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
+			underlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
+			healthUISprite.setPosition(Vector2f(viewPos.x + 330, viewPos.y - 360));
+
+			float scaleY = 0.3 * (player->getHealth() / 1000);
+			healthbarSprite.setScale(0.3, scaleY);
+			healthbarSprite.setPosition(Vector2f(viewPos.x + 352, viewPos.y - 330));
+
+			if (!winner && !loser) {
+				window->draw(underlaySprite);
+				window->draw(overlaySprite);
+				window->draw(healthUISprite);
+				window->draw(healthbarSprite);
+				BoidManager::GetInstance()->DrawUI();
+				FactoryManager::GetInstance()->DrawUI();
+				player->DrawUI();
+			}
+			else if (winner) {
+				winSprite.setPosition(Vector2f(viewPos.x - 640, viewPos.y - 360));
+				window->draw(winSprite);
+			}
+			else if (loser) {
+				loseSprite.setPosition(Vector2f(viewPos.x - 640, viewPos.y - 360));
+				window->draw(loseSprite);
+			}
+			window->display();
+		}
+		else {
+			if (checkEnter == true) {
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+					checkEnter = false;
+					gameOn = true;
+				}
+			}
+
+			window->clear();
+			if (checkEnter == true) {
+				startSprite.setPosition(-640, -360);
+				window->draw(startSprite);
+			}
+
+			window->display();
+		}
+
 	}
 
 	return 0;

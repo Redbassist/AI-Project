@@ -24,10 +24,11 @@ private:
 	float radius;
 	float health;
 	int speedTimer;
-	int lives;
 	bool dead;
 
 public:
+	int lives;
+	
 	Player();
 
 	void loadResources();
