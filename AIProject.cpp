@@ -1,3 +1,5 @@
+/** @file */
+
 #ifdef _DEBUG
 #pragma comment(lib,"sfml-graphics-d.lib")
 #pragma comment(lib,"sfml-audio-d.lib")
@@ -31,22 +33,19 @@ using namespace std;
 #include "MissileManager.h"
 #include "PowerUpManager.h"
 
+/*! The main function for the project */
 int main()
 {
-	bool gameOn = false;
-	bool checkEnter = true;
-	bool loser = false;
-	bool winner = false;
+	bool gameOn = false; /**< Used to control when the updating / drawing of the game is occuring */
+	bool checkEnter = true; /**< Only checks for enter being pressed once before starting the game */
+	bool loser = false; /**< Bool representing the lose state */
+	bool winner = false; /**< Bool representing the win state */
 
-	srand(time(NULL));
-	sf::Font MyFont;
-	if (!MyFont.loadFromFile("arial.ttf"))
-	{
-		// Error...
-	}
+	srand(time(NULL)); /**<  setting seed for random */
 
-	srand(time(NULL)); //setting seed for random
-
+	/**
+	*The following are the settings for the render window
+	*/
 	sf::ContextSettings settings;
 	settings.depthBits = 24;
 	settings.stencilBits = 8;
@@ -54,21 +53,27 @@ int main()
 	settings.majorVersion = 3;
 	settings.minorVersion = 0;
 
-	globalBounds = Vector2f(3840, 2160);
+	globalBounds = Vector2f(3840, 2160); /**< Size of the game world */
 
 	window = new RenderWindow(sf::VideoMode(1280, 720), "AI Lab 1", sf::Style::Default, settings);
 	View view = View(Vector2f(0, 0), Vector2f(1280, 720));
 	view.zoom(1);
 	window->setView(view);
-	window->setFramerateLimit(60);
+	window->setFramerateLimit(60); /**< Frame limit set to 60 */
 
+	/**
+	* The start screen sprite and texture
+	*/
 	sf::Texture start;
 	start.loadFromFile("Sprites/start.png");
 	start.setSmooth(true);
 	sf::Sprite startSprite;
 	startSprite.setTexture(start);
 	startSprite.setScale(1, 1);
-
+	
+	/**
+	* The win screen sprite and texture
+	*/
 	sf::Texture win;
 	win.loadFromFile("Sprites/win.png");
 	win.setSmooth(true);
@@ -76,13 +81,19 @@ int main()
 	winSprite.setTexture(win);
 	winSprite.setScale(1, 1);
 
+	/**
+	* The lose screen sprite and texture
+	*/
 	sf::Texture lose;
 	lose.loadFromFile("Sprites/lose.png");
 	lose.setSmooth(true);
 	sf::Sprite loseSprite;
 	loseSprite.setTexture(lose);
 	loseSprite.setScale(1, 1);
-
+	
+	/**
+	* The overlay  sprite and texture
+	*/
 	sf::Texture overlay;
 	overlay.loadFromFile("Sprites/overlay.png");
 	overlay.setSmooth(true);
@@ -90,6 +101,9 @@ int main()
 	overlaySprite.setTexture(overlay);
 	overlaySprite.setScale(0.3, 0.3);
 
+	/**
+	* The underlay  sprite and texture
+	*/
 	sf::Texture underlay;
 	underlay.loadFromFile("Sprites/underlay.png");
 	underlay.setSmooth(true);
@@ -97,6 +111,9 @@ int main()
 	underlaySprite.setTexture(underlay);
 	underlaySprite.setScale(0.3, 0.3);
 
+	/**
+	* The health UI sprite and texture
+	*/
 	sf::Texture healthUI;
 	healthUI.loadFromFile("Sprites/health.png");
 	healthUI.setSmooth(true);
@@ -104,6 +121,9 @@ int main()
 	healthUISprite.setTexture(healthUI);
 	healthUISprite.setScale(0.3, 0.3);
 
+	/**
+	* The health bar sprite and texture
+	*/
 	sf::Texture healthbar;
 	healthbar.loadFromFile("Sprites/healthbar.png");
 	healthbar.setSmooth(true);
@@ -111,6 +131,9 @@ int main()
 	healthbarSprite.setTexture(healthbar);
 	healthbarSprite.setScale(0.3, 0.3);
 
+	/**
+	* The background screen sprite and texture
+	*/
 	sf::Texture background;
 	if (!background.loadFromFile("Sprites/background.jpg"))
 	{
@@ -124,17 +147,17 @@ int main()
 	backgroundSprite.setPosition(sf::Vector2f(1500, 0));
 	backgroundSprite.setOrigin(sf::Vector2f(1715, 1733));
 
-	Player* player = new Player();
+	Player* player = new Player(); /**< The player that the user controls */
 
-	AsteroidManager::GetInstance()->player = player;
+	AsteroidManager::GetInstance()->player = player;  /**< sending address of player to the asteroid manager so that it can be used */
 
-	int numFactories = 4;
+	int numFactories = 4; 
 	for (int i = 0; i < numFactories; i++)
 	{
-		FactoryManager::GetInstance()->AddFactory(new Factory(*player, i));
+		FactoryManager::GetInstance()->AddFactory(new Factory(*player, i));  /**< creating the desired number of factories */ 
 	}
 
-	CollisionManager::GetInstance()->setPlayer(*player);
+	CollisionManager::GetInstance()->setPlayer(*player); /**< sending address of the player to the collision manager */ 
 
 	//update loop
 	while (window->isOpen())
@@ -145,9 +168,17 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window->close();
 		}
-
+		
+		/**
+		* Game will only update when gameOn has been set to true
+		*/
 		if (gameOn == true) {
 			
+
+			/**
+			* Player only updated when game is running. 
+			* Also contains the win and lose conditions of the game
+			*/
 			if (!winner && !loser) {
 				player->Update();
 				if (FactoryManager::GetInstance()->factories.size() == 0)
@@ -156,6 +187,9 @@ int main()
 					loser = true;
 			}
 
+			/**
+			* Updating the entities in the game
+			*/
 			AsteroidManager::GetInstance()->Update();
 			BoidManager::GetInstance()->Update();
 			BulletManager::GetInstance()->Update();
@@ -163,9 +197,11 @@ int main()
 			FactoryManager::GetInstance()->Update();
 			CollisionManager::GetInstance()->CheckCollisions();
 			PowerUpManager::GetInstance()->Update();
-
+			
+			/**
+			* Drawing the entities in the game
+			*/
 			window->clear();
-			//draw stuff here
 			window->draw(backgroundSprite);
 
 			if (!winner && !loser)
@@ -178,9 +214,11 @@ int main()
 			BulletManager::GetInstance()->Draw();
 			MissileManager::GetInstance()->Draw();
 
-			//UI stuff
+			/**
+			* Updating the UI entites of the game
+			*/
 			View tempView = window->getView();
-			Vector2f viewPos = tempView.getCenter();
+			Vector2f viewPos = tempView.getCenter(); /**< Used to set the positions of the UI elements */
 
 			overlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
 			underlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
@@ -190,6 +228,9 @@ int main()
 			healthbarSprite.setScale(0.3, scaleY);
 			healthbarSprite.setPosition(Vector2f(viewPos.x + 352, viewPos.y - 330));
 
+			/**
+			* Only drawing the UI elements of the game when the game is running
+			*/
 			if (!winner && !loser) {
 				window->draw(underlaySprite);
 				window->draw(overlaySprite);
@@ -210,13 +251,18 @@ int main()
 			window->display();
 		}
 		else {
+			/**
+			* checking if the enter button has been pushed, starts the game!
+			*/
 			if (checkEnter == true) {
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
 					checkEnter = false;
 					gameOn = true;
 				}
 			}
-
+			/**
+			* Drawing the start screen of the game
+			*/
 			window->clear();
 			if (checkEnter == true) {
 				startSprite.setPosition(-640, -360);
