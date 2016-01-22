@@ -9,7 +9,8 @@ Player::Player() {
 	position = Pvector(randX, randY);
 	fireRate = 5;
 	fireTimer = fireRate;
-	loadResources(); 
+	loadResources();;
+	lives = 3;
 }
 
 void Player::loadResources() {
@@ -32,7 +33,17 @@ void Player::loadResources() {
 	uitexture.setSmooth(true);
 	uisprite.setTexture(uitexture);
 	uisprite.setOrigin(200, 400);
-	uisprite.setScale(0.02f, 0.02f); 
+	uisprite.setScale(0.02f, 0.02f);
+
+	if (!livesTexture.loadFromFile("Sprites/Life.png"))
+	{
+		std::cout << "cant find image";
+	}
+	
+	livesTexture.setSmooth(true);
+	livesSprite.setTexture(livesTexture);
+	livesSprite.setOrigin(200, 200);
+	livesSprite.setScale(0.06f, 0.06f);
 
 	radius = 300 * sprite.getScale().x;
 
@@ -52,7 +63,14 @@ void Player::DrawUI()
 	uisprite.setPosition(Vector2f(viewPos.x + 520, viewPos.y - 270));
 
 
+	livesSprite.setRotation(0);
 
+	for (int i = 0; i < lives; i++)
+	{
+		livesSprite.setPosition(Vector2f(viewPos.x + 310, (viewPos.y - 318) + 50 * i));
+		window->draw(livesSprite);
+	}
+	
 	window->draw(uisprite);
 }
 
@@ -208,6 +226,12 @@ void Player::Respawn()
 		health = 1000;
 		speedTimer = 0;
 		powerTimer = 0;
+		lives--;
+
+		if (lives == 0)
+		{
+			dead = true;
+		}
 	}
 }
 

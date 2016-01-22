@@ -222,8 +222,15 @@ void CollisionManager::BulletFactoryCollisions()
 
 			if (distance < collisionDistance)
 			{
-				bullets->at(j)->setDestroyed(true);
-				factories->at(i)->setHealth(factories->at(i)->getHealth() - 10);
+				if (bullets->at(j)->superBullet)
+					{
+						factories->at(i)->setHealth(factories->at(i)->getHealth() - 40);
+					}
+					else
+					{
+						bullets->at(j)->setDestroyed(true);
+						factories->at(i)->setHealth(factories->at(i)->getHealth() - 20);
+					}
 			}
 		}
 	}

@@ -17,11 +17,15 @@ private:
 	sf::Sprite sprite;
 	sf::Texture uitexture;
 	sf::Sprite uisprite;
+	sf::Texture livesTexture;
+	sf::Sprite livesSprite;
 	float fireRate;
 	float fireTimer;
 	float radius;
 	float health;
 	int speedTimer;
+	int lives;
+	bool dead;
 
 public:
 	Player();
