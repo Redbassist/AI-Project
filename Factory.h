@@ -12,10 +12,7 @@ class FactoryManger;
 
 class Factory{
 private:
-	int id;
-	float prevRotation;
-	float rotation;
-	float targetRotation;
+	int id;   
 	Player* player;
 	int width, height;
 	Pvector position;
@@ -25,21 +22,18 @@ private:
 	sf::Sprite sprite;
 	sf::Texture texture2;
 	sf::Sprite sprite2;
+	Texture uitexture;
+	Sprite uisprite;
 	float radius;
-	float health;
-	bool travelling;
-	Pvector destination;
-	bool scared;
+	float health;  
 	int spawnTimer;
 	int shootTimer;
 	int maxMissiles;
-	int missileTimer;
-	Pvector location;
+	int missileTimer; 
 	Pvector velocity;
 	Pvector acceleration;
 	float maxSpeed;
-	float maxForce;
-	int currentFlock;
+	float maxForce; 
 public:
 
 	State currentState;
@@ -49,6 +43,8 @@ public:
 	void loadResources();
 
 	void Draw();
+
+	void drawui();
 
 	void Update(vector<Factory*> Factories);
 
@@ -70,9 +66,7 @@ public:
 
 	void setHealth(float h);
 
-	float Distance(Pvector, Pvector);
-
-	void State();
+	float Distance(Pvector, Pvector); 
 
 	void Spawn();
 

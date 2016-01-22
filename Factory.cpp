@@ -14,9 +14,7 @@ Factory::Factory(Player& p, int i) {
 	maxSpeed = 1.5;
 	maxForce = 0.5;
 	velocity = Pvector(rand() % 3 - 1, rand() % 3 - 1);
-	loadResources();
-	scared = false;
-	travelling = false;
+	loadResources(); 
 	player = &p;
 	spawnTimer = 60;
 	maxMissiles = 0;
@@ -25,6 +23,17 @@ Factory::Factory(Player& p, int i) {
 }
 
 void Factory::loadResources() {
+	if (!uitexture.loadFromFile("Sprites/blip.png"))
+	{
+		cout << "cant find image";
+	}
+
+	uitexture.setSmooth(true);
+	uisprite.setTexture(uitexture);
+	uisprite.setOrigin(uitexture.getSize().x / 2, uitexture.getSize().y / 2);
+	uisprite.setScale(0.14, 0.14);
+	uisprite.setColor(Color::Green);
+
 	if (!texture.loadFromFile("Sprites/FactoryPart2.png"))
 	{
 		std::cout << "cant find image";
@@ -55,6 +64,23 @@ void Factory::loadResources() {
 void Factory::Draw() {
 	window->draw(sprite);
 	window->draw(sprite2);
+}
+
+void Factory::drawui()
+{
+	View tempView = window->getView();
+	Vector2f viewPos = tempView.getCenter();
+
+	float d = position.distance(player->getPosition());
+	if (d < 1300) {
+		Pvector uiPos = position - player->getPosition();
+
+		uiPos.divScalar(20);
+
+		uisprite.setPosition(Vector2f(viewPos.x + 520 + uiPos.x, viewPos.y - 270 + uiPos.y));
+
+		window->draw(uisprite);
+	}
 }
 
 void Factory::Update(vector<Factory*> v) {

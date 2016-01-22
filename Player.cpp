@@ -60,6 +60,7 @@ void Player::Update() {
 	Movement();
 	WrapAround();
 	Shoot();
+	Respawn();
 	CenterCamera();
 }
 
@@ -195,6 +196,19 @@ void Player::Shoot()
 		}
 	}
 	powerTimer--;
+}
+
+void Player::Respawn()
+{
+	if (health <= 0) {
+		float randX = rand() % (int)(globalBounds.x - 50) + 50;
+		float randY = rand() % (int)(globalBounds.y - 50) + 50;
+		position = Pvector(randX, randY);
+		sprite.setPosition(sf::Vector2f(position.x, position.y));
+		health = 1000;
+		speedTimer = 0;
+		powerTimer = 0;
+	}
 }
 
 Pvector Player::getPosition() {

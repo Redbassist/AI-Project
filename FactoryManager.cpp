@@ -38,3 +38,10 @@ void FactoryManager::Draw()
 		factories[i]->Draw();
 	}
 }
+
+void FactoryManager::DrawUI()
+{
+	for (int i = 0; i < factories.size(); i++) {
+		factories[i]->drawui();
+	}
+}

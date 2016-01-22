@@ -17,6 +17,7 @@ public:
 	void AddFactory(Factory*);
 	void Update();
 	void Draw();
+	void DrawUI();
 	vector<Factory*> factories;
 };
 

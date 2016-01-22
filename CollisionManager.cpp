@@ -48,7 +48,7 @@ void CollisionManager::AsteroidCollisions()
 			response.mulScalar(asteroids->at(i)->getSpeed());
 			//asteroids->at(i)->setDirection(Pvector(player->getDirection().x, player->getDirection().y));
 			asteroids->at(i)->setDirection(response);
-			//player->setHealth(player->getHealth() - 10);
+			player->dropHealth(4);
 		}
 	}
 }
@@ -206,7 +206,7 @@ void CollisionManager::PlayerMissileCollisions()
 		if (distance < collisionDistance)
 		{
 			missiles->at(i)->setDestroyed(true);
-			player->dropHealth(player->getHealth() - 100);
+			player->dropHealth(100);
 		}
 	}
 }

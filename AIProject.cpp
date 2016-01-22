@@ -71,6 +71,20 @@ int main()
 	underlaySprite.setTexture(underlay);
 	underlaySprite.setScale(0.3, 0.3);
 
+	sf::Texture healthUI;
+	healthUI.loadFromFile("Sprites/health.png");
+	healthUI.setSmooth(true);
+	sf::Sprite healthUISprite;
+	healthUISprite.setTexture(healthUI);
+	healthUISprite.setScale(0.3, 0.3);
+
+	sf::Texture healthbar;
+	healthbar.loadFromFile("Sprites/healthbar.png");
+	healthbar.setSmooth(true);
+	sf::Sprite healthbarSprite;
+	healthbarSprite.setTexture(healthbar);
+	healthbarSprite.setScale(0.3, 0.3);
+
 	Player* player = new Player();
 
 	AsteroidManager::GetInstance()->player = player;
@@ -137,12 +151,20 @@ int main()
 
 		overlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
 		underlaySprite.setPosition(Vector2f(viewPos.x + 400, viewPos.y - 360));
+		healthUISprite.setPosition(Vector2f(viewPos.x + 330, viewPos.y - 360));
+		
+		float scaleY = 0.3 * (player->getHealth() / 1000);
+		healthbarSprite.setScale(0.3, scaleY);
+		healthbarSprite.setPosition(Vector2f(viewPos.x + 352, viewPos.y - 330));
 
 		window->draw(underlaySprite);
 		window->draw(overlaySprite);
+		window->draw(healthUISprite);
+		window->draw(healthbarSprite);
 
 
 		BoidManager::GetInstance()->DrawUI();
+		FactoryManager::GetInstance()->DrawUI();
 		player->DrawUI();
 		
 		window->display();

@@ -42,6 +42,8 @@ public:
 
 	void Shoot();
 
+	void Respawn();
+
 	Pvector getPosition();
 
 	//these are the code from the gods that fix the rotation loop around 2 pi
